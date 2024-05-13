@@ -2,11 +2,15 @@
 //
 
 #include <iostream>
+#include "cVikingo.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
-    std::cout << "FUNCIONA O NO FUNCIONA";
+    std::cout << "Hello World!\n"<<endl;
+    std::cout << "FUNCIONA O NO FUNCIONA"<<endl;
+    cVikingo VIKINGO;
+    cout << VIKINGO.getNombre() << endl;
+    cout << "QUE ONDA" << endl;
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
