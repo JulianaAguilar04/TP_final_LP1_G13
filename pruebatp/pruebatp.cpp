@@ -1,17 +1,24 @@
 // pruebatp.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
 //
-
 #include <iostream>
+#include "cDragon.h"
+#include "cJinete.h"
 #include "cVikingo.h"
+
 
 int main()
 {
-    std::cout << "Hello World! Hola? \n"<<endl;
-    std::cout << "FUNCIONA O NO FUNCIONA, que se yo "<<endl;
-    cVikingo VIKINGO;
-    cout << VIKINGO.getNombre() << endl;
-    cout << "QUE ONDA todo bien y vos " << endl;
+    cDragon Dragoncito("Chimuelo", "Negrito", "Mediano", "Negro", "Domado");
+    //inete Jinetito("Milagros", "Menendez", "Mili", "2002-03-26", "Fuerte", &Dragoncito);
+    cVikingo Vikinguito("Juliana", "Aguilar", "Frente");
+    cJinete Jinetito("Tatiana", "Villegas", "Tati", "2004-04-15", "Rapida", &Dragoncito);
+
+    cout << Jinetito.getNombre() << endl;
+    cout << Jinetito.getApellido() << endl;
+    cout << Jinetito.getApodo() << endl;
+    cout << Jinetito.getCaracteristicas() << endl;
 }
+
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
 // Depurar programa: F5 o menú Depurar > Iniciar depuración
