@@ -6,11 +6,11 @@
 
 int main()
 {
-    std::cout << "Hello World!\n"<<endl;
-    std::cout << "FUNCIONA O NO FUNCIONA"<<endl;
+    std::cout << "Hello World! Hola? \n"<<endl;
+    std::cout << "FUNCIONA O NO FUNCIONA, que se yo "<<endl;
     cVikingo VIKINGO;
     cout << VIKINGO.getNombre() << endl;
-    cout << "QUE ONDA" << endl;
+    cout << "QUE ONDA todo bien y vos " << endl;
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar

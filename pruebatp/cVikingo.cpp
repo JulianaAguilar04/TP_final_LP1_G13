@@ -2,7 +2,7 @@
 
 cVikingo::cVikingo()
 {
-    this->nombre = "Juliana";
+    this->nombre = "Miliiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii";
 }
 
 string cVikingo::getNombre()
