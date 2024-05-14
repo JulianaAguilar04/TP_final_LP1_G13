@@ -15,7 +15,9 @@ private:
 	//cAtaque* FormadeAtaque;
 
 public:
-	cDragon(string Nombre, string Caracteristica, string Tamanio, string Color, bool Estado);
+	cDragon(string Nombre, string Caracteristica, string Tamano, string Color, bool Estado);
+	//constructor por copia
+	cDragon(const cDragon& Dragoncito) : Nombre(Dragoncito.Nombre), Caracteristica(Dragoncito.Caracteristica), Tamano(Dragoncito.Tamano), Color(Dragoncito.Color), Estado(Dragoncito.Estado) {};
 	string getNombre();
 	string getCaracteristica();
 	string getTamano();

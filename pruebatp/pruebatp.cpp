@@ -8,8 +8,8 @@
 
 int main()
 {
+    /*
     cDragon Dragoncito("Chimuelo", "Negrito", "Mediano", "Negro", "Domado");
-    //inete Jinetito("Milagros", "Menendez", "Mili", "2002-03-26", "Fuerte", &Dragoncito);
     cVikingo Vikinguito("Juliana", "Aguilar", "Frente");
     cJinete Jinetito("Tatiana", "Villegas", "Tati", "2004-04-15", "Rapida", &Dragoncito);
 
@@ -17,6 +17,33 @@ int main()
     cout << Jinetito.getApellido() << endl;
     cout << Jinetito.getApodo() << endl;
     cout << Jinetito.getCaracteristicas() << endl;
+    */
+    cDragon Dragon("Chimuelo", "Inteligente", "Mediano", "Negro", false);//false: no esta domado
+    cout << "Nombre:" << Dragon.getNombre() << endl;
+    cout << "Caracteristica:" << Dragon.getCaracteristica() << endl;
+    cout << "Tamano:" << Dragon.getTamano() << endl;
+    cout << "Color:" << Dragon.getColor() << endl;
+    if (Dragon.getEstado() == false) {
+        cout << "No esta domado" << endl;
+    }
+    else {
+        cout << "Esta domado" << endl;
+    }
+
+    cDragon Dragon2 = Dragon;
+    cout << "Nombre:" << Dragon2.getNombre() << endl;
+    cout << "Caracteristica:" << Dragon2.getCaracteristica() << endl;
+    cout << "Tamano:" << Dragon2.getTamano() << endl;
+    cout << "Color:" << Dragon2.getColor() << endl;
+    if (Dragon2.getEstado() == false) {
+        cout << "No esta domado" << endl;
+    }
+    else {
+        cout << "Esta domado" << endl;
+    }
+
+
+   return 0;
 }
 
 

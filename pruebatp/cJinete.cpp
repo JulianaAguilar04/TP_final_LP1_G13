@@ -1,5 +1,6 @@
 #include "cJinete.h"
 
+//constructor por parametros
 cJinete::cJinete(string Nombre, string Apellido, string Apodo, string FecNac, string Caracteristicas, cDragon* miDragon) {
     this->Nombre = Nombre;
     this->Apellido = Apellido;

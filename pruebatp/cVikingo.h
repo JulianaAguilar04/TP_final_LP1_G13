@@ -12,14 +12,14 @@ private:
 	string Posicion;
 
 public:
-	cVikingo(string Nombre, string Apellido, string Posicion);
+	cVikingo();
 	string getNombre();
 	string getApellido();
 	string getPosicion();
+	bool DragonesTerminados();
 	void setNombre(string nuevoNombre);
 	void setApellido(string nuevaPosicion);
 	void setPosicion(string nuevaPosicion);
 	void Trabajar();
-	bool DragonesTerminados();
 	void AtacarDragones();
 };

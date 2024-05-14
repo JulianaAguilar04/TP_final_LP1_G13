@@ -1,9 +1,11 @@
 #include "cVikingo.h"
-cVikingo::cVikingo(string Nombre, string Apellido, string Posicion)
+
+//constructor por defecto
+cVikingo::cVikingo()
 {
-	this->Nombre = Nombre;
-	this->Apellido = Apellido;
-	this->Posicion = Posicion;
+	this->Nombre = "Hipo";
+	this->Apellido = "Horrendo";
+	this->Posicion = "Piloto";
 }
 string cVikingo::getNombre()
 {

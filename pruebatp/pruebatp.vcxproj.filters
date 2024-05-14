@@ -27,6 +27,9 @@
     <ClCompile Include="cDragon.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="cAtaque.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cVikingo.h">
@@ -36,6 +39,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="cDragon.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="cAtaque.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
