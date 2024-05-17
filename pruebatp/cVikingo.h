@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
+#include <sstream>
 #include <string>
+#include "cDragon.h"
 
 using namespace std;
 
@@ -10,6 +12,8 @@ private:
 	string Nombre;
 	string Apellido;
 	string Posicion;
+	//cDragon* miDragon;
+
 
 public:
 	cVikingo();
@@ -17,9 +21,11 @@ public:
 	string getApellido();
 	string getPosicion();
 	bool DragonesTerminados();
-	void setNombre(string nuevoNombre);
-	void setApellido(string nuevaPosicion);
-	void setPosicion(string nuevaPosicion);
+	void setNombre(string Nombre);
+	void setApellido(string Apellido);
+	void setPosicion(string Posicion);
 	void Trabajar();
 	void AtacarDragones();
+	string to_string();
+	~cVikingo();
 };

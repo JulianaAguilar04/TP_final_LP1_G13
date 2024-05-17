@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
+#include <sstream>
 #include <string>
+#include "cAtaque.h"
 using namespace std;
 
 
@@ -12,10 +14,11 @@ private:
 	string Tamano;
 	string Color;
 	bool Estado;
-	//cAtaque* FormadeAtaque;
+	cAtaque* FormadeAtaque = nullptr;
 
 public:
-	cDragon(string Nombre, string Caracteristica, string Tamano, string Color, bool Estado);
+	//constructor por parametros 
+	cDragon(string Nombre, string Caracteristica, string Tamano, string Color, bool Estado, cAtaque* miAtaque);
 	//constructor por copia
 	cDragon(const cDragon& Dragoncito) : Nombre(Dragoncito.Nombre), Caracteristica(Dragoncito.Caracteristica), Tamano(Dragoncito.Tamano), Color(Dragoncito.Color), Estado(Dragoncito.Estado) {};
 	string getNombre();
@@ -30,6 +33,8 @@ public:
 	void setEstado(bool nuevoEstado);
 	string AltaNombre(string Nombre);
 	bool Domado();
+	string to_string();
+	~cDragon();
 	//Entrenar();
 	//Baja();
 };

@@ -59,52 +59,15 @@ void cJinete::IncorporarDragon() {
     // completar jaja 
 }
 
-
-/* ESTO ES LO QUE HABIAS HECHO VOS ANTES JULI, LO DEJE ACA POR LAS DUDAS JE :)
-
-#include "cJinete.h"
-
-cJinete::cJinete(string Nombre, string Apellido, string Apodo, string FecNac, string Caracteristicas, cDragon* miDragon)
+string cJinete::to_string()
 {
-    this->Nombre = Nombre;
-    this->Apellido = Apellido;
-    this->Apodo = Apodo;
-    this->FecNac = FecNac;
-    this->Caracteristicas = Caracteristicas;
-    this->miDragon = miDragon;
-}
+    stringstream ss;
+    ss << "-Nombre:" << Nombre << endl;
+    ss << "-Apellido:" << Apellido << endl;
+    ss << "-Apodo:" << Apodo << endl;
+    ss << "-Fecha de nacimiento:" << FecNac << endl;
+    ss << "-Caracteristicas:" << Caracteristicas << endl;
+    ss << miDragon->to_string() << endl;
 
-cJinete::~cJinete()
-{
+    return ss.str();
 }
-
-string cJinete::getNombre()
-{
-    return this->Nombre;
-}
-
-string cJinete::getApellido()
-{
-    return this->Apellido;
-}
-
-string cJinete::getApodo()
-{
-    return this->Apodo;
-}
-
-string cJinete::getFecNac()
-{
-    return this->getFecNac;
-}
-
-string cJinete::getCaracteristicas()
-{
-    return this->Caracteristicas;
-}
-
-void cJinete::IncorporarDragon()
-{
-}
- */
-

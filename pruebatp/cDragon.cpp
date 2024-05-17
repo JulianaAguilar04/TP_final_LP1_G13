@@ -1,13 +1,14 @@
 #include "cDragon.h"
 
 //constructor por parametro y por defecto
-cDragon::cDragon(string Nombre, string Caracteristica, string Tamano, string Color, bool Estado)
+cDragon::cDragon(string Nombre, string Caracteristica, string Tamano, string Color, bool Estado, cAtaque* miAtaque)
 {
     this->Nombre = Nombre;
     this->Caracteristica = Caracteristica;
     this->Tamano = Tamano;
     this->Color = Color;
     this->Estado = Estado;
+    FormadeAtaque = miAtaque;
 }
 string cDragon::getNombre()
 {
@@ -57,4 +58,20 @@ string cDragon::AltaNombre(string Nombre)
 bool cDragon::Domado()
 {
     return false;
+}
+
+string cDragon::to_string()
+{
+    stringstream ss;
+    ss << "-Nombre del dragon:" << Nombre << endl;
+    ss << "-Caracteristicas:" << Caracteristica << endl;
+    ss << "-Tamanio:" << Tamano << endl;
+    ss << "-Color:" << Color << endl;
+    ss << "-Estado:" << Estado << endl;
+    ss << "-Ataque:\n" << FormadeAtaque->to_string() << endl;
+    return ss.str();
+}
+
+cDragon::~cDragon()
+{
 }

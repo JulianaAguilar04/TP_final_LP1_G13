@@ -4,33 +4,29 @@
 #include "cDragon.h"
 #include "cJinete.h"
 #include "cVikingo.h"
+#include "cAtaque.h"
 
 
 int main()
 {
-    /*
-    cDragon Dragoncito("Chimuelo", "Negrito", "Mediano", "Negro", "Domado");
-    cVikingo Vikinguito("Juliana", "Aguilar", "Frente");
-    cJinete Jinetito("Tatiana", "Villegas", "Tati", "2004-04-15", "Rapida", &Dragoncito);
+    cAtaque Ataque1("Fuego", "15", "14");
 
-    cout << Jinetito.getNombre() << endl;
-    cout << Jinetito.getApellido() << endl;
-    cout << Jinetito.getApodo() << endl;
-    cout << Jinetito.getCaracteristicas() << endl;
-    */
-    cDragon Dragon("Chimuelo", "Inteligente", "Mediano", "Negro", false);//false: no esta domado
-    cout << "Nombre:" << Dragon.getNombre() << endl;
-    cout << "Caracteristica:" << Dragon.getCaracteristica() << endl;
-    cout << "Tamano:" << Dragon.getTamano() << endl;
-    cout << "Color:" << Dragon.getColor() << endl;
-    if (Dragon.getEstado() == false) {
+    cDragon Dragon1("Chimuelo", "Inteligente", "Mediano", "Negro", false, &Ataque1 );//false: no esta domado
+    cout << Dragon1.to_string() << endl;
+    /*
+    cout << "Nombre:" << Dragon1.getNombre() << endl;
+    cout << "Caracteristica:" << Dragon1.getCaracteristica() << endl;
+    cout << "Tamano:" << Dragon1.getTamano() << endl;
+    cout << "Color:" << Dragon1.getColor() << endl;
+    if (Dragon1.getEstado() == false) {
         cout << "No esta domado" << endl;
     }
     else {
         cout << "Esta domado" << endl;
     }
+    */
 
-    cDragon Dragon2 = Dragon;
+    cDragon Dragon2 = Dragon1;
     cout << "Nombre:" << Dragon2.getNombre() << endl;
     cout << "Caracteristica:" << Dragon2.getCaracteristica() << endl;
     cout << "Tamano:" << Dragon2.getTamano() << endl;
@@ -41,7 +37,23 @@ int main()
     else {
         cout << "Esta domado" << endl;
     }
+    cout << endl;
 
+    cAtaque Ataque2("Veneno", "20", "11");
+    cout << Ataque2.to_string() << endl;
+    cout << "\n" << endl;
+
+    cDragon Dragon3("Exterminador", "Rapido", "Mediano", "Transparente", true, &Ataque2);
+    cout << Dragon3.to_string() << endl;
+
+    cJinete Jinete1("Astrid", "Hofferson", "Astru", "05-09-2010", "Lider", &Dragon3);
+    cout << Jinete1.to_string() << endl;
+
+    cVikingo Vikingo1;
+    Vikingo1.setNombre("Bocon");
+    Vikingo1.setApellido("Rudo");
+    Vikingo1.setPosicion("Herrero");
+    cout << Vikingo1.to_string() << endl;
 
    return 0;
 }

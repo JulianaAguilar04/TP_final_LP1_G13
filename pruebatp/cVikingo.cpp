@@ -19,17 +19,17 @@ string cVikingo::getPosicion()
 {
 	return Posicion;
 }
-void cVikingo::setNombre(string nuevoNombre)
+void cVikingo::setNombre(string Nombre)
 {
-	Nombre = nuevoNombre;
+	this->Nombre = Nombre;
 }
-void cVikingo::setApellido(string nuevoApellido)
+void cVikingo::setApellido(string Apellido)
 {
-	Apellido = nuevoApellido;
+	this->Apellido = Apellido;
 }
-void cVikingo::setPosicion(string nuevaPosicion)
+void cVikingo::setPosicion(string Posicion)
 {
-	Posicion = nuevaPosicion;
+	this->Posicion = Posicion;
 }
 
 void cVikingo::Trabajar()
@@ -45,5 +45,18 @@ bool cVikingo::DragonesTerminados()
 void cVikingo::AtacarDragones()
 {
 	//completar 
+}
+
+string cVikingo::to_string()
+{
+	stringstream ss;
+	ss << "Nombre:" << Nombre << endl;
+	ss << "Apellido:" << Apellido << endl;
+	ss << "Posicion:" << Posicion << endl;
+	return ss.str();
+}
+
+cVikingo::~cVikingo()
+{
 }
 
