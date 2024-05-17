@@ -26,6 +26,8 @@ int main()
     }
     */
 
+    //quiero chequear que es este tp
+
     cDragon Dragon2 = Dragon1;
     cout << "Nombre:" << Dragon2.getNombre() << endl;
     cout << "Caracteristica:" << Dragon2.getCaracteristica() << endl;
