@@ -6,6 +6,7 @@ cVikingo::cVikingo()
 	this->Nombre = "Hipo";
 	this->Apellido = "Horrendo";
 	this->Posicion = "Piloto";
+	miDragon = nullptr;
 }
 string cVikingo::getNombre()
 {

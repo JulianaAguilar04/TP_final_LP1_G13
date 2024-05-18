@@ -1,6 +1,6 @@
 #include "cDragon.h"
 
-//constructor por parametro y por defecto
+//constructor por parametro
 cDragon::cDragon(string Nombre, string Caracteristica, string Tamano, string Color, bool Estado, cAtaque* miAtaque)
 {
     this->Nombre = Nombre;

@@ -12,7 +12,7 @@ private:
 	string Nombre;
 	string Apellido;
 	string Posicion;
-	//cDragon* miDragon;
+	cDragon* miDragon; //relación entre dragon y vikingo, posible lista de dragones matados
 
 
 public:
