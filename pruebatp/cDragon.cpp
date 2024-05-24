@@ -10,6 +10,15 @@ cDragon::cDragon(string Nombre, string Caracteristica, string Tamano, string Col
     this->Estado = Estado;
     FormadeAtaque = miAtaque;
 }
+cDragon::cDragon(cDragon& Dragoncito)
+{
+    this->Nombre = Dragoncito.Nombre;
+    this->Caracteristica = Dragoncito.Caracteristica;
+    this->Tamano = Dragoncito.Tamano;
+    this->Color = Dragoncito.Color;
+    this->Estado = Dragoncito.Estado;
+    FormadeAtaque = Dragoncito.FormadeAtaque;
+}
 string cDragon::getNombre()
 {
     return Nombre;

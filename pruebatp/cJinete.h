@@ -2,17 +2,14 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include "cPersona.h"
 #include "cDragon.h"
 
 using namespace std;
 
-class cJinete
+class cJinete:public cPersona
 {
 private:
-	string Nombre;
-	string Apellido;
-	string Apodo;
-	string FecNac;
 	string Caracteristicas;
 	cDragon* miDragon;
 

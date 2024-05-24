@@ -20,7 +20,7 @@ public:
 	//constructor por parametros 
 	cDragon(string Nombre, string Caracteristica, string Tamano, string Color, bool Estado, cAtaque* miAtaque);
 	//constructor por copia
-	cDragon(const cDragon& Dragoncito) : Nombre(Dragoncito.Nombre), Caracteristica(Dragoncito.Caracteristica), Tamano(Dragoncito.Tamano), Color(Dragoncito.Color), Estado(Dragoncito.Estado), FormadeAtaque(Dragoncito.FormadeAtaque) {};
+	cDragon(cDragon& Dragoncito);
 	string getNombre();
 	string getCaracteristica();
 	string getTamano();

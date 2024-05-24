@@ -2,18 +2,16 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include "cPersona.h"
 #include "cDragon.h"
 
 using namespace std;
 
-class cVikingo
+class cVikingo:public cPersona
 {
 private:
-	string Nombre;
-	string Apellido;
 	string Posicion;
 	cDragon* miDragon; //relación entre dragon y vikingo, posible lista de dragones matados
-
 
 public:
 	cVikingo();
