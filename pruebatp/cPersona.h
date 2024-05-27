@@ -6,11 +6,12 @@ using namespace std;
 
 class cPersona
 {
-public:
+protected:
 	string Nombre;
 	string Apellido;
 	string Apodo;
 	string FecNac;
+public:
 	cPersona(string Nombre, string Apellido, string Apodo, string FecNac);
 	virtual string to_string();
 	~cPersona();

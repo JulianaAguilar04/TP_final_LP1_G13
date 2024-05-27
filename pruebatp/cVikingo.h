@@ -14,7 +14,7 @@ private:
 	cDragon* miDragon; //relación entre dragon y vikingo, posible lista de dragones matados
 
 public:
-	cVikingo(string Nombre, string Apellido, string Apodo, string FecNac, string posicion, cDragon &Dragoncito);
+	cVikingo(string Nombre, string Apellido, string Apodo, string FecNac, string Posicion, cDragon &Dragoncito);
 	string to_string();
 	/*string getNombre();
 	string getApellido();

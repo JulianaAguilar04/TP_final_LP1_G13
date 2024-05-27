@@ -15,10 +15,10 @@ int main()
     cDragon Dragon1("Chimuelo", "Inteligente", "Mediano", "Negro", false, &Ataque1); //false: no esta domado
     cout << Dragon1.to_string() << endl;
 
-    //instancia de dragón utilizando el constructor por copia
-    cDragon Dragon2 = Dragon1;
+    //instancia de dragón utilizando el constructor por copia-parámetro
+    cDragon Dragon2(Dragon1);
     cout << Dragon2.to_string() << endl;
-
+    
     //
     cAtaque Ataque2("Veneno", "20", "11");
     cout << Ataque2.to_string() << endl;
@@ -26,23 +26,27 @@ int main()
 
     cDragon Dragon3("Exterminador", "Rapido", "Mediano", "Transparente", true, &Ataque2);
     cout << Dragon3.to_string() << endl;
-
+   
     //instancia de jinete utilizando constructor por parámetros
     cJinete Jinete1("Astrid", "Hofferson", "Astru", "05-09-2010", "Lider", &Dragon3);
-   // cout << Jinete1.to_string() << endl;
- 
+    cout << Jinete1.to_string() << endl;
+    
     //
+    cout << "PRUEBA VIKINGO" << endl;
     cAtaque Ataque3("Electricidad", "14", "12");
     cDragon Dragon4("Skrill", "Agresivo", "Grande", "Violeta", false, &Ataque3);
 
     //instancia de vikingo utilizando constructor por defecto
     cVikingo Vikingo1("Daniela", "Iuzchuk", "Polaca", "04-01-1976", "Cazadora", Dragon4);
     cout << "Informacion de Daniela:\n" << Vikingo1.to_string() << endl;
+
+    cVikingo Vikingo2("Maribel", "Papa", "Maru", "29-11-2003", "Tecnica", Dragon3);
+    cout << "Informacion de Maribel: \n" << Vikingo2.to_string() << endl;
     /*
     Vikingo1.setNombre("Bocon");
     Vikingo1.setApellido("Rudo");
     Vikingo1.setPosicion("Herrero");
-    cout << Vikingo1.to_string() << endl;
+    cout << Vikingo1.mostrar() << endl;
     */
    return 0;
 }

@@ -2,7 +2,7 @@
 #include "cPersona.h"
 
 //constructor por parametro
-cVikingo::cVikingo(string Nombre, string Apellido, string Apodo, string FecNac, string posicion, cDragon& Dragoncito):cPersona(Nombre, Apellido, Apodo, FecNac) {
+cVikingo::cVikingo(string Nombre, string Apellido, string Apodo, string FecNac, string Posicion, cDragon& Dragoncito):cPersona(Nombre, Apellido, Apodo, FecNac) {
 	this->Posicion = Posicion;
 	miDragon = &Dragoncito;
 }
@@ -57,7 +57,7 @@ string cVikingo::to_string()
 }*/
 string cVikingo::to_string() {
 	stringstream ss;
-	cPersona::to_string();
+	ss << cPersona::to_string();
 	ss << "Posicion:" << Posicion;
 	ss << miDragon->to_string();
 	return ss.str();

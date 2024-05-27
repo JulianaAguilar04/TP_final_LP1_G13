@@ -37,7 +37,6 @@ public:
 	void setFecNac(string nuevaFecNac);
 	void setCaracteristicas(string nuevaCaracteristica);
 	void IncorporarDragon();
-	string to_string();
 	*/
 	~cJinete();
 	

@@ -10,6 +10,7 @@ cDragon::cDragon(string Nombre, string Caracteristica, string Tamano, string Col
     this->Estado = Estado;
     FormadeAtaque = miAtaque;
 }
+//constructor por copia-parametro
 cDragon::cDragon(cDragon& Dragoncito)
 {
     this->Nombre = Dragoncito.Nombre;
@@ -72,7 +73,7 @@ bool cDragon::Domado()
 string cDragon::to_string()
 {
     stringstream ss;
-    ss << "-Nombre del dragon:" << Nombre << endl;
+    ss << "\n-Nombre del dragon:" << Nombre << endl;
     ss << "-Caracteristicas:" << Caracteristica << endl;
     ss << "-Tamanio:" << Tamano << endl;
     ss << "-Color:" << Color << endl;

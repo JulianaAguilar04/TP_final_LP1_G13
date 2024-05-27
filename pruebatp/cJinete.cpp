@@ -9,8 +9,8 @@ cJinete::cJinete(string Nombre, string Apellido, string Apodo, string FecNac, st
 
 string cJinete::to_string()
 {
-    cPersona::to_string();
     stringstream ss;
+    ss << cPersona::to_string();
     ss << "Caracteristicas:" << Caracteristicas << endl;
     ss << miDragon->to_string();
     return ss.str();
