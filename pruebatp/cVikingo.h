@@ -14,8 +14,9 @@ private:
 	cDragon* miDragon; //relación entre dragon y vikingo, posible lista de dragones matados
 
 public:
-	cVikingo();
-	string getNombre();
+	cVikingo(string Nombre, string Apellido, string Apodo, string FecNac, string posicion, cDragon &Dragoncito);
+	string to_string();
+	/*string getNombre();
 	string getApellido();
 	string getPosicion();
 	bool DragonesTerminados();
@@ -24,6 +25,6 @@ public:
 	void setPosicion(string Posicion);
 	void Trabajar();
 	void AtacarDragones();
-	string to_string();
+	*/
 	~cVikingo();
 };

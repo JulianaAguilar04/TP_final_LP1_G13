@@ -1,13 +1,12 @@
 #include "cVikingo.h"
+#include "cPersona.h"
 
-//constructor por defecto
-cVikingo::cVikingo()
-{
-	this->Nombre = "Hipo";
-	this->Apellido = "Horrendo";
-	this->Posicion = "Piloto";
-	miDragon = nullptr;
+//constructor por parametro
+cVikingo::cVikingo(string Nombre, string Apellido, string Apodo, string FecNac, string posicion, cDragon& Dragoncito):cPersona(Nombre, Apellido, Apodo, FecNac) {
+	this->Posicion = Posicion;
+	miDragon = &Dragoncito;
 }
+/*
 string cVikingo::getNombre()
 {
 	return Nombre;
@@ -55,9 +54,15 @@ string cVikingo::to_string()
 	ss << "Apellido:" << Apellido << endl;
 	ss << "Posicion:" << Posicion << endl;
 	return ss.str();
+}*/
+string cVikingo::to_string() {
+	stringstream ss;
+	cPersona::to_string();
+	ss << "Posicion:" << Posicion;
+	ss << miDragon->to_string();
+	return ss.str();
 }
 
 cVikingo::~cVikingo()
 {
 }
-

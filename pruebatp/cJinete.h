@@ -24,6 +24,8 @@ private:
 
 public:
 	cJinete(string Nombre, string Apellido, string Apodo, string FecNac, string Caracteristicas, cDragon* miDragon);
+	string to_string();
+	/*
 	string getNombre();
 	string getApellido();
 	string getApodo();
@@ -36,6 +38,7 @@ public:
 	void setCaracteristicas(string nuevaCaracteristica);
 	void IncorporarDragon();
 	string to_string();
+	*/
 	~cJinete();
 	
 };

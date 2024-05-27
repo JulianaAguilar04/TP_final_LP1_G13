@@ -1,9 +1,23 @@
 #include "cPersona.h"
 
-cPersona::cPersona()
+cPersona::cPersona(string Nombre, string Apellido, string Apodo, string FecNac)
 {
-	this->Nombre = "Juliana";
-	this->Apellido = "Aguilar";
-	this->Apodo = "Juli";
-	this->FecNac = "31-04-2004";
+	this->Nombre = Nombre;
+	this->Apellido = Apellido;
+	this->Apodo = Apodo;
+	this->FecNac = FecNac;
+}
+
+string cPersona::to_string()
+{
+	stringstream ss;
+	ss << "Nombre:" << Nombre << endl;
+	ss << "Apellido:" << Apellido << endl;
+	ss << "Apodo:" << Apodo << endl;
+	ss << "Fecha de nacimiento:" << FecNac << endl;
+	return ss.str();
+}
+
+cPersona::~cPersona()
+{
 }

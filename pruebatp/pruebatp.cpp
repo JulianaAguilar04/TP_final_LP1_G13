@@ -29,18 +29,20 @@ int main()
 
     //instancia de jinete utilizando constructor por parámetros
     cJinete Jinete1("Astrid", "Hofferson", "Astru", "05-09-2010", "Lider", &Dragon3);
-    cout << Jinete1.to_string() << endl;
+   // cout << Jinete1.to_string() << endl;
  
     //
     cAtaque Ataque3("Electricidad", "14", "12");
     cDragon Dragon4("Skrill", "Agresivo", "Grande", "Violeta", false, &Ataque3);
 
     //instancia de vikingo utilizando constructor por defecto
-    cVikingo Vikingo1;
+    cVikingo Vikingo1("Daniela", "Iuzchuk", "Polaca", "04-01-1976", "Cazadora", Dragon4);
+    cout << "Informacion de Daniela:\n" << Vikingo1.to_string() << endl;
+    /*
     Vikingo1.setNombre("Bocon");
     Vikingo1.setApellido("Rudo");
     Vikingo1.setPosicion("Herrero");
     cout << Vikingo1.to_string() << endl;
-
+    */
    return 0;
 }
