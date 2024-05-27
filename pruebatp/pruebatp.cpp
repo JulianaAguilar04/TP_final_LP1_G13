@@ -40,7 +40,7 @@ int main()
     cVikingo Vikingo1("Daniela", "Iuzchuk", "Polaca", "04-01-1976", "Cazadora", Dragon4);
     cout << "Informacion de Daniela:\n" << Vikingo1.to_string() << endl;
 
-    cVikingo Vikingo2("Maribel", "Papa", "Maru", "29-11-2003", "Tecnica", Dragon3);
+    cVikingo Vikingo2("Maribel", "Papa", "Maru", "28-11-2003", "Tecnica", Dragon3);
     cout << "Informacion de Maribel: \n" << Vikingo2.to_string() << endl;
     /*
     Vikingo1.setNombre("Bocon");
