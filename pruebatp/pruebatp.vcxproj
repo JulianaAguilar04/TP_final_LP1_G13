@@ -135,11 +135,14 @@
     <ClCompile Include="pruebatp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BatalladeDragones.h" />
+    <ClInclude Include="CarreradeDragones.h" />
     <ClInclude Include="cAtaque.h" />
     <ClInclude Include="cDragon.h" />
     <ClInclude Include="cJinete.h" />
     <ClInclude Include="cPersona.h" />
     <ClInclude Include="cVikingo.h" />
+    <ClInclude Include="EscueladeDragones.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

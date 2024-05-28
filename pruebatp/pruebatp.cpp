@@ -3,10 +3,13 @@
 #include <iostream>
 #include "cJinete.h"
 #include "cVikingo.h"
-
+#include "CarreradeDragones.h"
+#include "BatalladeDragones.h"
+#include "EscueladeDragones.h"
 
 int main()
 {
+    /*
     //instancia de ataque utilizando constructor de parámetros
     cAtaque Ataque1("Fuego", "15", "14");
     cout << Ataque1.to_string() << endl;
@@ -42,11 +45,38 @@ int main()
 
     cVikingo Vikingo2("Maribel", "Papa", "Maru", "28-11-2003", "Tecnica", Dragon3);
     cout << "Informacion de Maribel: \n" << Vikingo2.to_string() << endl;
-    /*
-    Vikingo1.setNombre("Bocon");
-    Vikingo1.setApellido("Rudo");
-    Vikingo1.setPosicion("Herrero");
-    cout << Vikingo1.mostrar() << endl;
     */
+    //menu
+    int opcion;
+    do {
+        cout << "------BIENVENIDO A LA ISLA DE BERK------" << endl;
+        cout << "1) Carrera de dragones" << endl;
+        cout << "2) Batalla de dragones" << endl;
+        cout << "3) Escuela de dragones" << endl;
+        cout << "4) Salir" << endl;
+        cin >> opcion;
+
+        switch (opcion)
+        {
+        case 1:
+            CarreradeDragones();
+            break;
+        case 2:
+            BatalladeDragones();
+            break;
+        case 3:
+            EscueladeDragones();
+            break;
+        case 4:
+            cout << "Muchas gracias por visitar la Isla de Berk" << endl;
+            break;
+
+        default:
+            cout << "Opcion invalida: Intentelo de nuevo" << endl;
+            break;
+        }
+        cout << endl;
+    } while (opcion != 4);
+
    return 0;
 }
