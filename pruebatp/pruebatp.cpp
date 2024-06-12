@@ -50,22 +50,22 @@ int main()
     int opcion;
     do {
         cout << "------BIENVENIDO A LA ISLA DE BERK------" << endl;
-        cout << "1) Carrera de dragones" << endl;
-        cout << "2) Batalla de dragones" << endl;
-        cout << "3) Escuela de dragones" << endl;
+        cout << "1) Escuela de dragones" << endl;
+        cout << "2) Carrera de dragones" << endl;
+        cout << "3) Batalla de dragones" << endl;
         cout << "4) Salir" << endl;
         cin >> opcion;
 
         switch (opcion)
         {
         case 1:
-            CarreradeDragones();
+            EscueladeDragones();
             break;
         case 2:
-            BatalladeDragones();
+            CarreradeDragones();
             break;
         case 3:
-            EscueladeDragones();
+            BatalladeDragones();
             break;
         case 4:
             cout << "Muchas gracias por visitar la Isla de Berk" << endl;
@@ -77,6 +77,7 @@ int main()
         }
         cout << endl;
     } while (opcion != 4);
+
 
    return 0;
 }

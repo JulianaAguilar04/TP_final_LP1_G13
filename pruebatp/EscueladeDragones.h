@@ -4,6 +4,10 @@
 using namespace std;
 
 void EscueladeDragones() {
+	int opcion;
+
+	cout << "Hola" << endl;
+
 
 }
 
