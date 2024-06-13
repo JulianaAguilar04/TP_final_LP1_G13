@@ -1,52 +1,84 @@
 // pruebatp.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
 //
+/*
+    //instancia de ataque utilizando constructor de parámetros
+cAtaque Ataque1("Fuego", "15", "14");
+cout << Ataque1.to_string() << endl;
+
+//instancia de dragón utilizando el constructor por parámetros 
+cDragon Dragon1("Chimuelo", "Inteligente", "Mediano", "Negro", false, &Ataque1); //false: no esta domado
+cout << Dragon1.to_string() << endl;
+
+//instancia de dragón utilizando el constructor por copia-parámetro
+cDragon Dragon2(Dragon1);
+cout << Dragon2.to_string() << endl;
+
+//
+cAtaque Ataque2("Veneno", "20", "11");
+cout << Ataque2.to_string() << endl;
+cout << "\n" << endl;
+
+cDragon Dragon3("Exterminador", "Rapido", "Mediano", "Transparente", true, &Ataque2);
+cout << Dragon3.to_string() << endl;
+
+//instancia de jinete utilizando constructor por parámetros
+cJinete Jinete1("Astrid", "Hofferson", "Astru", "05-09-2010", "Lider", &Dragon3);
+cout << Jinete1.to_string() << endl;
+
+//
+cout << "PRUEBA VIKINGO" << endl;
+cAtaque Ataque3("Electricidad", "14", "12");
+cDragon Dragon4("Skrill", "Agresivo", "Grande", "Violeta", false, &Ataque3);
+
+//instancia de vikingo utilizando constructor por defecto
+cVikingo Vikingo1("Daniela", "Iuzchuk", "Polaca", "04-01-1976", "Cazadora", Dragon4);
+cout << "Informacion de Daniela:\n" << Vikingo1.to_string() << endl;
+
+cVikingo Vikingo2("Maribel", "Papa", "Maru", "28-11-2003", "Tecnica", Dragon3);
+cout << "Informacion de Maribel: \n" << Vikingo2.to_string() << endl;
+*/
+
 #include <iostream>
+#include <vector>
 #include "cJinete.h"
 #include "cVikingo.h"
 #include "CarreradeDragones.h"
 #include "BatalladeDragones.h"
 #include "EscueladeDragones.h"
+using namespace std;
 
 int main()
 {
-    /*
-    //instancia de ataque utilizando constructor de parámetros
+    //menu
     cAtaque Ataque1("Fuego", "15", "14");
-    cout << Ataque1.to_string() << endl;
-
-    //instancia de dragón utilizando el constructor por parámetros 
-    cDragon Dragon1("Chimuelo", "Inteligente", "Mediano", "Negro", false, &Ataque1); //false: no esta domado
-    cout << Dragon1.to_string() << endl;
-
-    //instancia de dragón utilizando el constructor por copia-parámetro
-    cDragon Dragon2(Dragon1);
-    cout << Dragon2.to_string() << endl;
-    
-    //
     cAtaque Ataque2("Veneno", "20", "11");
-    cout << Ataque2.to_string() << endl;
-    cout << "\n" << endl;
+    vector <cDragon*> Dragones_isla;
+    Dragones_isla.push_back(new cDragon("Chimuelo", "Inteligente", "Mediano", "Negro", false, &Ataque1));
+    Dragones_isla.push_back(new cDragon("Chimuelo", "Inteligente", "Mediano", "Negro", false, &Ataque2));
 
-    cDragon Dragon3("Exterminador", "Rapido", "Mediano", "Transparente", true, &Ataque2);
-    cout << Dragon3.to_string() << endl;
-   
-    //instancia de jinete utilizando constructor por parámetros
-    cJinete Jinete1("Astrid", "Hofferson", "Astru", "05-09-2010", "Lider", &Dragon3);
-    cout << Jinete1.to_string() << endl;
-    
-    //
-    cout << "PRUEBA VIKINGO" << endl;
+    vector <cDragon*> ::iterator it_d = Dragones_isla.begin();
+
+    while (it_d != Dragones_isla.end()) {
+        cout << *(*it_d) << endl;
+        it_d++;
+    }
+
     cAtaque Ataque3("Electricidad", "14", "12");
     cDragon Dragon4("Skrill", "Agresivo", "Grande", "Violeta", false, &Ataque3);
 
-    //instancia de vikingo utilizando constructor por defecto
-    cVikingo Vikingo1("Daniela", "Iuzchuk", "Polaca", "04-01-1976", "Cazadora", Dragon4);
-    cout << "Informacion de Daniela:\n" << Vikingo1.to_string() << endl;
+    vector <cPersona*> Personas_isla;
+    Personas_isla.push_back(new cVikingo("Juliana", "Aguilar", "Juju", "31-03-2004", "Guerrera", Dragon4));
+    // Personas_isla.push_back(new cJinete("Elias", "Garcia", "Elu", "19-06-2002", "Lloron", Dragon4));
+    Personas_isla.push_back(new cVikingo("Elias", "Garcia", "Elu", "19-06-2002", "Guerrero", Dragon4));
+    
+    vector<cPersona*>::iterator it_p = Personas_isla.begin();
 
-    cVikingo Vikingo2("Maribel", "Papa", "Maru", "28-11-2003", "Tecnica", Dragon3);
-    cout << "Informacion de Maribel: \n" << Vikingo2.to_string() << endl;
-    */
-    //menu
+    while (it_p != Personas_isla.end()) {
+        cout << *(*it_p) << endl;
+        it_p++;
+    } 
+
+    /*
     int opcion;
     do {
         cout << "------BIENVENIDO A LA ISLA DE BERK------" << endl;
@@ -77,7 +109,22 @@ int main()
         }
         cout << endl;
     } while (opcion != 4);
+   
+    
+    for (auto it_p = Personas_isla.begin(); it_p != Personas_isla.end(); ++it_p) {
+        delete* it_p;
+    }
 
+    Personas_isla.clear();
+    */
+    
+    for (int i = 0; i < Dragones_isla.size(); i++) {
+        delete Dragones_isla[i];
+    }
+
+    for (int i = 0; i < Personas_isla.size(); i++) {
+        delete Personas_isla[i];
+    }
 
    return 0;
 }

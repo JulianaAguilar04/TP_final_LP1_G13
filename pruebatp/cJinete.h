@@ -2,29 +2,31 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <vector>
 #include "cPersona.h"
-#include "cDragon.h"
+
+class cDragon;
 
 using namespace std;
+enum eResultadoEntrenamiento {
+	NoAsistio,
+	Aprobado,
+	Desaprobado,
+	Primero,
+	Ultimo,
+};
 
 class cJinete:public cPersona
 {
 private:
 	string Caracteristicas;
-	cDragon* miDragon;
-
-	enum eResultadoEntrenamiento {
-		NoAsistio,
-		Aprobado,
-		Desaprobado,
-		Primero,
-		Ultimo,
-	};
-	eResultadoEntrenamiento ResultadoEntrenamiento;
+	vector <cDragon*> misDragones;
+	//eResultadoEntrenamiento ResultadoEntrenamiento;
 
 public:
-	cJinete(string Nombre, string Apellido, string Apodo, string FecNac, string Caracteristicas, cDragon* miDragon);
+	cJinete(string Nombre, string Apellido, string Apodo, string FecNac, string Caracteristicas);
 	string to_string();
+	void IncorporarDragon();
 	/*
 	string getNombre();
 	string getApellido();
@@ -36,7 +38,6 @@ public:
 	void setApodo(string nuevoApodo);
 	void setFecNac(string nuevaFecNac);
 	void setCaracteristicas(string nuevaCaracteristica);
-	void IncorporarDragon();
 	*/
 	~cJinete();
 	

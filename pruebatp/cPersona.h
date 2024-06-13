@@ -13,7 +13,8 @@ protected:
 	string FecNac;
 public:
 	cPersona(string Nombre, string Apellido, string Apodo, string FecNac);
-	virtual string to_string();
-	~cPersona();
+	virtual string to_string() const;
+	friend ostream& operator <<(ostream& os, cPersona& p);
+	virtual ~cPersona() = 0;
 };
 

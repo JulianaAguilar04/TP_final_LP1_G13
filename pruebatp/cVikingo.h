@@ -16,7 +16,9 @@ private:
 public:
 	cVikingo(string Nombre, string Apellido, string Apodo, string FecNac, string Posicion, cDragon &Dragoncito);
 	string to_string();
-	/*string getNombre();
+	friend ostream& operator<<(ostream& os, cVikingo& v);
+	/*
+	string getNombre();
 	string getApellido();
 	string getPosicion();
 	bool DragonesTerminados();

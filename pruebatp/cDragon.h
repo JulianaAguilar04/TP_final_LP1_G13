@@ -26,17 +26,18 @@ public:
 	string getTamano();
 	string getColor();
 	bool getEstado();
-	void setNombre(string nuevoNombre);
 	void setCaracteristica(string nuevaCaracteristica);
 	void setTamano(string nuevoTamano);
 	void setColor(string nuevoColor);
-	void setEstado(bool nuevoEstado);
-	string AltaNombre(string Nombre);
-	bool Domado();
+	void setEstado(bool nuevoEstado);	
+	void AltaNombre(string Nombre);			//funcion que se pide
+	bool Domado();							//funcion que se pide
 	string to_string();
+	friend ostream& operator<<(ostream& s, cDragon& d);
+	// void AltaDragon(cDragon *dragon); ???
+	void Entrenar();							//funcion que se pide 
+	void Baja(vector<cDragon> &Dragones_isla);  //funcion que se pide
 	~cDragon();
-	//Entrenar();
-	//Baja();
 };
 
 

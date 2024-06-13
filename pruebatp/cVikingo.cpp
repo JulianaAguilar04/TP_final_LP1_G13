@@ -66,3 +66,9 @@ string cVikingo::to_string() {
 cVikingo::~cVikingo()
 {
 }
+
+ostream& operator<<(ostream& os, cVikingo& v)
+{
+	os << "Posicion:" << v.Posicion << endl;
+	return os;
+}

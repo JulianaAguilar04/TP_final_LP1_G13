@@ -40,10 +40,7 @@ bool cDragon::getEstado()
 {
     return Estado;
 }
-void cDragon::setNombre(string nuevoNombre)
-{
-    Nombre = nuevoNombre;
-}
+
 void cDragon::setCaracteristica(string nuevaCaracteristica)
 {
     Caracteristica = nuevaCaracteristica;
@@ -60,9 +57,9 @@ void cDragon::setEstado(bool nuevoEstado)
 {
     Estado = nuevoEstado;
 }
-string cDragon::AltaNombre(string Nombre)
+void cDragon::AltaNombre(string Nombre)
 {
-    return string();
+    ;
 }
 
 bool cDragon::Domado()
@@ -80,6 +77,32 @@ string cDragon::to_string()
     ss << "-Estado:" << Estado << endl;
     ss << "-Ataque:\n" << FormadeAtaque->to_string() << endl;
     return ss.str();
+}
+
+void cDragon::Baja(vector<cDragon>& Dragones_isla)
+{
+    //necesito especificamente el dragon que se quiere sacar de la lista
+}
+
+/*void cDragon::AltaDragon(cDragon* dragon)
+{
+
+}*/
+
+void cDragon::Entrenar()
+{
+
+}
+
+ostream& operator<<(ostream& s, cDragon& d)
+{
+    s << "Nombre del dragón:" << d.Nombre << endl;
+    s << "Caracteristicas:" << d.Caracteristica << endl;
+    s << "Tamanio:" << d.Tamano << endl;
+    s << "Color: " << d.Color << endl;
+    s << "Estado: " << ((d.Estado == false) ? "No domado" : "Domado") << endl;
+    s << "Ataque: " << *(d.FormadeAtaque)<<endl;
+    return s;
 }
 
 cDragon::~cDragon()

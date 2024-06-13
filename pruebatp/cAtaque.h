@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <vector>
 using namespace std;
 
 class cAtaque
@@ -17,6 +18,7 @@ public:
 	void setDanio(string Danio);
 	void setAlcance(string Alcance);
 	string to_string();
+	friend ostream& operator<<(ostream & os, cAtaque &a);
 	~cAtaque();
 };
 
