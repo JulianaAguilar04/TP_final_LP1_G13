@@ -5,4 +5,4 @@
 using namespace std;
 class cDragon;
 
-void EscueladeDragones(vector<cDragon>Dragones_isla);
+// void EscueladeDragones(&Dragones_isla);

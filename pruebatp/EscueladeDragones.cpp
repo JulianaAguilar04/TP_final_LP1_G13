@@ -1,13 +1,15 @@
 #include "EscueladeDragones.h"
 
-void EscueladeDragones(vector<cDragon>Dragones_isla)
+/*
+void EscueladeDragones(&Dragones_isla)
 {
 		int opcion;
 
 		do {
-			cout << "1) Estudio de dragones " << endl;
+			cout << "1) Estudio de dragones" << endl;
 			cout << "2) Lista de dragones conocidos " << endl;
-			cout << "3) Salir" << endl;
+			cout << "3) Entrenar " << endl;
+			cout << "4) Salir" << endl;
 			cin >> opcion;
 
 			switch (opcion)
@@ -24,7 +26,8 @@ void EscueladeDragones(vector<cDragon>Dragones_isla)
 
 			}
 
-		} while (opcion != 3);
+		} while (opcion != 4);
 
 
 }
+*/

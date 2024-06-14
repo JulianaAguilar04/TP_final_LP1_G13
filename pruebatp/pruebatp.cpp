@@ -47,6 +47,9 @@ cout << "Informacion de Maribel: \n" << Vikingo2.to_string() << endl;
 #include "EscueladeDragones.h"
 using namespace std;
 
+void EscueladeDragones(vector<cDragon*>Dragones_isla);
+void Entrenar();
+
 
 int main()
 {
@@ -94,7 +97,7 @@ int main()
         switch (opcion)
         {
         case 1:
-            EscueladeDragones(vector<cDragon*>Dragones_isla);
+            EscueladeDragones(Dragones_isla);
             break;
         case 2:
             CarreradeDragones();
@@ -124,4 +127,39 @@ int main()
     }
 
    return 0;
+}
+
+void EscueladeDragones(vector<cDragon*>Dragones_isla) {
+    int opcion;
+    do {
+        cout << "\n USTED ESTA EN LA ESCUELA DE LA ISLA" << endl;
+        cout << "1) Estudio de dragones" << endl;
+        cout << "2) Lista de dragones conocidos " << endl;
+        cout << "3) Entrenar " << endl;
+        cout << "4) Salir" << endl;
+        cin >> opcion;
+
+        switch (opcion)
+        {
+        case 1:
+            break;
+
+        case 2:
+            break;
+
+        case 3:
+            Entrenar();
+            break;
+
+        default:
+            cout << "Opcion invalida: Vuelva a intentarlo" << endl;
+            break;
+
+        }
+
+    } while (opcion != 4);
+
+}
+void Entrenar(cPersona Persona, ) {
+
 }
