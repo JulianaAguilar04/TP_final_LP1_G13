@@ -1,6 +1,6 @@
 #include "EscueladeDragones.h"
 
-void EscueladeDragones()
+void EscueladeDragones(vector<cDragon>Dragones_isla)
 {
 		int opcion;
 
@@ -25,5 +25,6 @@ void EscueladeDragones()
 			}
 
 		} while (opcion != 3);
+
 
 }

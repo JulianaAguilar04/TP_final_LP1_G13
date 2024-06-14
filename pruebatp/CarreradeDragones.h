@@ -3,8 +3,6 @@
 #include <string>
 using namespace std;
 
-void CarreradeDragones() {
+void CarreradeDragones();
 
-
-}
 

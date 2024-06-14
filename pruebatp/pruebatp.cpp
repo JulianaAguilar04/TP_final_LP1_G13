@@ -94,7 +94,7 @@ int main()
         switch (opcion)
         {
         case 1:
-            EscueladeDragones();
+            EscueladeDragones(vector<cDragon*>Dragones_isla);
             break;
         case 2:
             CarreradeDragones();

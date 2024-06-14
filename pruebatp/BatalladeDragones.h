@@ -3,6 +3,5 @@
 #include <string>
 using namespace std;
 
-void BatalladeDragones() {
+void BatalladeDragones();
 
-}
