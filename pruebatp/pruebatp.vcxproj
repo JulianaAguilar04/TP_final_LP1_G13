@@ -132,6 +132,7 @@
     <ClCompile Include="cJinete.cpp" />
     <ClCompile Include="cPersona.cpp" />
     <ClCompile Include="cVikingo.cpp" />
+    <ClCompile Include="EscueladeDragones.cpp" />
     <ClCompile Include="pruebatp.cpp" />
   </ItemGroup>
   <ItemGroup>

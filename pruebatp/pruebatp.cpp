@@ -47,14 +47,19 @@ cout << "Informacion de Maribel: \n" << Vikingo2.to_string() << endl;
 #include "EscueladeDragones.h"
 using namespace std;
 
+
 int main()
 {
     //menu
     cAtaque Ataque1("Fuego", "15", "14");
     cAtaque Ataque2("Veneno", "20", "11");
+    cAtaque Ataque3("Electricidad", "14", "12");
+
     vector <cDragon*> Dragones_isla;
     Dragones_isla.push_back(new cDragon("Chimuelo", "Inteligente", "Mediano", "Negro", false, &Ataque1));
-    Dragones_isla.push_back(new cDragon("Chimuelo", "Inteligente", "Mediano", "Negro", false, &Ataque2));
+    Dragones_isla.push_back(new cDragon("Exterminador", "Rapido", "Mediano", "Transparente", true, &Ataque2));
+    Dragones_isla.push_back(new cDragon("Skrill", "Agresivo", "Grande", "Violeta", false, &Ataque3));
+
 
     vector <cDragon*> ::iterator it_d = Dragones_isla.begin();
 
@@ -63,12 +68,11 @@ int main()
         it_d++;
     }
 
-    cAtaque Ataque3("Electricidad", "14", "12");
     cDragon Dragon4("Skrill", "Agresivo", "Grande", "Violeta", false, &Ataque3);
 
     vector <cPersona*> Personas_isla;
     Personas_isla.push_back(new cVikingo("Juliana", "Aguilar", "Juju", "31-03-2004", "Guerrera", Dragon4));
-    // Personas_isla.push_back(new cJinete("Elias", "Garcia", "Elu", "19-06-2002", "Lloron", Dragon4));
+    Personas_isla.push_back(new cJinete("Elias", "Garcia", "Elu", "19-06-2002", "Lloron"));
     Personas_isla.push_back(new cVikingo("Elias", "Garcia", "Elu", "19-06-2002", "Guerrero", Dragon4));
     
     vector<cPersona*>::iterator it_p = Personas_isla.begin();
@@ -78,7 +82,6 @@ int main()
         it_p++;
     } 
 
-    /*
     int opcion;
     do {
         cout << "------BIENVENIDO A LA ISLA DE BERK------" << endl;
@@ -109,14 +112,8 @@ int main()
         }
         cout << endl;
     } while (opcion != 4);
-   
-    
-    for (auto it_p = Personas_isla.begin(); it_p != Personas_isla.end(); ++it_p) {
-        delete* it_p;
-    }
 
-    Personas_isla.clear();
-    */
+
     
     for (int i = 0; i < Dragones_isla.size(); i++) {
         delete Dragones_isla[i];
