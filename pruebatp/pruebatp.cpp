@@ -48,7 +48,8 @@ cout << "Informacion de Maribel: \n" << Vikingo2.to_string() << endl;
 using namespace std;
 
 void EscueladeDragones(vector<cDragon*>Dragones_isla);
-void Entrenar();
+// void Entrenar();
+static void Entrenar(cPersona* Persona);
 
 
 int main()
@@ -58,7 +59,7 @@ int main()
     cAtaque Ataque2("Veneno", "20", "11");
     cAtaque Ataque3("Electricidad", "14", "12");
 
-    vector <cDragon*> Dragones_isla;
+    vector<cDragon*> Dragones_isla;
     Dragones_isla.push_back(new cDragon("Chimuelo", "Inteligente", "Mediano", "Negro", false, &Ataque1));
     Dragones_isla.push_back(new cDragon("Exterminador", "Rapido", "Mediano", "Transparente", true, &Ataque2));
     Dragones_isla.push_back(new cDragon("Skrill", "Agresivo", "Grande", "Violeta", false, &Ataque3));
@@ -97,13 +98,13 @@ int main()
         switch (opcion)
         {
         case 1:
-            EscueladeDragones(Dragones_isla);
+            EscueladeDragones(Dragones_isla); 
             break;
         case 2:
             CarreradeDragones();
             break;
         case 3:
-            BatalladeDragones();
+            BatalladeDragones(Personas_isla, Dragones_isla);
             break;
         case 4:
             cout << "Muchas gracias por visitar la Isla de Berk" << endl;
@@ -148,7 +149,8 @@ void EscueladeDragones(vector<cDragon*>Dragones_isla) {
             break;
 
         case 3:
-            Entrenar();
+            //Entrenar();
+            void Entrenar(cPersona * Persona);
             break;
 
         default:
@@ -160,6 +162,15 @@ void EscueladeDragones(vector<cDragon*>Dragones_isla) {
     } while (opcion != 4);
 
 }
-void Entrenar(cPersona Persona, ) {
+
+/*CORRECCION:
+la hice que sea estatica porq sino tiraba error, antes decia lo mismo pero sin static 
+y le puse puntero, lo arregle solo para q no me tiraba error pero seguro no esta bien 
+antes era: "void Entrenar(cPersona Persona, ) {} "
+
+Tambien la modifique en lo lugares q la llamaba ( prubatp.cpp linea 51/52 , pruebatp.cpp linea 152/153) 
+*/
+static void Entrenar(cPersona* Persona)
+{
 
 }

@@ -17,16 +17,18 @@ public:
 	cVikingo(string Nombre, string Apellido, string Apodo, string FecNac, string Posicion, cDragon &Dragoncito);
 	string to_string();
 	friend ostream& operator<<(ostream& os, cVikingo& v);
-	/*
 	string getNombre();
 	string getApellido();
 	string getPosicion();
-	bool DragonesTerminados();
+	void dragonesMatados();
 	void setNombre(string Nombre);
 	void setApellido(string Apellido);
 	void setPosicion(string Posicion);
 	void Trabajar();
 	void AtacarDragones();
-	*/
+	static void AtacarDragones();
+	void registrarDragonMatado(const string& nombreDragon);
+	void mostrarDragonesMatados();
+
 	~cVikingo();
 };

@@ -6,7 +6,7 @@ cVikingo::cVikingo(string Nombre, string Apellido, string Apodo, string FecNac, 
 	this->Posicion = Posicion;
 	miDragon = &Dragoncito;
 }
-/*
+
 string cVikingo::getNombre()
 {
 	return Nombre;
@@ -37,14 +37,14 @@ void cVikingo::Trabajar()
 	//completar
 }
 
-bool cVikingo::DragonesTerminados()
+void cVikingo::dragonesMatados()
 {
-	return false;
+	//completar
 }
 
 void cVikingo::AtacarDragones()
 {
-	//completar 
+	//completar
 }
 
 string cVikingo::to_string()
@@ -54,7 +54,23 @@ string cVikingo::to_string()
 	ss << "Apellido:" << Apellido << endl;
 	ss << "Posicion:" << Posicion << endl;
 	return ss.str();
-}*/
+}
+
+void cVikingo::AtacarDragones() {
+	cout << "¡Todos los vikingos, prepárense para la batalla contra los dragones!" << endl;
+}
+
+void cVikingo::registrarDragonMatado(const string& nombreDragon) {
+	dragonesMatados.push_back(nombreDragon);
+}
+
+void cVikingo::mostrarDragonesMatados() {
+	cout << "Dragones matados por " << Nombre << ": ";
+	for (const auto& nombre : dragonesMatados) {
+		cout << nombre << " ";
+	}
+	cout << endl;
+}
 string cVikingo::to_string() {
 	stringstream ss;
 	ss << cPersona::to_string();
