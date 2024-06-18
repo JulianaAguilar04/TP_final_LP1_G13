@@ -4,6 +4,7 @@
 #include <cstdlib> // para rand() y srand()
 #include <ctime>   // para time()
 
+/*
 void BatalladeDragones(vector<cVikingo*>& vikingos, vector<cDragon*>& dragones) {
     cVikingo::AtacarDragones(); // Enviar mensaje a los vikingos
 
@@ -34,3 +35,4 @@ void BatalladeDragones(vector<cVikingo*>& vikingos, vector<cDragon*>& dragones) 
 
     cout << "La batalla ha terminado!" << endl;
 }
+*/

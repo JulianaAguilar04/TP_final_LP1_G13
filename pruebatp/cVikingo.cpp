@@ -37,15 +37,16 @@ void cVikingo::Trabajar()
 	//completar
 }
 
-void cVikingo::dragonesMatados()
+vector<string> cVikingo::getdragonesMatados()
 {
-	//completar
+	return dragonesMatados;
 }
-
+/*
 void cVikingo::AtacarDragones()
 {
 	//completar
 }
+*/
 
 string cVikingo::to_string()
 {
@@ -60,24 +61,28 @@ void cVikingo::AtacarDragones() {
 	cout << "¡Todos los vikingos, prepárense para la batalla contra los dragones!" << endl;
 }
 
+
 void cVikingo::registrarDragonMatado(const string& nombreDragon) {
 	dragonesMatados.push_back(nombreDragon);
 }
 
 void cVikingo::mostrarDragonesMatados() {
-	cout << "Dragones matados por " << Nombre << ": ";
+	cout << "Dragones matados por " << Nombre << ":" << endl;
 	for (const auto& nombre : dragonesMatados) {
-		cout << nombre << " ";
+		cout << nombre << " "<<endl;
 	}
 	cout << endl;
 }
+
+/*
 string cVikingo::to_string() {
 	stringstream ss;
 	ss << cPersona::to_string();
 	ss << "Posicion:" << Posicion;
 	ss << miDragon->to_string();
 	return ss.str();
-}
+}*/
+
 
 cVikingo::~cVikingo()
 {

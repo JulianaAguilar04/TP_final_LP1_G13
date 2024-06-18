@@ -3,7 +3,7 @@
 #include "cDragon.h"
 #include <iostream>
 using namespace std;
-
+/*
 void EscueladeDragones(vector<cDragon*>& Dragones_isla) {
     int opcion;
     do {
@@ -116,4 +116,3 @@ void EscueladeDragones(&Dragones_isla)
 
 }
 */
-

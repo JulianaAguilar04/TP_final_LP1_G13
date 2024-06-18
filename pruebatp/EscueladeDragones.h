@@ -14,7 +14,7 @@ using namespace std;
 
 class cDragon;
 
-void EscueladeDragones(vector<cDragon*>& Dragones_isla);
+// void EscueladeDragones(vector<cDragon*>& Dragones_isla);
 void EstudioDeDragones(vector<cDragon*>& Dragones_isla);
 void ListaDeDragones(const vector<cDragon*>& Dragones_isla);
 void EntrenarDragones(vector<cDragon*>& Dragones_isla);

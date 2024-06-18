@@ -12,6 +12,7 @@ class cVikingo:public cPersona
 private:
 	string Posicion;
 	cDragon* miDragon; //relación entre dragon y vikingo, posible lista de dragones matados
+	vector<string> dragonesMatados;
 
 public:
 	cVikingo(string Nombre, string Apellido, string Apodo, string FecNac, string Posicion, cDragon &Dragoncito);
@@ -20,12 +21,12 @@ public:
 	string getNombre();
 	string getApellido();
 	string getPosicion();
-	void dragonesMatados();
+	vector <string> getdragonesMatados();
 	void setNombre(string Nombre);
 	void setApellido(string Apellido);
 	void setPosicion(string Posicion);
 	void Trabajar();
-	void AtacarDragones();
+	// void AtacarDragones();
 	static void AtacarDragones();
 	void registrarDragonMatado(const string& nombreDragon);
 	void mostrarDragonesMatados();

@@ -7,4 +7,4 @@ using namespace std;
 class cVikingo;
 class cDragon;
 
-void BatalladeDragones(vector<cVikingo*>& vikingos, vector<cDragon*>& dragones);
+void BatalladeDragones(vector<cVikingo*>& Vikingos_isla, vector<cDragon*>& Dragones_isla);
