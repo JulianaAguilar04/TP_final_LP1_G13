@@ -5,6 +5,7 @@
 #include "cAtaque.h"
 using namespace std;
 
+class cJinete;
 
 class cDragon
 {
@@ -14,11 +15,16 @@ private:
 	string Tamano;
 	string Color;
 	bool Estado;
+	int Velocidad;
+	int Resistencia;
+	vector<string> Habilidades; //agregue velocidad, reisstencia, nivel de entrenamiento y habilidades
+	int NivelEntrenamiento;
 	cAtaque* FormadeAtaque = nullptr;
+
 
 public:
 	//constructor por parametros 
-	cDragon(string Nombre, string Caracteristica, string Tamano, string Color, bool Estado, cAtaque* miAtaque);
+	cDragon(string Nombre, string Caracteristica, string Tamano, string Color, bool Estado, int Velocidad, int Resistencia,vector <string> Habilidades, cAtaque* miAtaque);
 	//constructor por copia
 	cDragon(cDragon& Dragoncito);
 	string getNombre();
@@ -35,7 +41,7 @@ public:
 	string to_string();
 	friend ostream& operator<<(ostream& s, cDragon& d);
 	// void AltaDragon(cDragon *dragon); ???
-	void Entrenar();							//funcion que se pide 
+	void Entrenar(string tipoEntrenamiento, cJinete &Jinete);							//funcion que se pide 
 	void Baja(vector<cDragon> &Dragones_isla);  //funcion que se pide
 	~cDragon();
 };

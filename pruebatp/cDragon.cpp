@@ -1,13 +1,18 @@
 #include "cDragon.h"
+#include "cJinete.h"
 
 //constructor por parametro
-cDragon::cDragon(string Nombre, string Caracteristica, string Tamano, string Color, bool Estado, cAtaque* miAtaque)
+cDragon::cDragon(string Nombre, string Caracteristica, string Tamano, string Color, bool Estado, int Velocidad, int Resistencia, vector <string> Habilidades, cAtaque* miAtaque)
 {
     this->Nombre = Nombre;
     this->Caracteristica = Caracteristica;
     this->Tamano = Tamano;
     this->Color = Color;
     this->Estado = Estado;
+    this->Velocidad = Velocidad;
+    this->Resistencia = Resistencia;
+    this->Habilidades = Habilidades;
+    this->NivelEntrenamiento = 1;
     FormadeAtaque = miAtaque;
 }
 //constructor por copia-parametro
@@ -18,6 +23,10 @@ cDragon::cDragon(cDragon& Dragoncito)
     this->Tamano = Dragoncito.Tamano;
     this->Color = Dragoncito.Color;
     this->Estado = Dragoncito.Estado;
+    this->Velocidad = Dragoncito.Velocidad;
+    this->Resistencia = Dragoncito.Resistencia;
+    this->Habilidades = Dragoncito.Habilidades;
+    this->NivelEntrenamiento = Dragoncito.NivelEntrenamiento;
     FormadeAtaque = Dragoncito.FormadeAtaque;
 }
 string cDragon::getNombre()
@@ -59,7 +68,7 @@ void cDragon::setEstado(bool nuevoEstado)
 }
 void cDragon::AltaNombre(string Nombre)
 {
-    ;
+    
 }
 
 bool cDragon::Domado()
@@ -89,10 +98,38 @@ void cDragon::Baja(vector<cDragon>& Dragones_isla)
 
 }*/
 
-void cDragon::Entrenar()
+void cDragon::Entrenar(std::string tipoEntrenamiento, cJinete& Jinete)
 {
+    double efectividad = Jinete.getEfectividad();
+    int incremento = static_cast<int>(efectividad * NivelEntrenamiento);
 
+    if (tipoEntrenamiento == "Velocidad") {
+        Velocidad += incremento;
+        std::cout << Nombre << " ha mejorado su velocidad en " << incremento << ". Nueva velocidad: " << Velocidad << std::endl;
+    }
+    else if (tipoEntrenamiento == "Resistencia") {
+        Resistencia += incremento; 
+        std::cout << Nombre << " ha mejorado su resistencia en " << incremento << ". Nueva resistencia: " << Resistencia << std::endl;
+    }
+    else if (tipoEntrenamiento == "Habilidades") {
+        std::string nuevaHabilidad = "Habilidad avanzada " + std::to_string(NivelEntrenamiento);
+        Habilidades.push_back(nuevaHabilidad);
+        std::cout << Nombre << " ha aprendido una nueva habilidad: " << nuevaHabilidad << std::endl;
+    }
+    else {
+        std::cout << "Tipo de entrenamiento no reconocido. Por favor, elige entre 'Velocidad', 'Resistencia' o 'Habilidades'." << std::endl;
+    }
+    NivelEntrenamiento++;
 }
+
+void mostrarHabilidades() {
+    cout << "Habilidades de " << Nombre << ": ";
+    for (const auto& habilidad : Habilidades) {
+        std::cout << habilidad << " ";
+    }
+    cout << endl;
+}
+
 
 ostream& operator<<(ostream& s, cDragon& d)
 {

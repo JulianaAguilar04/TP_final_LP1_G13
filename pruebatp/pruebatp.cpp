@@ -209,7 +209,7 @@ void ListaDeDragones(const vector<cDragon*>& Dragones_isla) {
 }
 
 void EntrenarDragones(vector<cDragon*>& Dragones_isla) {
-    for (auto& dragon : Dragones_isla) {
+    /*for (auto& dragon : Dragones_isla) {
         if (dragon->getEstado()) {
             dragon->Entrenar();
             cout << "El dragon " << dragon->getNombre() << " ha sido entrenado." << endl;
@@ -218,6 +218,9 @@ void EntrenarDragones(vector<cDragon*>& Dragones_isla) {
             cout << "El dragon " << dragon->getNombre() << " no esta domado y no puede ser entrenado." << endl;
         }
     }
+    */
+
+
 }
 
 //batalla dragones cpp

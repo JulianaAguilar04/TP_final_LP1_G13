@@ -1,9 +1,10 @@
 #include "cJinete.h"
 
 //constructor por parametros
-cJinete::cJinete(string Nombre, string Apellido, string Apodo, string FecNac, string Caracteristicas):cPersona (Nombre, Apellido, Apodo, FecNac)
+cJinete::cJinete(string Nombre, string Apellido, string Apodo, string FecNac, string Caracteristicas, double Efectividad):cPersona (Nombre, Apellido, Apodo, FecNac)
 {
     this->Caracteristicas = Caracteristicas;
+    this->Efectividad = Efectividad;
 }
 
 string cJinete::to_string()
@@ -12,6 +13,11 @@ string cJinete::to_string()
     ss << cPersona::to_string();
     ss << "Caracteristicas:" << Caracteristicas << endl;
     return ss.str();
+}
+
+double cJinete::getEfectividad()
+{
+    return Efectividad;
 }
 
 void cJinete::IncorporarDragon() {

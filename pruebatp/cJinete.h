@@ -21,11 +21,13 @@ class cJinete:public cPersona
 private:
 	string Caracteristicas;
 	vector <cDragon*> misDragones;
+	double Efectividad;
 	//eResultadoEntrenamiento ResultadoEntrenamiento;
 
 public:
-	cJinete(string Nombre, string Apellido, string Apodo, string FecNac, string Caracteristicas);
+	cJinete(string Nombre, string Apellido, string Apodo, string FecNac, string Caracteristicas, double Efectividad);
 	string to_string();
+	double getEfectividad();
 	void IncorporarDragon();
 	/*
 	string getNombre();
