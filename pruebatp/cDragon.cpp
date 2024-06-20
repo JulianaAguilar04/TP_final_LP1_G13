@@ -2,7 +2,7 @@
 #include "cJinete.h"
 
 //constructor por parametro
-cDragon::cDragon(string Nombre, string Caracteristica, string Tamano, string Color, bool Estado, int Velocidad, int Resistencia, vector <string> Habilidades, cAtaque* miAtaque)
+cDragon::cDragon(string Nombre, string Caracteristica, string Tamano, string Color, bool Estado, int Velocidad, int Resistencia, vector <string> &Habilidades, cAtaque* miAtaque):NivelEntrenamiento(1)
 {
     this->Nombre = Nombre;
     this->Caracteristica = Caracteristica;
@@ -11,8 +11,7 @@ cDragon::cDragon(string Nombre, string Caracteristica, string Tamano, string Col
     this->Estado = Estado;
     this->Velocidad = Velocidad;
     this->Resistencia = Resistencia;
-    this->Habilidades = Habilidades;
-    this->NivelEntrenamiento = 1;
+    Habilidades = Habilidades;
     FormadeAtaque = miAtaque;
 }
 //constructor por copia-parametro
@@ -98,7 +97,7 @@ void cDragon::Baja(vector<cDragon>& Dragones_isla)
 
 }*/
 
-void cDragon::Entrenar(std::string tipoEntrenamiento, cJinete& Jinete)
+void cDragon::Entrenar(const string &tipoEntrenamiento, const cJinete& Jinete)
 {
     double efectividad = Jinete.getEfectividad();
     int incremento = static_cast<int>(efectividad * NivelEntrenamiento);
@@ -122,7 +121,8 @@ void cDragon::Entrenar(std::string tipoEntrenamiento, cJinete& Jinete)
     NivelEntrenamiento++;
 }
 
-void mostrarHabilidades() {
+void cDragon::mostrarHabilidades()
+{
     cout << "Habilidades de " << Nombre << ": ";
     for (const auto& habilidad : Habilidades) {
         std::cout << habilidad << " ";

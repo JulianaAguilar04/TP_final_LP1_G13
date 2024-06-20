@@ -63,9 +63,11 @@ int main()
     cAtaque Ataque3("Electricidad", "14", "12");
 
     vector<cDragon*> Dragones_isla;
-    Dragones_isla.push_back(new cDragon("Chimuelo", "Inteligente", "Mediano", "Negro", false, &Ataque1));
-    Dragones_isla.push_back(new cDragon("Exterminador", "Rapido", "Mediano", "Transparente", true, &Ataque2));
-    Dragones_isla.push_back(new cDragon("Skrill", "Agresivo", "Grande", "Violeta", false, &Ataque3));
+    vector<string>Habilidades1 = { "Volar rapido", "Llamarada" };
+    
+    Dragones_isla.push_back(new cDragon("Chimuelo", "Inteligente", "Mediano", "Negro", false, 300, 500, &Habilidades1, &Ataque1));
+    Dragones_isla.push_back(new cDragon("Exterminador", "Rapido", "Mediano", "Transparente", true, 300, 500, &Habilidades1, &Ataque2));
+    Dragones_isla.push_back(new cDragon("Skrill", "Agresivo", "Grande", "Violeta", false, 300, 500, &Habilidades1, &Ataque3));
 
 
     vector <cDragon*> ::iterator it_d = Dragones_isla.begin();
@@ -75,11 +77,11 @@ int main()
         it_d++;
     }
 
-    cDragon Dragon4("Skrill", "Agresivo", "Grande", "Violeta", false, &Ataque3);
+    cDragon Dragon4("Skrill", "Agresivo", "Grande", "Violeta", false, 500, 300, &Habilidades1, &Ataque3);
 
     vector <cPersona*> Personas_isla;
     Personas_isla.push_back(new cVikingo("Juliana", "Aguilar", "Juju", "31-03-2004", "Guerrera", Dragon4));
-    Personas_isla.push_back(new cJinete("Elias", "Garcia", "Elu", "19-06-2002", "Lloron"));
+    Personas_isla.push_back(new cJinete("Elias", "Garcia", "Elu", "19-06-2002", "Lloron", 1.5));
     Personas_isla.push_back(new cVikingo("Elias", "Garcia", "Elu", "19-06-2002", "Guerrero", Dragon4));
     
     vector<cPersona*>::iterator it_p = Personas_isla.begin();
@@ -97,6 +99,18 @@ int main()
             Vikingos_isla.push_back(vikingo);
         }
     }
+
+    vector<std::string> habilidadesIniciales = { "volar rápido", "llamarada" };
+    cDragon dragon1("Furia Nocturna", "Inteligente","Chico", "Negro", true,  300, 500, &habilidadesIniciales, &Ataque1);
+    cJinete entrenador1("Hipo", "Iuzchuk", "Ache", "23-11-2001", "Herrero", 1.5);
+
+    dragon1.mostrarHabilidades();
+
+    dragon1.Entrenar("velocidad", entrenador1);
+    dragon1.Entrenar("resistencia", entrenador1);
+    dragon1.Entrenar("habilidades", entrenador1);
+
+    dragon1.mostrarHabilidades();
 
 
     int opcion;
@@ -181,8 +195,11 @@ void EscueladeDragones(vector<cDragon*>& Dragones_isla) {
 
 void EstudioDeDragones(vector<cDragon*>& Dragones_isla) {
     string nombre, caracteristica, tamano, color;
+    int velocidad=0, resistencia=0, hab=0;
     bool estado;
     char domado;
+    vector<string> v_habilidades;
+
     cout << "Ingrese el nombre del dragon: ";
     cin >> nombre;
     cout << "Ingrese las caracteristicas del dragon: ";
@@ -194,9 +211,25 @@ void EstudioDeDragones(vector<cDragon*>& Dragones_isla) {
     cout << "El dragon esta domado? (s/n): ";
     cin >> domado;
     estado = (domado == 's' || domado == 'S');
+    cout << "Ingrese la velocidad del dragon:" << endl;
+    cin >> velocidad;
+    cout << "Ingrese la resistencia del dragon:" << endl;
+    cin >> resistencia;
+    cout << "Ingrese las habilidades del dragon:" << endl;
+    cout << "Cantidad:" << endl;
+    cin >> hab;
+
+    v_habilidades.reserve(hab); //reservo espacio para la cantidades de habilidades
+    for (int i = 0; i < hab; i++)
+    {
+        string habilidad;
+        cout << "Ingrese habilidad:" << (i+1) <<":" << endl;
+        cin >> habilidad;
+        v_habilidades.push_back(habilidad);
+    }
 
     cAtaque* ataque = nullptr;  // Inicialmente sin ataque asignado
-    Dragones_isla.push_back(new cDragon(nombre, caracteristica, tamano, color, estado, ataque));
+    Dragones_isla.push_back(new cDragon(nombre, caracteristica, tamano, color, estado, velocidad, resistencia, v_habilidades, ataque));
 
     cout << "Dragon agregado exitosamente!" << endl;
 }

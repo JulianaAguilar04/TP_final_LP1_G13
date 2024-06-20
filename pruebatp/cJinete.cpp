@@ -15,7 +15,7 @@ string cJinete::to_string()
     return ss.str();
 }
 
-double cJinete::getEfectividad()
+double cJinete::getEfectividad() const
 {
     return Efectividad;
 }

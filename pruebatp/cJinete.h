@@ -27,7 +27,7 @@ private:
 public:
 	cJinete(string Nombre, string Apellido, string Apodo, string FecNac, string Caracteristicas, double Efectividad);
 	string to_string();
-	double getEfectividad();
+	double getEfectividad() const;
 	void IncorporarDragon();
 	/*
 	string getNombre();
