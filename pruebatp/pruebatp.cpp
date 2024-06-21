@@ -55,6 +55,7 @@ void BatalladeDragones(vector<cVikingo*>& vikingos, vector<cDragon*>& dragones);
 static void Entrenar(cPersona* Persona);
 
 
+
 int main()
 {
     //menu

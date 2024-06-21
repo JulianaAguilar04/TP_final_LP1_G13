@@ -1,9 +1,9 @@
-#include "BatalladeDragones.h"
+/*#include "BatalladeDragones.h"
 #include "cDragon.h"
 #include "cVikingo.h"
 #include <cstdlib> // para rand() y srand()
 #include <ctime>   // para time()
-
+*/
 /*
 void BatalladeDragones(vector<cVikingo*>& vikingos, vector<cDragon*>& dragones) {
     cVikingo::AtacarDragones(); // Enviar mensaje a los vikingos
@@ -36,3 +36,19 @@ void BatalladeDragones(vector<cVikingo*>& vikingos, vector<cDragon*>& dragones) 
     cout << "La batalla ha terminado!" << endl;
 }
 */
+
+#include "BatalladeDragones.h"
+
+BatalladeDragones::BatalladeDragones() {}
+
+void BatalladeDragones::InscribirDragon(cDragon* Dragon) {
+    Participantes.push_back(Dragon);
+}
+
+void BatalladeDragones::IniciarBatalla() {
+    cout << "¡Inicia la Batalla de Dragones!" << endl;
+    for (auto dragon : Participantes) {
+        cout << dragon->getNombre() << " entra en la arena." << endl;
+    }
+    // Lógica de la batalla de dragones
+}
