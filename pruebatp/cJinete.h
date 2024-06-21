@@ -25,7 +25,7 @@ private:
 	//eResultadoEntrenamiento ResultadoEntrenamiento;
 
 public:
-	cJinete(string Nombre, string Apellido, string Apodo, string FecNac, string Caracteristicas, double Efectividad);
+	cJinete(string Nombre, string Apellido, string Apodo, string FecNac, string Caracteristicas, double Efectividad, int Fuerza);
 	string to_string();
 	double getEfectividad() const;
 	void IncorporarDragon();

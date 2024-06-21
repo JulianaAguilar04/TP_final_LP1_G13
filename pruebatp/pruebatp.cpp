@@ -81,9 +81,9 @@ int main()
     cDragon Dragon4("Skrill", "Agresivo", "Grande", "Violeta", false, 500, 300, &Habilidades1, &Ataque3);
 
     vector <cPersona*> Personas_isla;
-    Personas_isla.push_back(new cVikingo("Juliana", "Aguilar", "Juju", "31-03-2004", "Guerrera", Dragon4));
-    Personas_isla.push_back(new cJinete("Elias", "Garcia", "Elu", "19-06-2002", "Lloron", 1.5));
-    Personas_isla.push_back(new cVikingo("Elias", "Garcia", "Elu", "19-06-2002", "Guerrero", Dragon4));
+    Personas_isla.push_back(new cVikingo("Juliana", "Aguilar", "Juju", "31-03-2004", "Guerrera", Dragon4, 10));
+    Personas_isla.push_back(new cJinete("Elias", "Garcia", "Elu", "19-06-2002", "Lloron", 1.5, 15));
+    Personas_isla.push_back(new cVikingo("Elias", "Garcia", "Elu", "19-06-2002", "Guerrero", Dragon4, 5));
     
     vector<cPersona*>::iterator it_p = Personas_isla.begin();
 
@@ -194,6 +194,10 @@ void EscueladeDragones(vector<cDragon*>& Dragones_isla) {
     } while (opcion != 4);
 }
 
+void BatalladeDragones(vector<cVikingo*>& vikingos, vector<cDragon*>& dragones)
+{
+}
+
 void EstudioDeDragones(vector<cDragon*>& Dragones_isla) {
     string nombre, caracteristica, tamano, color;
     int velocidad=0, resistencia=0, hab=0;
@@ -257,9 +261,19 @@ void EntrenarDragones(vector<cDragon*>& Dragones_isla) {
 
 
 }
+ /* NO SE COMO HACERLO, CHAT GPT ME DIJO ESTO PERO NO FUNCIONA
+ 
+// Creación de objeto BatalladeDragones
+BatalladeDragones batalla(dragones, vikingos, jinetes);
+
+// Simulación de batalla
+batalla.AvisarAldea();
+batalla.Combatir();
+*/ 
 
 
-//batalla dragones cpp
+
+/* batalla dragones cpp (VIEJO, LO DEJO POR LAS DUDAS)
 void BatalladeDragones(vector<cVikingo*>& vikingos, vector<cDragon*>& dragones) {
     cVikingo::AtacarDragones(); // Enviar mensaje a los vikingos
 
@@ -290,7 +304,7 @@ void BatalladeDragones(vector<cVikingo*>& vikingos, vector<cDragon*>& dragones) 
 
     cout << "La batalla ha terminado!" << endl;
 }
-
+*/
 
 /*CORRECCION:
 la hice que sea estatica porq sino tiraba error, antes decia lo mismo pero sin static 

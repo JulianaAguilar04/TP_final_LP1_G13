@@ -1,7 +1,7 @@
 #include "cJinete.h"
 
 //constructor por parametros
-cJinete::cJinete(string Nombre, string Apellido, string Apodo, string FecNac, string Caracteristicas, double Efectividad):cPersona (Nombre, Apellido, Apodo, FecNac)
+cJinete::cJinete(string Nombre, string Apellido, string Apodo, string FecNac, string Caracteristicas, double Efectividad, int Fuerza):cPersona (Nombre, Apellido, Apodo, FecNac, Fuerza)
 {
     this->Caracteristicas = Caracteristicas;
     this->Efectividad = Efectividad;

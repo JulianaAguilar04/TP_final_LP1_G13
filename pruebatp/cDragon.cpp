@@ -11,8 +11,8 @@ cDragon::cDragon(string Nombre, string Caracteristica, string Tamano, string Col
     this->Estado = Estado;
     this->Velocidad = Velocidad;
     this->Resistencia = Resistencia;
-    Habilidades = Habilidades;
-    FormadeAtaque = miAtaque;
+    this->Habilidades = Habilidades;
+    this->FormadeAtaque = miAtaque;
 }
 //constructor por copia-parametro
 cDragon::cDragon(cDragon& Dragoncito)
@@ -43,6 +43,10 @@ string cDragon::getTamano()
 string cDragon::getColor()
 {
     return Color;
+}
+int cDragon::getResistencia()
+{
+    return Resistencia;
 }
 bool cDragon::getEstado()
 {

@@ -31,6 +31,7 @@ public:
 	string getCaracteristica();
 	string getTamano();
 	string getColor();
+	int getResistencia();
 	bool getEstado();
 	void setCaracteristica(string nuevaCaracteristica);
 	void setTamano(string nuevoTamano);
