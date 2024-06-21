@@ -18,7 +18,7 @@ private:
 	int Velocidad=0;
 	int Resistencia=0;
 	vector <string> Habilidades; //agregue velocidad, resistencia, nivel de entrenamiento y habilidades
-	int NivelEntrenamiento=0;
+	int NivelEntrenamiento = 0;
 	cAtaque* FormadeAtaque = nullptr;
 
 

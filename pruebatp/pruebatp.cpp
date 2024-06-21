@@ -59,7 +59,7 @@ static void Entrenar(cPersona* Persona);
 int main()
 {
     //menu
-    cAtaque Ataque1("Fuego", "15", "14");
+    cAtaque* Ataque1 = new cAtaque("Fuego", "15", "14");
     cAtaque Ataque2("Veneno", "20", "11");
     cAtaque Ataque3("Electricidad", "14", "12");
 
@@ -102,7 +102,7 @@ int main()
     }
 
     vector<std::string> habilidadesIniciales = { "volar rápido", "llamarada" };
-    cDragon dragon1("Furia Nocturna", "Inteligente","Chico", "Negro", true,  300, 500, &habilidadesIniciales, &Ataque1);
+    cDragon dragon1("Furia", "Inteligente","Chico", "Negro", true,  300, 500, &habilidadesIniciales, &Ataque1);
     cJinete entrenador1("Hipo", "Iuzchuk", "Ache", "23-11-2001", "Herrero", 1.5);
 
     dragon1.mostrarHabilidades();
@@ -201,6 +201,7 @@ void EstudioDeDragones(vector<cDragon*>& Dragones_isla) {
     char domado;
     vector<string> v_habilidades;
 
+    cout << "Ustdes ha encontrado un nuevo dragon!" << endl;
     cout << "Ingrese el nombre del dragon: ";
     cin >> nombre;
     cout << "Ingrese las caracteristicas del dragon: ";
@@ -257,6 +258,7 @@ void EntrenarDragones(vector<cDragon*>& Dragones_isla) {
 
 }
 
+
 //batalla dragones cpp
 void BatalladeDragones(vector<cVikingo*>& vikingos, vector<cDragon*>& dragones) {
     cVikingo::AtacarDragones(); // Enviar mensaje a los vikingos
@@ -289,40 +291,7 @@ void BatalladeDragones(vector<cVikingo*>& vikingos, vector<cDragon*>& dragones) 
     cout << "La batalla ha terminado!" << endl;
 }
 
-/*
-void EscueladeDragones(vector<cDragon*>Dragones_isla) {
-    int opcion;
-    do {
-        cout << "\n USTED ESTA EN LA ESCUELA DE LA ISLA" << endl;
-        cout << "1) Estudio de dragones" << endl;
-        cout << "2) Lista de dragones conocidos " << endl;
-        cout << "3) Entrenar " << endl;
-        cout << "4) Salir" << endl;
-        cin >> opcion;
 
-        switch (opcion)
-        {
-        case 1:
-            break;
-
-        case 2:
-            break;
-
-        case 3:
-            //Entrenar();
-            void Entrenar(cPersona * Persona);
-            break;
-
-        default:
-            cout << "Opcion invalida: Vuelva a intentarlo" << endl;
-            break;
-
-        }
-
-    } while (opcion != 4);
-
-}
-*/
 /*CORRECCION:
 la hice que sea estatica porq sino tiraba error, antes decia lo mismo pero sin static 
 y le puse puntero, lo arregle solo para q no me tiraba error pero seguro no esta bien 
