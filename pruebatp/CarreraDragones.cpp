@@ -1,5 +1,6 @@
 #include "CarreradeDragones.h"
 
+/*
 CarreradeDragones::CarreradeDragones() {}
 
 void CarreradeDragones::InscribirDragon(cDragon* Dragon) {
@@ -13,3 +14,4 @@ void CarreradeDragones::IniciarCarrera() {
     }
     // Lógica de la carrera de dragones
 }
+*/

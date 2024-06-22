@@ -127,8 +127,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BatalladeDragones.cpp" />
-    <ClCompile Include="CarreraDragones.cpp" />
     <ClCompile Include="cAtaque.cpp" />
     <ClCompile Include="cDragon.cpp" />
     <ClCompile Include="cJinete.cpp" />

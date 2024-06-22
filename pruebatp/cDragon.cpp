@@ -1,36 +1,6 @@
 #include "cDragon.h"
 #include "cJinete.h"
 
-//constructor por parametro
-cDragon::cDragon(string Nombre, string Caracteristica, string Tamano, string Color, bool Estado, int Velocidad, int Resistencia, vector <string> &Habilidades, cAtaque &miAtaque)
-{
-    this->Nombre = Nombre;
-    this->Caracteristica = Caracteristica;
-    this->Tamano = Tamano;
-    this->Color = Color;
-    this->Estado = Estado;
-    this->Velocidad = Velocidad;
-    this->Resistencia = Resistencia;
-    this->Habilidades = Habilidades;
-    this->FormadeAtaque = miAtaque;
-}
-
-//constructor por copia-parametro
-/*
-cDragon::cDragon(cDragon& Dragoncito)
-{
-    this->Nombre = Dragoncito.Nombre;
-    this->Caracteristica = Dragoncito.Caracteristica;
-    this->Tamano = Dragoncito.Tamano;
-    this->Color = Dragoncito.Color;
-    this->Estado = Dragoncito.Estado;
-    this->Velocidad = Dragoncito.Velocidad;
-    this->Resistencia = Dragoncito.Resistencia;
-    this->Habilidades = Dragoncito.Habilidades;
-    this->NivelEntrenamiento = Dragoncito.NivelEntrenamiento;
-    FormadeAtaque = Dragoncito.FormadeAtaque;
-}
-*/
 string cDragon::getNombre()
 {
     return Nombre;
@@ -90,7 +60,7 @@ string cDragon::to_string()
     ss << "-Tamanio:" << Tamano << endl;
     ss << "-Color:" << Color << endl;
     ss << "-Estado:" << Estado << endl;
-    ss << "-Ataque:\n" << FormadeAtaque.to_string() << endl;
+    ss << "-Ataque:\n" << FormadeAtaque->to_string() << endl;
     return ss.str();
 }
 
@@ -125,8 +95,27 @@ void cDragon::Entrenar(const string &tipoEntrenamiento, const cJinete& Jinete)
     else {
         std::cout << "Tipo de entrenamiento no reconocido. Por favor, elige entre 'Velocidad', 'Resistencia' o 'Habilidades'." << std::endl;
     }
+    /*
+    if (Estado) {
+        DesarrollarEstrategia("Ataque");
+        DesarrollarEstrategia("Defensa");
+    }
+    */
     NivelEntrenamiento++;
 }
+/*
+void cDragon::DesarrollarEstrategia(const string& tipo) {
+    if (tipo == "Ataque") {
+        string nuevaEstrategia = "Estrategia de ataque " + to_string(EstrategiasAtaque.size() + 1);
+        EstrategiasAtaque.push_back(nuevaEstrategia);
+        cout << Nombre << " ha desarrollado una nueva estrategia de ataque: " << nuevaEstrategia << endl;
+    } else if (tipo == "Defensa") {
+        string nuevaEstrategia = "Estrategia de defensa " + to_string(EstrategiasDefensa.size() + 1);
+        EstrategiasDefensa.push_back(nuevaEstrategia);
+        cout << Nombre << " ha desarrollado una nueva estrategia de defensa: " << nuevaEstrategia << endl;
+    }
+}
+*/
 
 void cDragon::mostrarHabilidades()
 {

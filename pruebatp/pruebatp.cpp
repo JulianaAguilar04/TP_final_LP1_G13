@@ -1,63 +1,24 @@
 // pruebatp.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
 //
-/*
-    //instancia de ataque utilizando constructor de parámetros
-cAtaque Ataque1("Fuego", "15", "14");
-cout << Ataque1.to_string() << endl;
-
-//instancia de dragón utilizando el constructor por parámetros 
-cDragon Dragon1("Chimuelo", "Inteligente", "Mediano", "Negro", false, &Ataque1); //false: no esta domado
-cout << Dragon1.to_string() << endl;
-
-//instancia de dragón utilizando el constructor por copia-parámetro
-cDragon Dragon2(Dragon1);
-cout << Dragon2.to_string() << endl;
-
-//
-cAtaque Ataque2("Veneno", "20", "11");
-cout << Ataque2.to_string() << endl;
-cout << "\n" << endl;
-
-cDragon Dragon3("Exterminador", "Rapido", "Mediano", "Transparente", true, &Ataque2);
-cout << Dragon3.to_string() << endl;
-
-//instancia de jinete utilizando constructor por parámetros
-cJinete Jinete1("Astrid", "Hofferson", "Astru", "05-09-2010", "Lider", &Dragon3);
-cout << Jinete1.to_string() << endl;
-
-//
-cout << "PRUEBA VIKINGO" << endl;
-cAtaque Ataque3("Electricidad", "14", "12");
-cDragon Dragon4("Skrill", "Agresivo", "Grande", "Violeta", false, &Ataque3);
-
-//instancia de vikingo utilizando constructor por defecto
-cVikingo Vikingo1("Daniela", "Iuzchuk", "Polaca", "04-01-1976", "Cazadora", Dragon4);
-cout << "Informacion de Daniela:\n" << Vikingo1.to_string() << endl;
-
-cVikingo Vikingo2("Maribel", "Papa", "Maru", "28-11-2003", "Tecnica", Dragon3);
-cout << "Informacion de Maribel: \n" << Vikingo2.to_string() << endl;
-*/
-
 #include <iostream>
 #include <vector>
 #include <cstdlib> // para rand() y srand()
 #include <ctime>   // para time()
 #include "cJinete.h"
 #include "cVikingo.h"
-#include "CarreradeDragones.h"
-#include "BatalladeDragones.h"
-#include "EscueladeDragones.h"
+
 using namespace std;
 
-void EscueladeDragones(vector<cDragon*>&Dragones_isla);
+void EscueladeDragones(vector<cJinete*> &Jinetes_isla, vector<cDragon*>&Dragones_isla);
 void EstudioDeDragones(vector<cDragon*>& Dragones_isla);
 void ListaDeDragones(const vector<cDragon*>& Dragones_isla);
-void EntrenarDragones(vector<cDragon*>& Dragones_isla);
+void EntrenarDragones(vector<cJinete*>& Jinetes_isla,vector<cDragon*>& Dragones_isla);
 
+/*
+void CarreradeDragones();
 
 void BatalladeDragones(vector<cVikingo*>& vikingos, vector<cDragon*>& dragones);
-
-
+*/
 
 
 int main()
@@ -70,9 +31,9 @@ int main()
     vector<cDragon*> Dragones_isla;
     vector<string>Habilidades1 = { "Volar rapido", "Llamarada" };
     
-    Dragones_isla.push_back(new cDragon("Chimuelo", "Inteligente", "Mediano", "Negro", false, 300, 500, Habilidades1, Ataque1));
-    Dragones_isla.push_back(new cDragon("Exterminador", "Rapido", "Mediano", "Transparente", true, 300, 500, Habilidades1, Ataque2));
-    Dragones_isla.push_back(new cDragon("Skrill", "Agresivo", "Grande", "Violeta", false, 300, 500, Habilidades1, Ataque3));
+    Dragones_isla.push_back(new cDragon("Chimuelo", "Inteligente", "Mediano", "Negro", false, 300, 500, Habilidades1, &Ataque1));
+    Dragones_isla.push_back(new cDragon("Exterminador", "Rapido", "Mediano", "Transparente", true, 300, 500, Habilidades1, &Ataque2));
+    Dragones_isla.push_back(new cDragon("Skrill", "Agresivo", "Grande", "Violeta", false, 300, 500, Habilidades1, &Ataque3));
 
 
     vector <cDragon*> ::iterator it_d = Dragones_isla.begin();
@@ -82,7 +43,7 @@ int main()
         it_d++;
     }
 
-    cDragon Dragon4("Skrill", "Agresivo", "Grande", "Violeta", false, 500, 300, Habilidades1, Ataque3);
+    cDragon Dragon4("Skrill", "Agresivo", "Grande", "Violeta", false, 500, 300, Habilidades1, &Ataque3);
 
     vector <cPersona*> Personas_isla;
     Personas_isla.push_back(new cVikingo("Juliana", "Aguilar", "Juju", "31-03-2004", "Guerrera", Dragon4, 10));
@@ -96,6 +57,15 @@ int main()
         it_p++;
     } 
 
+    //me creo un vetor de jinetes para utilizarlos en escuela de dragones
+    vector<cJinete*> Jinetes_isla;
+    for (cPersona* persona : Jinetes_isla) {
+        cJinete* jinete = dynamic_cast<cJinete*>(persona);
+        if (jinete != nullptr) {
+            Jinetes_isla.push_back(jinete);
+        }
+    }
+
     //me creo un vector de vikingos para utilizarlos en batalla de dragones
     vector<cVikingo*> Vikingos_isla;
     for (cPersona* persona : Personas_isla) {
@@ -106,7 +76,7 @@ int main()
     }
 
     vector<std::string> habilidadesIniciales = { "volar rápido", "llamarada" };
-    cDragon dragon1("Furia", "Inteligente","Chico", "Negro", true,  300, 500, habilidadesIniciales, Ataque1);
+    cDragon dragon1("Furia", "Inteligente","Chico", "Negro", true,  300, 500, habilidadesIniciales, &Ataque1);
     cJinete entrenador1("Hipo", "Iuzchuk", "Ache", "23-11-2001", "Herrero", 1.5, 30); //nivel de fuerza?
 
     dragon1.mostrarHabilidades();
@@ -130,13 +100,13 @@ int main()
         switch (opcion)
         {
         case 1:
-            EscueladeDragones(Dragones_isla); 
+            EscueladeDragones(Jinetes_isla, Dragones_isla);
             break;
         case 2:
-            CarreradeDragones();
+            cout << "Aqui va la opcion de carrera de dragones" << endl;
             break;
         case 3:
-            BatalladeDragones(Vikingos_isla, Dragones_isla);
+            cout << "BatalladeDragones(Vikingos_isla, Dragones_isla)" << endl;;
             break;
         case 4:
             cout << "Muchas gracias por visitar la Isla de Berk" << endl;
@@ -165,7 +135,7 @@ int main()
 
 
 //--------------------------------------------------------------------------------ESCUELA DE DRAGONES
-void EscueladeDragones(vector<cDragon*>& Dragones_isla) {
+void EscueladeDragones(vector<cJinete*>& Jinetes_isla, vector<cDragon*>& Dragones_isla) {
     int opcion;
     do {
         cout << "\nUSTED ESTA EN LA ESCUELA DE LA ISLA" << endl;
@@ -184,7 +154,7 @@ void EscueladeDragones(vector<cDragon*>& Dragones_isla) {
             ListaDeDragones(Dragones_isla);
             break;
         case 3:
-            EntrenarDragones(Dragones_isla);
+            EntrenarDragones(Jinetes_isla,Dragones_isla);
             break;
 
         case 4:
@@ -236,9 +206,17 @@ void EstudioDeDragones(vector<cDragon*>& Dragones_isla) {
         v_habilidades.push_back(habilidad);
     }
 
-    cAtaque ataque(0,0,0);  // Inicialmente sin ataque asignado
-    Dragones_isla.push_back(new cDragon(nombre, caracteristica, tamano, color, estado, velocidad, resistencia, v_habilidades, ataque));
+    string tipoAtaque, danioAtaque, alcanceAtaque;
+    cout << "Ingrese el tipo de ataque del dragón: ";
+    cin >> tipoAtaque;
+    cout << "Ingrese el daño del ataque del dragón: ";
+    cin >> danioAtaque;
+    cout << "Ingrese el alcance del ataque del dragón: ";
+    cin >> alcanceAtaque;
+    cAtaque* ataque = new cAtaque(tipoAtaque, danioAtaque, alcanceAtaque);
 
+    // Crear el nuevo objeto cDragon y agregarlo al vector
+    Dragones_isla.push_back(new cDragon(nombre, caracteristica, tamano, color, estado, velocidad, resistencia, v_habilidades, ataque));
     cout << "Dragon agregado exitosamente!" << endl;
 }
 
@@ -249,7 +227,21 @@ void ListaDeDragones(const vector<cDragon*>& Dragones_isla) {
     }
 }
 
-void EntrenarDragones(vector<cDragon*>& Dragones_isla) {
+void EntrenarDragones(vector<cJinete*>& Jinetes_isla,vector<cDragon*>& Dragones_isla) {
+    
+    vector<cJinete*>::iterator it_j = Jinetes_isla.begin();
+    vector<cDragon*>::iterator it_d = Dragones_isla.begin();
+
+    while (it_j != Jinetes_isla.end()) {
+        cJinete& JineteActual = **it_j;
+        while (it_d != Dragones_isla.end()) {
+            (*it_d)->Entrenar("Velocidad", JineteActual);
+            ++it_d;
+        }
+        ++it_j;
+        it_d = Dragones_isla.begin();
+    }
+
     /*for (auto& dragon : Dragones_isla) {
         if (dragon->getEstado()) {
             dragon->Entrenar();
@@ -302,6 +294,55 @@ void EscueladeDragones::ImprimirEstado() {
 */
 
 //--------------------------------------------------------------------------------FIN ESCUELA DE DRAGONES
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
