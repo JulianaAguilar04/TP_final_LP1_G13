@@ -2,7 +2,7 @@
 #include "cJinete.h"
 
 //constructor por parametro
-cDragon::cDragon(string Nombre, string Caracteristica, string Tamano, string Color, bool Estado, int Velocidad, int Resistencia, vector <string> &Habilidades, cAtaque* miAtaque):NivelEntrenamiento(1)
+cDragon::cDragon(string Nombre, string Caracteristica, string Tamano, string Color, bool Estado, int Velocidad, int Resistencia, vector <string> &Habilidades, cAtaque &miAtaque)
 {
     this->Nombre = Nombre;
     this->Caracteristica = Caracteristica;
@@ -14,7 +14,9 @@ cDragon::cDragon(string Nombre, string Caracteristica, string Tamano, string Col
     this->Habilidades = Habilidades;
     this->FormadeAtaque = miAtaque;
 }
+
 //constructor por copia-parametro
+/*
 cDragon::cDragon(cDragon& Dragoncito)
 {
     this->Nombre = Dragoncito.Nombre;
@@ -28,6 +30,7 @@ cDragon::cDragon(cDragon& Dragoncito)
     this->NivelEntrenamiento = Dragoncito.NivelEntrenamiento;
     FormadeAtaque = Dragoncito.FormadeAtaque;
 }
+*/
 string cDragon::getNombre()
 {
     return Nombre;
@@ -87,7 +90,7 @@ string cDragon::to_string()
     ss << "-Tamanio:" << Tamano << endl;
     ss << "-Color:" << Color << endl;
     ss << "-Estado:" << Estado << endl;
-    ss << "-Ataque:\n" << FormadeAtaque->to_string() << endl;
+    ss << "-Ataque:\n" << FormadeAtaque.to_string() << endl;
     return ss.str();
 }
 
@@ -142,7 +145,7 @@ ostream& operator<<(ostream& s, cDragon& d)
     s << "Tamanio:" << d.Tamano << endl;
     s << "Color: " << d.Color << endl;
     s << "Estado: " << ((d.Estado == false) ? "No domado" : "Domado") << endl;
-    s << "Ataque: " << *(d.FormadeAtaque)<<endl;
+    s << "Ataque: " << (d.FormadeAtaque)<<endl;
     return s;
 }
 

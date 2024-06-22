@@ -1,7 +1,7 @@
 #include "BatalladeDragones.h"
 #include <cstdlib>
 #include <ctime>
-
+/*
 BatalladeDragones::BatalladeDragones(vector<cDragon*>& dragones, vector<cVikingo*>& vikingos, vector<cJinete*>& jinetes) {
     srand(time(0));
     FiltrarDragones(dragones);
@@ -75,7 +75,7 @@ void BatalladeDragones::AnunciarGanador(cPersona* ganador) {
 void BatalladeDragones::AnunciarGanador(cDragon* ganador) {
     cout << "¡El ganador es el dragón " << ganador->getNombre() << "!" << endl;
 }
-
+*/
 
 /*#include "BatalladeDragones.h"
 #include "cDragon.h"

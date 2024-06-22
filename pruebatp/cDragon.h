@@ -18,13 +18,13 @@ private:
 	int Velocidad=0;
 	int Resistencia=0;
 	vector <string> Habilidades; //agregue velocidad, resistencia, nivel de entrenamiento y habilidades
-	int NivelEntrenamiento = 0;
-	cAtaque* FormadeAtaque = nullptr;
+	int NivelEntrenamiento = 1;
+	cAtaque FormadeAtaque;
 
 
 public:
 	//constructor por parametros 
-	cDragon(string Nombre, string Caracteristica, string Tamano, string Color, bool Estado, int Velocidad, int Resistencia,vector <string> &Habilidades, cAtaque* miAtaque);
+	cDragon(string Nombre, string Caracteristica, string Tamano, string Color, bool Estado, int Velocidad, int Resistencia,vector <string> &Habilidades, cAtaque &miAtaque);
 	//constructor por copia
 	cDragon(cDragon& Dragoncito);
 	string getNombre();

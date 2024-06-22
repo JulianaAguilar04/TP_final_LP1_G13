@@ -50,25 +50,29 @@ cout << "Informacion de Maribel: \n" << Vikingo2.to_string() << endl;
 using namespace std;
 
 void EscueladeDragones(vector<cDragon*>&Dragones_isla);
+void EstudioDeDragones(vector<cDragon*>& Dragones_isla);
+void ListaDeDragones(const vector<cDragon*>& Dragones_isla);
+void EntrenarDragones(vector<cDragon*>& Dragones_isla);
+
+
 void BatalladeDragones(vector<cVikingo*>& vikingos, vector<cDragon*>& dragones);
-// void Entrenar();
-static void Entrenar(cPersona* Persona);
+
 
 
 
 int main()
 {
     //menu
-    cAtaque* Ataque1 = new cAtaque("Fuego", "15", "14");
+    cAtaque Ataque1("Fuego", "15", "14");
     cAtaque Ataque2("Veneno", "20", "11");
     cAtaque Ataque3("Electricidad", "14", "12");
 
     vector<cDragon*> Dragones_isla;
     vector<string>Habilidades1 = { "Volar rapido", "Llamarada" };
     
-    Dragones_isla.push_back(new cDragon("Chimuelo", "Inteligente", "Mediano", "Negro", false, 300, 500, &Habilidades1, &Ataque1));
-    Dragones_isla.push_back(new cDragon("Exterminador", "Rapido", "Mediano", "Transparente", true, 300, 500, &Habilidades1, &Ataque2));
-    Dragones_isla.push_back(new cDragon("Skrill", "Agresivo", "Grande", "Violeta", false, 300, 500, &Habilidades1, &Ataque3));
+    Dragones_isla.push_back(new cDragon("Chimuelo", "Inteligente", "Mediano", "Negro", false, 300, 500, Habilidades1, Ataque1));
+    Dragones_isla.push_back(new cDragon("Exterminador", "Rapido", "Mediano", "Transparente", true, 300, 500, Habilidades1, Ataque2));
+    Dragones_isla.push_back(new cDragon("Skrill", "Agresivo", "Grande", "Violeta", false, 300, 500, Habilidades1, Ataque3));
 
 
     vector <cDragon*> ::iterator it_d = Dragones_isla.begin();
@@ -78,7 +82,7 @@ int main()
         it_d++;
     }
 
-    cDragon Dragon4("Skrill", "Agresivo", "Grande", "Violeta", false, 500, 300, &Habilidades1, &Ataque3);
+    cDragon Dragon4("Skrill", "Agresivo", "Grande", "Violeta", false, 500, 300, Habilidades1, Ataque3);
 
     vector <cPersona*> Personas_isla;
     Personas_isla.push_back(new cVikingo("Juliana", "Aguilar", "Juju", "31-03-2004", "Guerrera", Dragon4, 10));
@@ -102,8 +106,8 @@ int main()
     }
 
     vector<std::string> habilidadesIniciales = { "volar rápido", "llamarada" };
-    cDragon dragon1("Furia", "Inteligente","Chico", "Negro", true,  300, 500, &habilidadesIniciales, &Ataque1);
-    cJinete entrenador1("Hipo", "Iuzchuk", "Ache", "23-11-2001", "Herrero", 1.5);
+    cDragon dragon1("Furia", "Inteligente","Chico", "Negro", true,  300, 500, habilidadesIniciales, Ataque1);
+    cJinete entrenador1("Hipo", "Iuzchuk", "Ache", "23-11-2001", "Herrero", 1.5, 30); //nivel de fuerza?
 
     dragon1.mostrarHabilidades();
 
@@ -157,7 +161,10 @@ int main()
 
    return 0;
 }
+//fin del main
 
+
+//--------------------------------------------------------------------------------ESCUELA DE DRAGONES
 void EscueladeDragones(vector<cDragon*>& Dragones_isla) {
     int opcion;
     do {
@@ -173,11 +180,9 @@ void EscueladeDragones(vector<cDragon*>& Dragones_isla) {
         case 1:
             EstudioDeDragones(Dragones_isla);
             break;
-
         case 2:
             ListaDeDragones(Dragones_isla);
             break;
-
         case 3:
             EntrenarDragones(Dragones_isla);
             break;
@@ -194,9 +199,6 @@ void EscueladeDragones(vector<cDragon*>& Dragones_isla) {
     } while (opcion != 4);
 }
 
-void BatalladeDragones(vector<cVikingo*>& vikingos, vector<cDragon*>& dragones)
-{
-}
 
 void EstudioDeDragones(vector<cDragon*>& Dragones_isla) {
     string nombre, caracteristica, tamano, color;
@@ -234,7 +236,7 @@ void EstudioDeDragones(vector<cDragon*>& Dragones_isla) {
         v_habilidades.push_back(habilidad);
     }
 
-    cAtaque* ataque = nullptr;  // Inicialmente sin ataque asignado
+    cAtaque ataque(0,0,0);  // Inicialmente sin ataque asignado
     Dragones_isla.push_back(new cDragon(nombre, caracteristica, tamano, color, estado, velocidad, resistencia, v_habilidades, ataque));
 
     cout << "Dragon agregado exitosamente!" << endl;
@@ -261,6 +263,206 @@ void EntrenarDragones(vector<cDragon*>& Dragones_isla) {
 
 
 }
+//-----------------.h y .cpp de escuela de dragones-------------------------
+/*class EscueladeDragones {
+private:
+    string Nombre;
+    vector<cJinete*> Alumnos;
+    vector<cDragon*> Dragones;
+
+public:
+    EscueladeDragones(string Nombre);
+    void AgregarJinete(cJinete* Jinete);
+    void AgregarDragon(cDragon* Dragon);
+    void ImprimirEstado();
+};
+EscueladeDragones::EscueladeDragones(string Nombre) {
+    this->Nombre = Nombre;
+}
+
+void EscueladeDragones::AgregarJinete(cJinete* Jinete) {
+    Alumnos.push_back(Jinete);
+}
+
+void EscueladeDragones::AgregarDragon(cDragon* Dragon) {
+    Dragones.push_back(Dragon);
+}
+
+void EscueladeDragones::ImprimirEstado() {
+    cout << "Escuela de Dragones: " << Nombre << endl;
+    cout << "Lista de Alumnos:" << endl;
+    for (auto alumno : Alumnos) {
+        cout << alumno->to_string() << endl;
+    }
+    cout << "Lista de Dragones:" << endl;
+    for (auto dragon : Dragones) {
+        cout << dragon->getNombre() << " - " << dragon->getColor() << " - " << dragon->getTamano() << endl;
+    }
+}
+*/
+
+//--------------------------------------------------------------------------------FIN ESCUELA DE DRAGONES
+
+
+
+
+
+
+/*
+
+//--------------------------------------------------------------------------------BATALLA DE DRAGONES
+// .h y .cpp de Batalla de dragones
+//INICIO.H
+class BatalladeDragones {
+private:
+    vector<cDragon*> dragonesMalos;
+    vector<cDragon*> dragonesBuenos;
+    vector<cVikingo*> vikingos;
+    vector<cJinete*> jinetes;
+public:
+    BatalladeDragones(vector<cDragon*>& dragones, vector<cVikingo*>& vikingos, vector<cJinete*>& jinetes);
+    void AvisarAldea();
+    void Combatir();
+    void AnunciarGanador(cPersona* ganador);
+    void FiltrarDragones(vector<cDragon*>& dragones); // Nuevo método para filtrar dragones
+};
+*/
+
+/*#pragma once
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+class cVikingo;
+class cDragon;
+
+void BatalladeDragones(vector<cVikingo*>& Vikingos_isla, vector<cDragon*>& Dragones_isla);*/
+//FIN.H
+
+/*
+
+//INICIO.CPP
+BatalladeDragones::BatalladeDragones(vector<cDragon*>& dragones, vector<cVikingo*>& vikingos, vector<cJinete*>& jinetes) {
+    srand(time(0));
+    FiltrarDragones(dragones);
+    this->vikingos = vikingos;
+    this->jinetes = jinetes;
+}
+
+void BatalladeDragones::FiltrarDragones(vector<cDragon*>& dragones) {
+    for (auto dragon : dragones) {
+        if (dragon->getEstado()) {
+            dragonesBuenos.push_back(dragon);
+        }
+        else {
+            dragonesMalos.push_back(dragon);
+        }
+    }
+}
+
+void BatalladeDragones::AvisarAldea() {
+    cout << "¡La aldea está en peligro!" << endl;
+}
+
+
+void BatalladeDragones::Combatir() {
+    if (dragonesMalos.empty() || (vikingos.empty() && jinetes.empty())) {
+        cout << "No hay suficientes dragones malos o combatientes para realizar la batalla." << endl;
+        return;
+    }
+
+    // Seleccionar un vikingo/jinete aleatorio
+    cPersona* combatiente;
+    if (!vikingos.empty() && !jinetes.empty()) {
+        if (rand() % 2 == 0) {
+            combatiente = vikingos[rand() % vikingos.size()];
+        }
+        else {
+            combatiente = jinetes[rand() % jinetes.size()];
+        }
+    }
+    else if (!vikingos.empty()) {
+        combatiente = vikingos[rand() % vikingos.size()];
+    }
+    else {
+        combatiente = jinetes[rand() % jinetes.size()];
+    }
+
+    // Seleccionar un dragón malo aleatorio
+    cDragon* dragonMalo = dragonesMalos[rand() % dragonesMalos.size()];
+
+    // Realizar el combate
+    int fuerzaCombatiente = combatiente->getFuerza();
+    if (fuerzaCombatiente > dragonMalo->getResistencia()) {
+        cout << "¡" << combatiente->getNombre() << " ha derrotado a " << dragonMalo->getNombre() << "!" << endl;
+        // Eliminar dragón malo de la lista
+        dragonesMalos.erase(remove(dragonesMalos.begin(), dragonesMalos.end(), dragonMalo), dragonesMalos.end());
+        // Añadir dragón malo a la lista de dragones matados por el combatiente
+        combatiente->addDragonMatado(dragonMalo);
+        // Anunciar ganador
+        AnunciarGanador(combatiente);
+    }
+    else {
+        cout << "¡" << dragonMalo->getNombre() << " ha derrotado a " << combatiente->getNombre() << "!" << endl;
+        // Anunciar ganador
+       // AnunciarGanador(dragonMalo);
+    }
+}
+
+void BatalladeDragones::AnunciarGanador(cPersona* ganador) {
+    cout << "¡El ganador es " << ganador->getNombre() << "!" << endl;
+}
+/*
+void BatalladeDragones::AnunciarGanador(cDragon* ganador) {
+    cout << "¡El ganador es el dragón " << ganador->getNombre() << "!" << endl;
+}
+*/
+
+/*
+void BatalladeDragones(vector<cVikingo*>& vikingos, vector<cDragon*>& dragones) {
+    cVikingo::AtacarDragones(); // Enviar mensaje a los vikingos
+
+    cout << "La batalla ha comenzado!" << endl;
+
+    // Simulación simple de la batalla
+    srand(time(0));
+    for (auto& vikingo : vikingos) {
+        if (dragones.empty()) {
+            cout << "Todos los dragones han sido derrotados!" << endl;
+            return;
+        }
+
+        int dragonIndex = rand() % dragones.size();
+        cDragon* dragon = dragones[dragonIndex];
+
+        // Ejemplo simple de combate: 50% de probabilidad de que el vikingo gane
+        if (rand() % 2 == 0) {
+            cout << "El vikingo " << vikingo->getNombre() << " ha derrotado al dragon " << dragon->getNombre() << endl;
+            vikingo->registrarDragonMatado(dragon->getNombre());
+            dragones.erase(dragones.begin() + dragonIndex); // Eliminar dragón derrotado
+            delete dragon; // Liberar memoria del dragón eliminado
+        }
+        else {
+            cout << "El dragon " << dragon->getNombre() << " ha derrotado al vikingo " << vikingo->getNombre() << endl;
+        }
+    }
+
+    cout << "La batalla ha terminado!" << endl;
+}
+*/
+
+//FIN.CPP
+
+
+/*
+void BatalladeDragones(vector<cVikingo*>& vikingos, vector<cDragon*>& dragones)
+{
+}
+*/
+
+
+
  /* NO SE COMO HACERLO, CHAT GPT ME DIJO ESTO PERO NO FUNCIONA
  
 // Creación de objeto BatalladeDragones
@@ -313,7 +515,3 @@ antes era: "void Entrenar(cPersona Persona, ) {} "
 
 Tambien la modifique en lo lugares q la llamaba ( prubatp.cpp linea 51/52 , pruebatp.cpp linea 152/153) 
 */
-static void Entrenar(cPersona* Persona)
-{
-
-}
