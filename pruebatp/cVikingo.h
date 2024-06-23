@@ -15,7 +15,7 @@ private:
 	vector<string> dragonesMatados;
 
 public:
-	cVikingo(string Nombre, string Apellido, string Apodo, string FecNac, string Posicion, cDragon &Dragoncito, int Fuerza);
+	cVikingo(string Nombre, string Apellido, string Apodo, string FecNac, string Posicion, cDragon *Dragoncito, int Fuerza);
 	string to_string();
 	friend ostream& operator<<(ostream& os, cVikingo& v);
 	string getNombre();

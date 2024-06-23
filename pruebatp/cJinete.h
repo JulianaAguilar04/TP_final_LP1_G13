@@ -28,7 +28,9 @@ public:
 	cJinete(string Nombre, string Apellido, string Apodo, string FecNac, string Caracteristicas, double Efectividad, int Fuerza);
 	string to_string();
 	double getEfectividad() const;
-	void IncorporarDragon();
+	vector<cDragon*> getMisDragones();
+	void mostrarDragones();
+	void IncorporarDragon(cDragon* dragon);
 	/*
 	string getNombre();
 	string getApellido();

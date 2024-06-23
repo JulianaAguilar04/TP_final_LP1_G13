@@ -20,8 +20,21 @@ double cJinete::getEfectividad() const
     return Efectividad;
 }
 
-void cJinete::IncorporarDragon() {
-    
+vector<cDragon*> cJinete::getMisDragones()
+{
+    return misDragones;
+}
+
+void cJinete::mostrarDragones()
+{
+    cout << "El jinete:" << Nombre << "tiene estos dragones:" << endl;
+    for (const auto& dragon : misDragones) {
+        cout << "-" << dragon->getNombre() << endl;
+    }
+}
+
+void cJinete::IncorporarDragon(cDragon* dragon) {
+    misDragones.push_back(dragon);
 }
 
 cJinete::~cJinete() {

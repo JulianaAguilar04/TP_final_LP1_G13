@@ -129,12 +129,12 @@ void cDragon::mostrarHabilidades()
 
 ostream& operator<<(ostream& s, cDragon& d)
 {
-    s << "Nombre del dragón:" << d.Nombre << endl;
+    s << "Nombre del dragon:" << d.Nombre << endl;
     s << "Caracteristicas:" << d.Caracteristica << endl;
     s << "Tamanio:" << d.Tamano << endl;
     s << "Color: " << d.Color << endl;
     s << "Estado: " << ((d.Estado == false) ? "No domado" : "Domado") << endl;
-    s << "Ataque: " << (d.FormadeAtaque)<<endl;
+    s << "Ataque: " << (d.FormadeAtaque->to_string())<<endl;
     return s;
 }
 

@@ -129,16 +129,26 @@
   <ItemGroup>
     <ClCompile Include="cAtaque.cpp" />
     <ClCompile Include="cDragon.cpp" />
+    <ClCompile Include="cEmbestida.cpp" />
+    <ClCompile Include="cFogonera.cpp" />
     <ClCompile Include="cJinete.cpp" />
+    <ClCompile Include="cMarejada.cpp" />
     <ClCompile Include="cPersona.cpp" />
+    <ClCompile Include="cPiedra.cpp" />
+    <ClCompile Include="cRastreadora.cpp" />
     <ClCompile Include="cVikingo.cpp" />
     <ClCompile Include="pruebatp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cAtaque.h" />
     <ClInclude Include="cDragon.h" />
+    <ClInclude Include="cEmbestida.h" />
+    <ClInclude Include="cFogonera.h" />
     <ClInclude Include="cJinete.h" />
+    <ClInclude Include="cMarejada.h" />
     <ClInclude Include="cPersona.h" />
+    <ClInclude Include="cPiedra.h" />
+    <ClInclude Include="cRastreadora.h" />
     <ClInclude Include="cVikingo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

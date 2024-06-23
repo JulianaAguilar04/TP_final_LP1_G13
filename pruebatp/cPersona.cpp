@@ -50,8 +50,4 @@ int cPersona::getFuerza() const
 	return Fuerza;
 }
 
-void cPersona::addDragonMatado(cDragon* dragon)
-{
-	dragonesMatados.push_back(dragon);
-}
 

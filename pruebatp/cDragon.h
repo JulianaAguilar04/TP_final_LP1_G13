@@ -9,7 +9,7 @@ class cJinete;
 
 class cDragon
 {
-private:
+protected:
 	string Nombre;
 	string Caracteristica;
 	string Tamano;
