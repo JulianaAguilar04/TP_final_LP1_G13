@@ -251,7 +251,8 @@ void EntrenarDragones(vector<cJinete*>& Jinetes_isla, vector<cDragon*>& Dragones
             cout << "El dragon " << dragon->getNombre() << " ha sido entrenado." << endl;
         }
         else {
-            cout << "El dragon " << dragon->getNombre() << " no esta domado y no puede ser entrenado." << endl;
+            cout << "El dragon " << dragon->getNombre() << " no esta domado y no puede ser entrenado." << endl; xddd
+
         }
     }
     */
