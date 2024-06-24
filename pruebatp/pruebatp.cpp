@@ -22,6 +22,7 @@ void ListaDeDragones(const vector<cDragon*>& Dragones_isla);
 void EntrenarDragones(vector<cJinete*>& Jinetes_isla);
 void BatalladeDragones(vector<cVikingo*>& Vikingos_isla, vector<cDragon*>&Dragones_isla);
 void ListaDePersonas(vector<cPersona*>& Personas_isla);
+void MostrarDragonesMatados(const vector<cVikingo*>& Vikingos_isla);
 
 int main()
 {
@@ -91,13 +92,15 @@ int main()
         cout << *vikingo << endl;
     }
 
+
     int opcion;
     do {
         cout << "------BIENVENIDO A LA ISLA DE BERK------" << endl;
         cout << "1) Escuela de dragones" << endl;
         cout << "2) Batalla de dragones" << endl;
         cout << "3) Lista de habitantes de la isla" << endl;
-        cout << "4) Salir" << endl;
+        cout << "4) Historial de logros de vikingos " << endl; 
+        cout << "5) Salir" << endl;
         cin >> opcion;
 
         switch (opcion)
@@ -111,7 +114,9 @@ int main()
         case 3:
             ListaDePersonas(Personas_isla);
             break;
-        case 4:
+        case 4: 
+            MostrarDragonesMatados(Vikingos_isla);
+        case 5:
             cout << "Muchas gracias por visitar la Isla de Berk" << endl;
             break;
 
@@ -326,6 +331,10 @@ void EntrenarDragones(vector<cJinete*>& Jinetes_isla) {
             cout << "El vikingo " << vikingo->getNombre() << " ha derrotado al dragon " << dragonMalo->getNombre() << "!" << endl;
             vikingo->registrarDragonMatado(dragonMalo->getNombre());
 
+            // Registrar el dragón en la lista de dragones matados por todos los jinetes y vikingos
+            for (auto jinete : Vikingos_isla) {
+                jinete->registrarDragonMatado(dragonMalo->getNombre());
+            }
             // Eliminar el dragón de la lista de dragones
             auto it = find(Dragones_isla.begin(), Dragones_isla.end(), dragonMalo);
             if (it != Dragones_isla.end()) {
@@ -335,6 +344,16 @@ void EntrenarDragones(vector<cJinete*>& Jinetes_isla) {
         }
         else {
             cout << "El dragon " << dragonMalo->getNombre() << " ha vencido al vikingo " << vikingo->getNombre() << "." << endl;
+        }
+    }
+
+    // Implementación de la función MostrarDragonesMatados
+    void MostrarDragonesMatados(const vector<cVikingo*>& Vikingos_isla) {
+
+        cout << "Lista de dragones matados por vikingos:" << endl;
+        for (auto vikingo : Vikingos_isla) {
+            cout << "Vikingo " << vikingo->getNombre() << ":" << endl;
+            vikingo->mostrarDragonesMatados();
         }
     }
 
