@@ -44,6 +44,16 @@ ostream& operator<<(ostream& os, const cJinete& j)
     return os;
 }
 
+bool cJinete::tieneDragon(cDragon* dragon)
+{
+    for (cDragon* d : misDragones) {
+        if (d == dragon) {
+            return true;
+        }
+    }
+    return false;
+}
+
 double cJinete::getEfectividad() const
 {
     return Efectividad;

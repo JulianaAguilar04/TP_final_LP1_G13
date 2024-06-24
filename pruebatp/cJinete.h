@@ -32,6 +32,8 @@ public:
 	void mostrarInfo(ostream& os) const;
 	friend ostream& operator<<(ostream& os, const cJinete& j);
 
+	bool tieneDragon(cDragon* dragon);
+
 	double getEfectividad() const;
 	vector<cDragon*> getMisDragones();
 	void IncorporarDragon(cDragon* dragon);

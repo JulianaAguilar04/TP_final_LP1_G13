@@ -57,7 +57,7 @@ int main()
     Personas_isla.push_back(new cJinete("Elias", "Garcia", "Elu", "19-06-2002", "Lloron", 1.5, 20));
     Personas_isla.push_back(new cVikingo("Elias", "Garcia", "Elu", "19-06-2002", "Guerrero", Dragones_isla[4], 20));
     Personas_isla.push_back(new cVikingo("Milagros", "Menendez Tuja", "Mili", "26-03-2002", "Artesana", Dragones_isla[5], 41));
-    Personas_isla.push_back(new cJinete("Santiago", "Menendez Tuja", "Santi", "28-11-1998", "Estratega", 20, 45));
+    Personas_isla.push_back(new cJinete("Santiago", "Menendez Tuja", "Santi", "28-11-1998", "Estratega", 3, 45));
 
     // me creo un vector de jinetes para utilizarlos en escuela de dragones
     vector<cJinete*> Jinetes_isla;
@@ -94,8 +94,8 @@ int main()
     do {
         cout << "------BIENVENIDO A LA ISLA DE BERK------" << endl;
         cout << "1) Escuela de dragones" << endl;
-        cout << "2) Lista de habitantes de la isla" << endl;
-        cout << "3) Batalla de dragones" << endl;
+        cout << "2) Batalla de dragones" << endl;
+        cout << "3) Lista de habitantes de la isla" << endl;
         cout << "4) Salir" << endl;
         cin >> opcion;
 
@@ -105,10 +105,10 @@ int main()
             EscueladeDragones(Jinetes_isla, Dragones_isla);
             break;
         case 2:
-            ListaDePersonas(Personas_isla);
+            BatalladeDragones(Vikingos_isla, Dragones_isla);
             break;
         case 3:
-            BatalladeDragones(Vikingos_isla, Dragones_isla);
+            ListaDePersonas(Personas_isla);
             break;
         case 4:
             cout << "Muchas gracias por visitar la Isla de Berk" << endl;
@@ -139,30 +139,9 @@ int main()
 }
 //fin del main
 
-//funcion asignar dragones
-void AsignarDragonesJinetes(vector<cJinete*>& Jinetes_isla, vector<cDragon*>& Dragones_isla) {
-    vector<cDragon*>::iterator it_d = Dragones_isla.begin();
-
-    for (auto& jinete : Jinetes_isla) {
-        while (it_d != Dragones_isla.end()) {
-            if ((*it_d)->getEstado() == true && jinete->getEfectividad() > 1.0) {
-                jinete->IncorporarDragon(*it_d);
-                it_d = Dragones_isla.erase(it_d);
-                break;
-            }
-            else {
-                ++it_d;
-            }
-        }
-        if (it_d == Dragones_isla.end()) {
-            break;
-        }
-    }
-}
-
 // funcion imprimir personas 
 void ListaDePersonas(vector<cPersona*>& Personas_isla) {
-    
+
     //imprimo todas las personas de la isla
     vector<cPersona*>::iterator it_p = Personas_isla.begin();
 
@@ -170,7 +149,40 @@ void ListaDePersonas(vector<cPersona*>& Personas_isla) {
         cout << *(*it_p) << endl;
         it_p++;
     }
-    
+
+}
+
+//funcion asignar dragones
+void AsignarDragonesJinetes(vector<cJinete*>& Jinetes_isla, vector<cDragon*>& Dragones_isla) {
+
+    for (auto& jinete : Jinetes_isla) {
+
+        vector<cDragon*>::iterator it_d = Dragones_isla.begin();
+
+        while (it_d != Dragones_isla.end()) {
+
+            if ((*it_d)->getEstado() == true && jinete->getEfectividad() > 1.0) {
+                bool yaTieneJinete = false;
+                for (cJinete* otroJinete : Jinetes_isla) {
+                    if (otroJinete != jinete && otroJinete->tieneDragon(*it_d)) {
+                        yaTieneJinete = true;
+                        break;
+                    }
+                }
+                if (!yaTieneJinete) {
+                    jinete->IncorporarDragon(*it_d);
+                    it_d = Dragones_isla.erase(it_d);
+                }
+                else {
+                    ++it_d;
+                }
+            }
+            else {
+                ++it_d;
+            }
+        }
+    }
+
 }
 
 //--------------------------------------------------------------------------------ESCUELA DE DRAGONES
@@ -274,6 +286,8 @@ void EntrenarDragones(vector<cJinete*>& Jinetes_isla) {
         for (cDragon* dragon : dragones) {
             //entreno cada dragon de la lista del jinete
             dragon->Entrenar("Velocidad", (*jinete));
+            dragon->Entrenar("Resistencia", (*jinete));
+            dragon->Entrenar("Habilidades", (*jinete));
         }
     }
 }
