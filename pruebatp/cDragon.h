@@ -17,7 +17,7 @@ protected:
 	bool Estado;
 	int Velocidad=0;
 	int Resistencia=0;
-	vector <string> Habilidades; //agregue velocidad, resistencia, nivel de entrenamiento y habilidades
+	vector <string> Habilidades; 
 	vector<string> EstrategiasAtaque;
 	vector<string> EstrategiasDefensa;
 	int NivelEntrenamiento = 1;
@@ -47,7 +47,7 @@ public:
 	// void AltaDragon(cDragon *dragon); ???
 	void Entrenar(const string &tipoEntrenamiento, const cJinete &Jinete);	//funcion que se pide
 	void mostrarHabilidades();  
-	void Baja(vector<cDragon> &Dragones_isla);  //funcion que se pide
+	void Baja(vector<cDragon*> &Dragones_isla);  //funcion que se pide
 	~cDragon();
 };
 

@@ -64,7 +64,7 @@ string cDragon::to_string()
     return ss.str();
 }
 
-void cDragon::Baja(vector<cDragon>& Dragones_isla)
+void cDragon::Baja(vector<cDragon*>& Dragones_isla)
 {
     //necesito especificamente el dragon que se quiere sacar de la lista
 }
@@ -81,41 +81,40 @@ void cDragon::Entrenar(const string &tipoEntrenamiento, const cJinete& Jinete)
 
     if (tipoEntrenamiento == "Velocidad") {
         Velocidad += incremento;
-        std::cout << Nombre << " ha mejorado su velocidad en " << incremento << ". Nueva velocidad: " << Velocidad << std::endl;
+        cout << Nombre << " ha mejorado su velocidad en " << incremento << ". Nueva velocidad: " << Velocidad << endl;
     }
     else if (tipoEntrenamiento == "Resistencia") {
         Resistencia += incremento; 
-        std::cout << Nombre << " ha mejorado su resistencia en " << incremento << ". Nueva resistencia: " << Resistencia << std::endl;
+        cout << Nombre << " ha mejorado su resistencia en " << incremento << ". Nueva resistencia: " << Resistencia << endl;
     }
     else if (tipoEntrenamiento == "Habilidades") {
-        std::string nuevaHabilidad = "Habilidad avanzada " + std::to_string(NivelEntrenamiento);
+        string nuevaHabilidad = "Habilidad avanzada " + std::to_string(NivelEntrenamiento);
         Habilidades.push_back(nuevaHabilidad);
-        std::cout << Nombre << " ha aprendido una nueva habilidad: " << nuevaHabilidad << std::endl;
+        cout << Nombre << " ha aprendido una nueva habilidad: " << nuevaHabilidad << endl;
     }
     else {
-        std::cout << "Tipo de entrenamiento no reconocido. Por favor, elige entre 'Velocidad', 'Resistencia' o 'Habilidades'." << std::endl;
+        cout << "Tipo de entrenamiento no reconocido. Por favor, elige entre 'Velocidad', 'Resistencia' o 'Habilidades'." << endl;
     }
-    /*
+    
     if (Estado) {
         DesarrollarEstrategia("Ataque");
         DesarrollarEstrategia("Defensa");
     }
-    */
+    
     NivelEntrenamiento++;
 }
-/*
+
 void cDragon::DesarrollarEstrategia(const string& tipo) {
     if (tipo == "Ataque") {
-        string nuevaEstrategia = "Estrategia de ataque " + to_string(EstrategiasAtaque.size() + 1);
+        string nuevaEstrategia = "Estrategia de ataque " + std::to_string(EstrategiasAtaque.size() + 1);
         EstrategiasAtaque.push_back(nuevaEstrategia);
         cout << Nombre << " ha desarrollado una nueva estrategia de ataque: " << nuevaEstrategia << endl;
     } else if (tipo == "Defensa") {
-        string nuevaEstrategia = "Estrategia de defensa " + to_string(EstrategiasDefensa.size() + 1);
+        string nuevaEstrategia = "Estrategia de defensa " + std::to_string(EstrategiasDefensa.size() + 1);
         EstrategiasDefensa.push_back(nuevaEstrategia);
         cout << Nombre << " ha desarrollado una nueva estrategia de defensa: " << nuevaEstrategia << endl;
     }
 }
-*/
 
 void cDragon::mostrarHabilidades()
 {

@@ -20,17 +20,11 @@ string cPersona::to_string() const
 	return ss.str();
 }
 
-/*ostream& operator<<(ostream& os, cPersona& p)
-{
+ostream& operator<<(ostream& os, const cPersona& p) {
 	os << "Nombre:" << p.Nombre << endl;
 	os << "Apellido:" << p.Apellido << endl;
 	os << "Apodo:" << p.Apodo << endl;
 	os << "Fecha de nacimiento:" << p.FecNac << endl;
-	return os;
-}*/
-
-ostream& operator<<(ostream& os, const cPersona& p) {
-	os << "Nombre: " << p.Nombre << ", Apellido: " << p.Apellido << ", Apodo: " << p.Apodo << ", Fecha de nacimiento: " << p.FecNac;
 	return os;
 }
  

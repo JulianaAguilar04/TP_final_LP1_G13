@@ -53,11 +53,12 @@ int main()
     Dragones_isla.push_back(new cMarejada("Salvajibestia", "Robusto", "Gigante", "Blanco", true, 6, 40, Habilidades7, Ataque7));
 
     vector<cPersona*> Personas_isla;
-    Personas_isla.push_back(new cVikingo("Juliana", "Aguilar", "Juju", "31-03-2004", "Guerrera", Dragones_isla[0], 32));
-    Personas_isla.push_back(new cJinete("Elias", "Garcia", "Elu", "19-06-2002", "Lloron", 1.5, 20));
-    Personas_isla.push_back(new cVikingo("Elias", "Garcia", "Elu", "19-06-2002", "Guerrero", Dragones_isla[4], 20));
+    Personas_isla.push_back(new cVikingo("Juliana", "Aguilar Iuzchuk", "Juju", "31-03-2004", "Guerrera", Dragones_isla[0], 32));
+    Personas_isla.push_back(new cJinete("Elias", "Garcia", "Elu", "19-06-2002", "Robusto", 1.5, 20));
+    Personas_isla.push_back(new cVikingo("Nahuel", "Chiariza", "Nahu", "11-12-2003", "Guerrero", Dragones_isla[4], 25));
     Personas_isla.push_back(new cVikingo("Milagros", "Menendez Tuja", "Mili", "26-03-2002", "Artesana", Dragones_isla[5], 41));
-    Personas_isla.push_back(new cJinete("Santiago", "Menendez Tuja", "Santi", "28-11-1998", "Estratega", 3, 45));
+    Personas_isla.push_back(new cJinete("Santiago", "Menendez Tuja", "Santi", "28-11-1998", "Fuerte", 3, 45));
+    Personas_isla.push_back(new cJinete("Sol", "Segura", "Solci", "01-02-1234", "Alta", 4, 29));
 
     // me creo un vector de jinetes para utilizarlos en escuela de dragones
     vector<cJinete*> Jinetes_isla;
@@ -288,7 +289,9 @@ void EntrenarDragones(vector<cJinete*>& Jinetes_isla) {
             dragon->Entrenar("Velocidad", (*jinete));
             dragon->Entrenar("Resistencia", (*jinete));
             dragon->Entrenar("Habilidades", (*jinete));
+            cout << endl;
         }
+        cout << endl;
     }
 }
 

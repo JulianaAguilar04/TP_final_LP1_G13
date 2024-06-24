@@ -65,15 +65,6 @@ vector<string> cVikingo::getdragonesMatados()
 	return dragonesMatados;
 }
 
-string cVikingo::to_string()
-{
-	stringstream ss;
-	ss << "Nombre:" << Nombre << endl;
-	ss << "Apellido:" << Apellido << endl;
-	ss << "Posicion:" << Posicion << endl;
-	return ss.str();
-}
-
 void cVikingo::AtacarDragones() {
 	cout << "¡Todos los vikingos, prepárense para la batalla contra los dragones!" << endl;
 }
@@ -91,16 +82,16 @@ void cVikingo::mostrarDragonesMatados() {
 	cout << endl;
 }
 
-/*
 string cVikingo::to_string() {
 	stringstream ss;
 	ss << cPersona::to_string();
 	ss << "Posicion:" << Posicion;
 	ss << miDragon->to_string();
 	return ss.str();
-}*/
+}
 
 cVikingo::~cVikingo()
 {
+
 }
 
