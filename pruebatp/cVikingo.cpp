@@ -25,10 +25,11 @@ string cVikingo::getApellido()
 {
 	return Apellido;
 }
-string cVikingo::getPosicion()
+string cVikingo::getPosicion() 
 {
 	return Posicion;
 }
+
 void cVikingo::setNombre(string Nombre)
 {
 	this->Nombre = Nombre;
@@ -99,6 +100,8 @@ cVikingo::~cVikingo()
 
 ostream& operator<<(ostream& os, cVikingo& v)
 {
-	os << "Posicion:" << v.Posicion << endl;
+	/**os << "Posicion:" << v.Posicion << endl;
+	return os;*/
+	os << static_cast<cPersona&>(v) << ", Posicion: " << v.getPosicion();
 	return os;
 }

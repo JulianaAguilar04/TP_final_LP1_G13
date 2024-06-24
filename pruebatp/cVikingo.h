@@ -18,10 +18,10 @@ public:
 	cVikingo(string Nombre, string Apellido, string Apodo, string FecNac, string Posicion, cDragon *Dragoncito, int Fuerza);
 	string to_string();
 	void mostrarInfo(ostream& os) const;
-	friend ostream& operator<<(ostream& os, cVikingo& v);
+	friend ostream& operator<<(ostream& os,const cVikingo& v);
 	string getNombre();
-	string getApellido();
-	string getPosicion();
+	string getApellido ();
+	string getPosicion ();
 	vector <string> getdragonesMatados();
 	void setNombre(string Nombre);
 	void setApellido(string Apellido);

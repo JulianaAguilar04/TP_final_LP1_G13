@@ -111,3 +111,11 @@ string cJinete::to_string()
     return ss.str();
 }
 */
+
+ostream& operator<<(ostream& os, const cJinete& j)
+{
+    for (int i = 0; i++; i < 50) {
+        os << static_cast<const cPersona&>(j) << ", Dragones: " << j.misDragones[i];
+        return os;
+    }
+}

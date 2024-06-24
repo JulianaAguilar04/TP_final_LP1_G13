@@ -44,6 +44,7 @@ public:
 	void setFecNac(string nuevaFecNac);
 	void setCaracteristicas(string nuevaCaracteristica);
 	*/
+	friend ostream& operator<<(ostream& os, const cJinete& j);
 	~cJinete();
 	
 };
