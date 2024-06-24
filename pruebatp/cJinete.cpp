@@ -15,6 +15,29 @@ string cJinete::to_string()
     return ss.str();
 }
 
+void cJinete::mostrarDragones()
+{
+    cout << "El jinete:" << Nombre << "tiene estos dragones:" << endl;
+    for (const auto& dragon : misDragones) {
+        cout << "-" << dragon->getNombre() << endl;
+    }
+}
+
+void cJinete::mostrarInfo(ostream& os) const
+{
+    os << "Nombre:" << Nombre << endl;
+    os << "Apellido: " << Apellido << endl;
+    os << "Apodo:" << Apodo << endl;
+    os << "Fecha de nacimiento:" << FecNac << endl;
+    os << "Caracteristicas:" << Caracteristicas << endl;
+    os << "Efectividad:" << Efectividad << endl;
+    os << "Fuerza:" << Fuerza << endl;
+    os << "Dragones:" << endl;
+    for (const auto& dragon : misDragones) {
+        os << "- " << dragon->to_string() << std::endl;
+    }
+}
+
 double cJinete::getEfectividad() const
 {
     return Efectividad;
@@ -23,14 +46,6 @@ double cJinete::getEfectividad() const
 vector<cDragon*> cJinete::getMisDragones()
 {
     return misDragones;
-}
-
-void cJinete::mostrarDragones()
-{
-    cout << "El jinete:" << Nombre << "tiene estos dragones:" << endl;
-    for (const auto& dragon : misDragones) {
-        cout << "-" << dragon->getNombre() << endl;
-    }
 }
 
 void cJinete::IncorporarDragon(cDragon* dragon) {

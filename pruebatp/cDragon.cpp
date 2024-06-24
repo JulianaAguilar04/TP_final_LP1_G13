@@ -121,7 +121,7 @@ void cDragon::mostrarHabilidades()
 {
     cout << "Habilidades de " << Nombre << ": ";
     for (const auto& habilidad : Habilidades) {
-        std::cout << habilidad << " ";
+        cout << habilidad << " ";
     }
     cout << endl;
 }
@@ -134,7 +134,17 @@ ostream& operator<<(ostream& s, cDragon& d)
     s << "Tamanio:" << d.Tamano << endl;
     s << "Color: " << d.Color << endl;
     s << "Estado: " << ((d.Estado == false) ? "No domado" : "Domado") << endl;
-    s << "Ataque: " << (d.FormadeAtaque->to_string())<<endl;
+    if (d.FormadeAtaque) {
+        s << "Ataque: \n" << (d.FormadeAtaque->to_string()) << endl;
+    }
+    else {
+        s << "No hay forma de ataque asiignado" << endl;
+    }
+    s << "Habilidades:" << endl;
+    for (const auto& habilidad : d.Habilidades) {
+        s << habilidad << " ";
+    }
+    s << endl;
     return s;
 }
 

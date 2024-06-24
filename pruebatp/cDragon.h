@@ -18,10 +18,8 @@ protected:
 	int Velocidad=0;
 	int Resistencia=0;
 	vector <string> Habilidades; //agregue velocidad, resistencia, nivel de entrenamiento y habilidades
-	/*
 	vector<string> EstrategiasAtaque;
 	vector<string> EstrategiasDefensa;
-	*/
 	int NivelEntrenamiento = 1;
 	cAtaque *FormadeAtaque;
 

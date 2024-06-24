@@ -11,6 +11,16 @@ string cVikingo::getNombre()
 {
 	return Nombre;
 }
+void cVikingo::mostrarInfo(ostream& os) const
+{
+	os << "Nombre:" << Nombre << endl;
+	os << "Apellido:" << Apellido << endl;
+	os << "Apodo:" << Apodo << endl;
+	os << "Fecha de nacimiento:" << FecNac << endl;
+	os << "Posicion:" << Posicion << endl;
+	os << "Fuerza:" << Fuerza << endl;
+
+}
 string cVikingo::getApellido()
 {
 	return Apellido;

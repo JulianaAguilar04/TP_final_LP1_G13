@@ -20,10 +20,6 @@ string cPersona::to_string() const
 	return ss.str();
 }
 
-cPersona::~cPersona()
-{
-}
-
 /*ostream& operator<<(ostream& os, cPersona& p)
 {
 	os << "Nombre:" << p.Nombre << endl;
@@ -36,7 +32,7 @@ cPersona::~cPersona()
 
 ostream& operator<<(ostream& os, cPersona& p)
 {
-	os << p.to_string();
+	p.mostrarInfo(os);
 	return os;
 }
 
@@ -50,4 +46,7 @@ int cPersona::getFuerza() const
 	return Fuerza;
 }
 
+cPersona::~cPersona()
+{
+}
 

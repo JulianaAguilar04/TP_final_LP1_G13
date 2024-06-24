@@ -61,13 +61,14 @@ int main()
     Personas_isla.push_back(new cJinete("Santiago", "Menendez Tuja", "Santi", "28-11-1998", "Estratega", 20 , 45));
     
     //imprimo todas las personas de la isla
-    
+    /*
     vector<cPersona*>::iterator it_p = Personas_isla.begin();
 
     while (it_p != Personas_isla.end()) {
         cout << *(*it_p) << endl;
         it_p++;
     } 
+    */
 
     //me creo un vetor de jinetes para utilizarlos en escuela de dragones
     vector<cJinete*> Jinetes_isla;
@@ -82,10 +83,8 @@ int main()
     AsignarDragonesJinetes(Jinetes_isla, Dragones_isla);
     
     for (const auto& jinete : Jinetes_isla) {
-        jinete->mostrarDragones();
+        cout << jinete;
     }
-
-
 
     //me creo un vector de vikingos para utilizarlos en batalla de dragones
     vector<cVikingo*> Vikingos_isla;
@@ -96,6 +95,12 @@ int main()
         }
     }
 
+    // Mostrar información de vikingos
+    for (const auto& vikingo : Vikingos_isla) {
+        cout << vikingo;
+    }
+
+/*
     vector<std::string> habilidadesIniciales = { "volar rápido", "llamarada" };
     cDragon dragon1("Furia", "Inteligente","Chico", "Negro", true,  300, 500, habilidadesIniciales, Ataque1);
     cJinete entrenador1("Hipo", "Iuzchuk", "Ache", "23-11-2001", "Herrero", 1.5, 30); //nivel de fuerza?
@@ -107,7 +112,7 @@ int main()
     dragon1.Entrenar("habilidades", entrenador1);
 
     dragon1.mostrarHabilidades();
-
+*/
 
     int opcion;
     do {

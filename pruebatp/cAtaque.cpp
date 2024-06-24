@@ -47,14 +47,14 @@ string cAtaque::to_string()
 	return ss.str();
 }
 
-cAtaque::~cAtaque()
-{
-}
-
 ostream& operator<<(ostream& os, cAtaque& a)
 {
 	os << "Tipo:" << a.Tipo << endl;
 	os << "Danio:" << a.Danio << endl;
 	os << "Alcance: " << a.Alcance << endl;
 	return os;
+}
+
+cAtaque::~cAtaque()
+{
 }

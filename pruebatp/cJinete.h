@@ -27,6 +27,7 @@ private:
 public:
 	cJinete(string Nombre, string Apellido, string Apodo, string FecNac, string Caracteristicas, double Efectividad, int Fuerza);
 	string to_string();
+	void mostrarInfo(ostream& os) const;
 	double getEfectividad() const;
 	vector<cDragon*> getMisDragones();
 	void mostrarDragones();
