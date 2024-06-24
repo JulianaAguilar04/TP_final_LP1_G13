@@ -1,5 +1,4 @@
 #include "cVikingo.h"
-#include "cPersona.h"
 
 //constructor por parametro
 cVikingo::cVikingo(string Nombre, string Apellido, string Apodo, string FecNac, string Posicion, cDragon* Dragoncito, int Fuerza):cPersona(Nombre, Apellido, Apodo, FecNac, Fuerza) {
@@ -19,8 +18,21 @@ void cVikingo::mostrarInfo(ostream& os) const
 	os << "Fecha de nacimiento:" << FecNac << endl;
 	os << "Posicion:" << Posicion << endl;
 	os << "Fuerza:" << Fuerza << endl;
+	if (miDragon) {
+		os << "Dragon:" << miDragon->getNombre() << endl;
+	}
+	else {
+		os << "Sin dragon asignado" << endl;
+	}
 
 }
+
+ostream& operator<<(ostream& os, const cVikingo& v)
+{
+	v.mostrarInfo(os);
+	return os;
+}
+
 string cVikingo::getApellido()
 {
 	return Apellido;
@@ -52,12 +64,6 @@ vector<string> cVikingo::getdragonesMatados()
 {
 	return dragonesMatados;
 }
-/*
-void cVikingo::AtacarDragones()
-{
-	//completar
-}
-*/
 
 string cVikingo::to_string()
 {
@@ -98,10 +104,3 @@ cVikingo::~cVikingo()
 {
 }
 
-ostream& operator<<(ostream& os, cVikingo& v)
-{
-	/**os << "Posicion:" << v.Posicion << endl;
-	return os;*/
-	os << static_cast<cPersona&>(v) << ", Posicion: " << v.getPosicion();
-	return os;
-}

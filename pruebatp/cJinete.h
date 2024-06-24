@@ -27,10 +27,13 @@ private:
 public:
 	cJinete(string Nombre, string Apellido, string Apodo, string FecNac, string Caracteristicas, double Efectividad, int Fuerza);
 	string to_string();
+
+	void mostrarDragones() const;
 	void mostrarInfo(ostream& os) const;
+	friend ostream& operator<<(ostream& os, const cJinete& j);
+
 	double getEfectividad() const;
 	vector<cDragon*> getMisDragones();
-	void mostrarDragones();
 	void IncorporarDragon(cDragon* dragon);
 	/*
 	string getNombre();
@@ -44,7 +47,6 @@ public:
 	void setFecNac(string nuevaFecNac);
 	void setCaracteristicas(string nuevaCaracteristica);
 	*/
-	friend ostream& operator<<(ostream& os, const cJinete& j);
 	~cJinete();
 	
 };

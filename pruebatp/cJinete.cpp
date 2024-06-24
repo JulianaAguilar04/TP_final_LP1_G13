@@ -15,7 +15,7 @@ string cJinete::to_string()
     return ss.str();
 }
 
-void cJinete::mostrarDragones()
+void cJinete::mostrarDragones() const
 {
     cout << "El jinete:" << Nombre << "tiene estos dragones:" << endl;
     for (const auto& dragon : misDragones) {
@@ -36,6 +36,12 @@ void cJinete::mostrarInfo(ostream& os) const
     for (const auto& dragon : misDragones) {
         os << "- " << dragon->to_string() << std::endl;
     }
+}
+
+ostream& operator<<(ostream& os, const cJinete& j)
+{
+    j.mostrarInfo(os);
+    return os;
 }
 
 double cJinete::getEfectividad() const
@@ -112,10 +118,4 @@ string cJinete::to_string()
 }
 */
 
-ostream& operator<<(ostream& os, const cJinete& j)
-{
-    for (int i = 0; i++; i < 50) {
-        os << static_cast<const cPersona&>(j) << ", Dragones: " << j.misDragones[i];
-        return os;
-    }
-}
+

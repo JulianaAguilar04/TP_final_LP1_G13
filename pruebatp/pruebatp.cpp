@@ -19,64 +19,64 @@ void AsignarDragonesJinetes(vector<cJinete*>&Jinetes_isla, vector<cDragon*>&Drag
 void EscueladeDragones(vector<cJinete*> &Jinetes_isla, vector<cDragon*>&Dragones_isla);
 void EstudioDeDragones(vector<cDragon*>& Dragones_isla);
 void ListaDeDragones(const vector<cDragon*>& Dragones_isla);
-void EntrenarDragones(vector<cJinete*>& Jinetes_isla,vector<cDragon*>& Dragones_isla);
+void EntrenarDragones(vector<cJinete*>& Jinetes_isla);
 void BatalladeDragones(vector<cVikingo*>& Vikingos_isla, vector<cDragon*>&Dragones_isla);
 void ListaDePersonas(vector<cPersona*>& Personas_isla);
 
 int main()
 {
     //menu
-    cAtaque* Ataque1=new cAtaque("Fuego", "15", "14");
-    cAtaque* Ataque2=new cAtaque("Fuerza", "9", "13");
-    cAtaque* Ataque3=new cAtaque("Electricidad", "14", "12");
-    cAtaque* Ataque4=new cAtaque("Fuego", "17", "20");
+   
+    cAtaque* Ataque1 = new cAtaque("Fuego", "15", "14");
+    cAtaque* Ataque2 = new cAtaque("Fuerza", "9", "13");
+    cAtaque* Ataque3 = new cAtaque("Electricidad", "14", "12");
+    cAtaque* Ataque4 = new cAtaque("Fuego", "17", "20");
     cAtaque* Ataque5 = new cAtaque("Fuerza", "15", "14");
     cAtaque* Ataque6 = new cAtaque("Lava", "8", "14");
     cAtaque* Ataque7 = new cAtaque("Hielo", "50", "45");
 
     vector<cDragon*> Dragones_isla;
-    vector<string>Habilidades1 = { "Lanzar fuego", "Piel resistente a la lava"};
-    vector<string>Habilidades2 = { "Absorber electricidad", "Camuflaje en tormentas", "Usar rayos para impulsarse al volar"};
-    vector<string>Habilidades3 = { "Dientes afilados", "Resistencia fisica", "Dispara llamaradas de napalm"};
-    vector<string>Habilidades4 = { "Lanzar fuego" };
-    vector<string>Habilidades5 = { "Dientes retractiles", "Camuflaje de noche", "Velocidad supersonica", "Gran audicion"};
-    vector<string>Habilidades6 = { "Piel resistente", "Mandibula fuerte", "Fuego de rocas de su estomago" };
-    vector<string>Habilidades7 = { "Aliento de hielo", "Control sobre otros dragones" };
+    vector<string> Habilidades1 = { "Lanzar fuego", "Piel resistente a la lava" };
+    vector<string> Habilidades2 = { "Absorber electricidad", "Camuflaje en tormentas", "Usar rayos para impulsarse al volar" };
+    vector<string> Habilidades3 = { "Dientes afilados", "Resistencia fisica", "Dispara llamaradas de napalm" };
+    vector<string> Habilidades4 = { "Lanzar fuego" };
+    vector<string> Habilidades5 = { "Dientes retractiles", "Camuflaje de noche", "Velocidad supersonica", "Gran audicion" };
+    vector<string> Habilidades6 = { "Piel resistente", "Mandibula fuerte", "Fuego de rocas de su estomago" };
+    vector<string> Habilidades7 = { "Aliento de hielo", "Control sobre otros dragones" };
 
-    
     Dragones_isla.push_back(new cFogonera("Cola Quemante", "Poca paciencia", "Grande", "Naranja", false, 15, 15, Habilidades4, Ataque4));
-    Dragones_isla.push_back(new cFogonera("Muerte Roja", "Poca Paciencia", "Mediano", "Azul", true, 6 , 30 , Habilidades1, Ataque1));
+    Dragones_isla.push_back(new cFogonera("Muerte Roja", "Poca Paciencia", "Mediano", "Azul", true, 6, 30, Habilidades1, Ataque1));
     Dragones_isla.push_back(new cEmbestida("Chimuelo", "Inteligente", "Mediano", "Negro", true, 20, 18, Habilidades5, Ataque5));
     Dragones_isla.push_back(new cEmbestida("Skrill", "Agresivo", "Grande", "Violeta", false, 19, 10, Habilidades2, Ataque3));
     Dragones_isla.push_back(new cPiedra("Colmillo Afilado", "Juegueton", "Chico", "Celeste", true, 5, 17, Habilidades3, Ataque1));
-    Dragones_isla.push_back(new cPiedra("Gronckle", "Robusto", "Mediano", "Marron", true, 4, 20, Habilidades6,Ataque6));
-    Dragones_isla.push_back(new cMarejada("Salvajibestia", "Robusto", "Gigante", "Blanco", true, 6, 40,Habilidades7, Ataque7));
+    Dragones_isla.push_back(new cPiedra("Gronckle", "Robusto", "Mediano", "Marron", true, 4, 20, Habilidades6, Ataque6));
+    Dragones_isla.push_back(new cMarejada("Salvajibestia", "Robusto", "Gigante", "Blanco", true, 6, 40, Habilidades7, Ataque7));
 
-
-    vector <cPersona*> Personas_isla;
+    vector<cPersona*> Personas_isla;
     Personas_isla.push_back(new cVikingo("Juliana", "Aguilar", "Juju", "31-03-2004", "Guerrera", Dragones_isla[0], 32));
     Personas_isla.push_back(new cJinete("Elias", "Garcia", "Elu", "19-06-2002", "Lloron", 1.5, 20));
     Personas_isla.push_back(new cVikingo("Elias", "Garcia", "Elu", "19-06-2002", "Guerrero", Dragones_isla[4], 20));
-    Personas_isla.push_back(new cVikingo("Milagros", "Menendez Tuja", "Mili", "26-03-2002","Artesana", Dragones_isla[5], 41));
-    Personas_isla.push_back(new cJinete("Santiago", "Menendez Tuja", "Santi", "28-11-1998", "Estratega", 20 , 45));
-    
-    //me creo un vector de jinetes para utilizarlos en escuela de dragones
+    Personas_isla.push_back(new cVikingo("Milagros", "Menendez Tuja", "Mili", "26-03-2002", "Artesana", Dragones_isla[5], 41));
+    Personas_isla.push_back(new cJinete("Santiago", "Menendez Tuja", "Santi", "28-11-1998", "Estratega", 20, 45));
+
+    // me creo un vector de jinetes para utilizarlos en escuela de dragones
     vector<cJinete*> Jinetes_isla;
-    for (cPersona* persona : Jinetes_isla) {
+    for (cPersona* persona : Personas_isla) {
         cJinete* jinete = dynamic_cast<cJinete*>(persona);
         if (jinete != nullptr) {
             Jinetes_isla.push_back(jinete);
         }
     }
 
-    //asigno a cada jinete los dragones
+    // asigno a cada jinete los dragones
     AsignarDragonesJinetes(Jinetes_isla, Dragones_isla);
-    
+
+    // Mostrar información de jinetes
     for (const auto& jinete : Jinetes_isla) {
-        cout << jinete;
+        cout << *jinete << endl;
     }
 
-    //me creo un vector de vikingos para utilizarlos en batalla de dragones
+    // me creo un vector de vikingos para utilizarlos en batalla de dragones
     vector<cVikingo*> Vikingos_isla;
     for (cPersona* persona : Personas_isla) {
         cVikingo* vikingo = dynamic_cast<cVikingo*>(persona);
@@ -87,22 +87,8 @@ int main()
 
     // Mostrar información de vikingos
     for (const auto& vikingo : Vikingos_isla) {
-        cout << vikingo;
+        cout << *vikingo << endl;
     }
-
-/*
-    vector<std::string> habilidadesIniciales = { "volar rápido", "llamarada" };
-    cDragon dragon1("Furia", "Inteligente","Chico", "Negro", true,  300, 500, habilidadesIniciales, Ataque1);
-    cJinete entrenador1("Hipo", "Iuzchuk", "Ache", "23-11-2001", "Herrero", 1.5, 30); //nivel de fuerza?
-
-    dragon1.mostrarHabilidades();
-
-    dragon1.Entrenar("velocidad", entrenador1);
-    dragon1.Entrenar("resistencia", entrenador1);
-    dragon1.Entrenar("habilidades", entrenador1);
-
-    dragon1.mostrarHabilidades();
-*/
 
     int opcion;
     do {
@@ -135,7 +121,6 @@ int main()
         cout << endl;
     } while (opcion != 4);
 
-
     
     for (int i = 0; i < Dragones_isla.size(); i++) {
         delete Dragones_isla[i];
@@ -148,6 +133,7 @@ int main()
     for (int i = 0; i < Vikingos_isla.size(); i++) {
         delete Vikingos_isla[i];
     }
+
 
    return 0;
 }
@@ -207,7 +193,7 @@ void EscueladeDragones(vector<cJinete*>& Jinetes_isla, vector<cDragon*>& Dragone
             ListaDeDragones(Dragones_isla);
             break;
         case 3:
-            EntrenarDragones(Jinetes_isla,Dragones_isla);
+            EntrenarDragones(Jinetes_isla);
             break;
 
         case 4:
@@ -280,32 +266,16 @@ void ListaDeDragones(const vector<cDragon*>& Dragones_isla) {
     }
 }
 
-void EntrenarDragones(vector<cJinete*>& Jinetes_isla, vector<cDragon*>& Dragones_isla) {
+void EntrenarDragones(vector<cJinete*>& Jinetes_isla) {
 
-    vector<cJinete*>::iterator it_j = Jinetes_isla.begin();
-    vector<cDragon*>::iterator it_d = Dragones_isla.begin();
-
-    while (it_j != Jinetes_isla.end()) {
-        cJinete& JineteActual = **it_j;
-        while (it_d != Dragones_isla.end()) {
-            (*it_d)->Entrenar("Velocidad", JineteActual);
-            ++it_d;
-        }
-        ++it_j;
-        it_d = Dragones_isla.begin();
-    }
-
-    /*for (auto& dragon : Dragones_isla) {
-        if (dragon->getEstado()) {
-            dragon->Entrenar();
-            cout << "El dragon " << dragon->getNombre() << " ha sido entrenado." << endl;
-        }
-        else {
-            cout << "El dragon " << dragon->getNombre() << " no esta domado y no puede ser entrenado." << endl; xddd
-
+    for (cJinete* jinete : Jinetes_isla) {
+        //obtengo la lista de dragones del jinete
+        vector<cDragon*> dragones = jinete->getMisDragones();
+        for (cDragon* dragon : dragones) {
+            //entreno cada dragon de la lista del jinete
+            dragon->Entrenar("Velocidad", (*jinete));
         }
     }
-    */
 }
 
 
