@@ -73,10 +73,12 @@ int main()
     // asigno a cada jinete los dragones
     AsignarDragonesJinetes(Jinetes_isla, Dragones_isla);
 
+    /*
     // Mostrar información de jinetes
     for (const auto& jinete : Jinetes_isla) {
         cout << *jinete << endl;
     }
+    */
 
     // me creo un vector de vikingos para utilizarlos en batalla de dragones
     vector<cVikingo*> Vikingos_isla;
@@ -87,11 +89,12 @@ int main()
         }
     }
 
+    /*
     // Mostrar información de vikingos
     for (const auto& vikingo : Vikingos_isla) {
         cout << *vikingo << endl;
     }
-
+    */
 
     int opcion;
     do {
@@ -125,7 +128,7 @@ int main()
             break;
         }
         cout << endl;
-    } while (opcion != 4);
+    } while (opcion != 5);
 
     
     for (int i = 0; i < Dragones_isla.size(); i++) {
@@ -195,7 +198,7 @@ void AsignarDragonesJinetes(vector<cJinete*>& Jinetes_isla, vector<cDragon*>& Dr
 void EscueladeDragones(vector<cJinete*>& Jinetes_isla, vector<cDragon*>& Dragones_isla) {
     int opcion;
     do {
-        cout << "\nUSTED ESTA EN LA ESCUELA DE LA ISLA" << endl;
+        cout << "------ USTED ESTA EN LA ESCUELA DE LA ISLA ------" << endl;
         cout << "1) Estudio de dragones" << endl;
         cout << "2) Lista de dragones conocidos " << endl;
         cout << "3) Entrenar " << endl;
@@ -331,10 +334,6 @@ void EntrenarDragones(vector<cJinete*>& Jinetes_isla) {
             cout << "El vikingo " << vikingo->getNombre() << " ha derrotado al dragon " << dragonMalo->getNombre() << "!" << endl;
             vikingo->registrarDragonMatado(dragonMalo->getNombre());
 
-            // Registrar el dragón en la lista de dragones matados por todos los jinetes y vikingos
-            for (auto jinete : Vikingos_isla) {
-                jinete->registrarDragonMatado(dragonMalo->getNombre());
-            }
             // Eliminar el dragón de la lista de dragones
             auto it = find(Dragones_isla.begin(), Dragones_isla.end(), dragonMalo);
             if (it != Dragones_isla.end()) {

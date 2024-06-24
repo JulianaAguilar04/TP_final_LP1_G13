@@ -59,7 +59,7 @@ string cDragon::to_string()
     ss << "-Caracteristicas:" << Caracteristica << endl;
     ss << "-Tamanio:" << Tamano << endl;
     ss << "-Color:" << Color << endl;
-    ss << "-Estado:" << Estado << endl;
+    ss << "-Estado:" << ((Estado == false) ? "No esta domado" : "Esta domado") << endl;
     ss << "-Ataque:\n" << FormadeAtaque->to_string() << endl;
     return ss.str();
 }
