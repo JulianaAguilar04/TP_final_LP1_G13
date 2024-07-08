@@ -142,7 +142,7 @@ int main()
     for (int i = 0; i < Vikingos_isla.size(); i++) {
         delete Vikingos_isla[i];
     }
-
+    // falta delete ataque 
 
    return 0;
 }
