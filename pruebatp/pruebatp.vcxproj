@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="cAtaque.cpp" />
     <ClCompile Include="cBatalladeDragones.cpp" />
+    <ClCompile Include="cCarreradeDragones.cpp" />
     <ClCompile Include="cDragon.cpp" />
     <ClCompile Include="cEmbestida.cpp" />
     <ClCompile Include="cEscueladeDragones.cpp" />
@@ -145,6 +146,7 @@
   <ItemGroup>
     <ClInclude Include="cAtaque.h" />
     <ClInclude Include="cBatalladeDragones.h" />
+    <ClInclude Include="cCarreradeDragones.h" />
     <ClInclude Include="cDragon.h" />
     <ClInclude Include="cEmbestida.h" />
     <ClInclude Include="cEscueladeDragones.h" />
