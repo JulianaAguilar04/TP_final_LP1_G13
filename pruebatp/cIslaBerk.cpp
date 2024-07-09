@@ -49,4 +49,5 @@ int cIslaBerk::mainBerk()
 cIslaBerk::~cIslaBerk()
 {
     delete Escuela;
+    delete Batalla;
 }
