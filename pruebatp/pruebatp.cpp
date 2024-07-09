@@ -11,18 +11,20 @@
 #include "cPiedra.h"
 #include "cMarejada.h"
 #include "cRastreadora.h"
+#include "cIslaBerk.h"
+#include "cEscueladeDragones.h" 
 
 using namespace std;
 
 void AsignarDragonesJinetes(vector<cJinete*>&Jinetes_isla, vector<cDragon*>&Dragones_isla);
 
-void EscueladeDragones(vector<cJinete*> &Jinetes_isla, vector<cDragon*>&Dragones_isla);
-void EstudioDeDragones(vector<cDragon*>& Dragones_isla);
-void ListaDeDragones(const vector<cDragon*>& Dragones_isla);
-void EntrenarDragones(vector<cJinete*>& Jinetes_isla);
-void BatalladeDragones(vector<cVikingo*>& Vikingos_isla, vector<cDragon*>&Dragones_isla);
-void ListaDePersonas(vector<cPersona*>& Personas_isla);
-void MostrarDragonesMatados(const vector<cVikingo*>& Vikingos_isla);
+//void EscueladeDragones(vector<cJinete*> &Jinetes_isla, vector<cDragon*>&Dragones_isla);
+//void EstudioDeDragones(vector<cDragon*>& Dragones_isla);
+//void ListaDeDragones(const vector<cDragon*>& Dragones_isla);
+//void EntrenarDragones(vector<cJinete*>& Jinetes_isla);
+//void BatalladeDragones(vector<cVikingo*>& Vikingos_isla, vector<cDragon*>&Dragones_isla);
+//void ListaDePersonas(vector<cPersona*>& Personas_isla);
+//void MostrarDragonesMatados(const vector<cVikingo*>& Vikingos_isla);
 
 int main()
 {
@@ -96,39 +98,10 @@ int main()
     }
     */
 
-    int opcion;
-    do {
-        cout << "------BIENVENIDO A LA ISLA DE BERK------" << endl;
-        cout << "1) Escuela de dragones" << endl;
-        cout << "2) Batalla de dragones" << endl;
-        cout << "3) Lista de habitantes de la isla" << endl;
-        cout << "4) Historial de logros de vikingos " << endl; 
-        cout << "5) Salir" << endl;
-        cin >> opcion;
 
-        switch (opcion)
-        {
-        case 1:
-            EscueladeDragones(Jinetes_isla, Dragones_isla);
-            break;
-        case 2:
-            BatalladeDragones(Vikingos_isla, Dragones_isla);
-            break;
-        case 3:
-            ListaDePersonas(Personas_isla);
-            break;
-        case 4: 
-            MostrarDragonesMatados(Vikingos_isla);
-        case 5:
-            cout << "Muchas gracias por visitar la Isla de Berk" << endl;
-            break;
-
-        default:
-            cout << "Opcion invalida: Intentelo de nuevo" << endl;
-            break;
-        }
-        cout << endl;
-    } while (opcion != 5);
+    //PRUEBOOOOO
+    cIslaBerk ISLA(Jinetes_isla, Dragones_isla, Vikingos_isla);
+    ISLA.mainBerk();
 
     
     for (int i = 0; i < Dragones_isla.size(); i++) {
@@ -142,24 +115,12 @@ int main()
     for (int i = 0; i < Vikingos_isla.size(); i++) {
         delete Vikingos_isla[i];
     }
-    // falta delete ataque 
+    
+    delete Ataque1, Ataque2, Ataque3, Ataque4, Ataque5, Ataque6, Ataque7;
 
    return 0;
 }
 //fin del main
-
-// funcion imprimir personas 
-void ListaDePersonas(vector<cPersona*>& Personas_isla) {
-
-    //imprimo todas las personas de la isla
-    vector<cPersona*>::iterator it_p = Personas_isla.begin();
-
-    while (it_p != Personas_isla.end()) {
-        cout << *(*it_p) << endl;
-        it_p++;
-    }
-
-}
 
 //funcion asignar dragones
 void AsignarDragonesJinetes(vector<cJinete*>& Jinetes_isla, vector<cDragon*>& Dragones_isla) {
@@ -194,158 +155,21 @@ void AsignarDragonesJinetes(vector<cJinete*>& Jinetes_isla, vector<cDragon*>& Dr
 
 }
 
-//--------------------------------------------------------------------------------ESCUELA DE DRAGONES
-void EscueladeDragones(vector<cJinete*>& Jinetes_isla, vector<cDragon*>& Dragones_isla) {
-    int opcion;
-    do {
-        cout << "------ USTED ESTA EN LA ESCUELA DE LA ISLA ------" << endl;
-        cout << "1) Estudio de dragones" << endl;
-        cout << "2) Lista de dragones conocidos " << endl;
-        cout << "3) Entrenar " << endl;
-        cout << "4) Salir" << endl;
-        cin >> opcion;
-
-        switch (opcion)
-        {
-        case 1:
-            EstudioDeDragones(Dragones_isla);
-            break;
-        case 2:
-            ListaDeDragones(Dragones_isla);
-            break;
-        case 3:
-            EntrenarDragones(Jinetes_isla);
-            break;
-
-        case 4:
-            cout << "Saliendo de la Escuela de Dragones..." << endl;
-            break;
-
-        default:
-            cout << "Opcion invalida: Vuelva a intentarlo" << endl;
-            break;
-        }
-
-    } while (opcion != 4);
-}
 
 
-void EstudioDeDragones(vector<cDragon*>& Dragones_isla) {
-    string nombre, caracteristica, tamano, color;
-    int velocidad=0, resistencia=0, hab=0;
-    bool estado;
-    char domado;
-    vector<string> v_habilidades;
+/*
+// funcion imprimir personas 
+void ListaDePersonas(vector<cPersona*>& Personas_isla) {
 
-    cout << "Usted ha encontrado un nuevo dragon!" << endl;
-    cout << "Ingrese el nombre del dragon: ";
-    cin >> nombre;
-    cout << "Ingrese las caracteristicas del dragon: ";
-    cin >> caracteristica;
-    cout << "Ingrese el tamano del dragon: ";
-    cin >> tamano;
-    cout << "Ingrese el color del dragon: ";
-    cin >> color;
-    cout << "El dragon esta domado? (s/n): ";
-    cin >> domado;
-    estado = (domado == 's' || domado == 'S');
-    cout << "Ingrese la velocidad del dragon:" << endl;
-    cin >> velocidad;
-    cout << "Ingrese la resistencia del dragon:" << endl;
-    cin >> resistencia;
-    cout << "HABILIDADES" << endl;
-    cout << "Cantidad de habilidades:" << endl;
-    cin >> hab;
+    //imprimo todas las personas de la isla
+    vector<cPersona*>::iterator it_p = Personas_isla.begin();
 
-    v_habilidades.reserve(hab); //reservo espacio para la cantidades de habilidades
-    for (int i = 0; i < hab; i++)
-    {
-        string habilidad;
-        cout << "Ingrese habilidad:" << (i+1) <<":" << endl;
-        cin >> habilidad;
-        v_habilidades.push_back(habilidad);
+    while (it_p != Personas_isla.end()) {
+        cout << *(*it_p) << endl;
+        it_p++;
     }
 
-    string tipoAtaque, danioAtaque, alcanceAtaque;
-    cout << "Ingrese el tipo de ataque del dragón: ";
-    cin >> tipoAtaque;
-    cout << "Ingrese el daño del ataque del dragón: ";
-    cin >> danioAtaque;
-    cout << "Ingrese el alcance del ataque del dragón: ";
-    cin >> alcanceAtaque;
-    cAtaque* ataque = new cAtaque(tipoAtaque, danioAtaque, alcanceAtaque);
-
-    // Crear el nuevo objeto cDragon y agregarlo al vector
-    Dragones_isla.push_back(new cDragon(nombre, caracteristica, tamano, color, estado, velocidad, resistencia, v_habilidades, ataque));
-    cout << "Dragon agregado exitosamente!" << endl;
 }
-
-void ListaDeDragones(const vector<cDragon*>& Dragones_isla) {
-    cout << "\nLista de Dragones Conocidos:" << endl;
-    for (const auto& dragon : Dragones_isla) {
-        cout << dragon->to_string();
-    }
-}
-
-void EntrenarDragones(vector<cJinete*>& Jinetes_isla) {
-
-    for (cJinete* jinete : Jinetes_isla) {
-        //obtengo la lista de dragones del jinete
-        vector<cDragon*> dragones = jinete->getMisDragones();
-        for (cDragon* dragon : dragones) {
-            //entreno cada dragon de la lista del jinete
-            dragon->Entrenar("Velocidad", (*jinete));
-            dragon->Entrenar("Resistencia", (*jinete));
-            dragon->Entrenar("Habilidades", (*jinete));
-            cout << endl;
-        }
-        cout << endl;
-    }
-}
-
-
-    // BATALLA DE DRAGONES ------------------------------------------------------------------
-    // Implementación de la función BatalladeDragones
-    void BatalladeDragones(vector<cVikingo*>&Vikingos_isla, vector<cDragon*>&Dragones_isla) {
-        cout << "La aldea esta en peligro! Preparense para la batalla contra los dragones malos!" << endl;
-
-        // Filtrar dragones malos (no domados)
-        vector<cDragon*> dragonesMalos;
-        for (auto dragon : Dragones_isla) {
-            if (!dragon->getEstado()) {
-                dragonesMalos.push_back(dragon);
-            }
-        }
-
-        // Verificar si hay dragones malos para combatir
-        if (dragonesMalos.empty()) {
-            cout << "No hay dragones malos para combatir." << endl;
-            return;
-        }
-
-        // Seleccionar aleatoriamente un vikingo y un dragón malo
-        cVikingo* vikingo = Vikingos_isla[rand() % Vikingos_isla.size()];
-        cDragon* dragonMalo = dragonesMalos[rand() % dragonesMalos.size()];
-
-        cout << "El vikingo " << vikingo->getNombre() << " se enfrenta al dragon " << dragonMalo->getNombre() << "." << endl;
-
-        // Comparar fuerza del vikingo con resistencia del dragón
-        if (vikingo->getFuerza() >= dragonMalo->getResistencia()) {
-            cout << "El vikingo " << vikingo->getNombre() << " ha derrotado al dragon " << dragonMalo->getNombre() << "!" << endl;
-            vikingo->registrarDragonMatado(dragonMalo->getNombre());
-
-            // Eliminar el dragón de la lista de dragones
-            auto it = find(Dragones_isla.begin(), Dragones_isla.end(), dragonMalo);
-            if (it != Dragones_isla.end()) {
-                delete* it;
-                Dragones_isla.erase(it);
-            }
-        }
-        else {
-            cout << "El dragon " << dragonMalo->getNombre() << " ha vencido al vikingo " << vikingo->getNombre() << "." << endl;
-        }
-    }
-
     // Implementación de la función MostrarDragonesMatados
     void MostrarDragonesMatados(const vector<cVikingo*>& Vikingos_isla) {
 
@@ -355,4 +179,4 @@ void EntrenarDragones(vector<cJinete*>& Jinetes_isla) {
             vikingo->mostrarDragonesMatados();
         }
     }
-
+*/

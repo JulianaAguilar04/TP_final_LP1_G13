@@ -128,9 +128,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="cAtaque.cpp" />
+    <ClCompile Include="cBatalladeDragones.cpp" />
     <ClCompile Include="cDragon.cpp" />
     <ClCompile Include="cEmbestida.cpp" />
+    <ClCompile Include="cEscueladeDragones.cpp" />
     <ClCompile Include="cFogonera.cpp" />
+    <ClCompile Include="cIslaBerk.cpp" />
     <ClCompile Include="cJinete.cpp" />
     <ClCompile Include="cMarejada.cpp" />
     <ClCompile Include="cPersona.cpp" />
@@ -141,9 +144,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cAtaque.h" />
+    <ClInclude Include="cBatalladeDragones.h" />
     <ClInclude Include="cDragon.h" />
     <ClInclude Include="cEmbestida.h" />
+    <ClInclude Include="cEscueladeDragones.h" />
     <ClInclude Include="cFogonera.h" />
+    <ClInclude Include="cIslaBerk.h" />
     <ClInclude Include="cJinete.h" />
     <ClInclude Include="cMarejada.h" />
     <ClInclude Include="cPersona.h" />
