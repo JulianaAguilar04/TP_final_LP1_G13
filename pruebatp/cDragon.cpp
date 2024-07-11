@@ -17,10 +17,10 @@ string cDragon::getColor()
 {
     return Color;
 }
-int cDragon::getResistencia()
+/* cDragon::getResistencia()
 {
-    return Resistencia;
-}
+   return Resistencia;
+}*/
 bool cDragon::getEstado()
 {
     return Estado;
@@ -74,8 +74,10 @@ void cDragon::Baja(vector<cDragon*>& Dragones_isla)
 
 }*/
 
+/*
 void cDragon::Entrenar(const string &tipoEntrenamiento, const cJinete& Jinete)
 {
+   
     double efectividad = Jinete.getEfectividad();
     int incremento = static_cast<int>(efectividad * NivelEntrenamiento);
 
@@ -115,6 +117,7 @@ void cDragon::DesarrollarEstrategia(const string& tipo) {
         cout << Nombre << " ha desarrollado una nueva estrategia de defensa: " << nuevaEstrategia << endl;
     }
 }
+*/
 
 void cDragon::mostrarHabilidades()
 {

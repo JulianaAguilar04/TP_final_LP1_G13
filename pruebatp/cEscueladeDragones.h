@@ -4,6 +4,9 @@
 #include "cJinete.h"
 #include "cDragon.h"
 #include "cVikingo.h"
+#include "cFogonera.h"
+#include "cMarejada.h"
+#include "cEmbestida.h"
 using namespace std;
 
 

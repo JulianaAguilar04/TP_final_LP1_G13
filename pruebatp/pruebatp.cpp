@@ -18,20 +18,12 @@ using namespace std;
 
 void AsignarDragonesJinetes(vector<cJinete*>&Jinetes_isla, vector<cDragon*>&Dragones_isla);
 
-//void EscueladeDragones(vector<cJinete*> &Jinetes_isla, vector<cDragon*>&Dragones_isla);
-//void EstudioDeDragones(vector<cDragon*>& Dragones_isla);
-//void ListaDeDragones(const vector<cDragon*>& Dragones_isla);
-//void EntrenarDragones(vector<cJinete*>& Jinetes_isla);
-//void BatalladeDragones(vector<cVikingo*>& Vikingos_isla, vector<cDragon*>&Dragones_isla);
-//void ListaDePersonas(vector<cPersona*>& Personas_isla);
-//void MostrarDragonesMatados(const vector<cVikingo*>& Vikingos_isla);
-
 int main()
 {
     //menu
    
     cAtaque* Ataque1 = new cAtaque("Fuego", "15", "14");
-    cAtaque* Ataque2 = new cAtaque("Fuerza", "9", "13");
+    cAtaque* Ataque2 = new cAtaque("Veneno", "14", "10");
     cAtaque* Ataque3 = new cAtaque("Electricidad", "14", "12");
     cAtaque* Ataque4 = new cAtaque("Fuego", "17", "20");
     cAtaque* Ataque5 = new cAtaque("Fuerza", "15", "14");
@@ -41,19 +33,18 @@ int main()
     vector<cDragon*> Dragones_isla;
     vector<string> Habilidades1 = { "Lanzar fuego", "Piel resistente a la lava" };
     vector<string> Habilidades2 = { "Absorber electricidad", "Camuflaje en tormentas", "Usar rayos para impulsarse al volar" };
-    vector<string> Habilidades3 = { "Dientes afilados", "Resistencia fisica", "Dispara llamaradas de napalm" };
+    vector<string> Habilidades3 = { "Nadador veloz y sigiloso", "Posee veneno"};
     vector<string> Habilidades4 = { "Lanzar fuego" };
     vector<string> Habilidades5 = { "Dientes retractiles", "Camuflaje de noche", "Velocidad supersonica", "Gran audicion" };
     vector<string> Habilidades6 = { "Piel resistente", "Mandibula fuerte", "Fuego de rocas de su estomago" };
     vector<string> Habilidades7 = { "Aliento de hielo", "Control sobre otros dragones" };
 
-    Dragones_isla.push_back(new cFogonera("Cola Quemante", "Poca paciencia", "Grande", "Naranja", false, 15, 15, Habilidades4, Ataque4));
-    Dragones_isla.push_back(new cFogonera("Muerte Roja", "Poca Paciencia", "Mediano", "Azul", true, 6, 30, Habilidades1, Ataque1));
-    Dragones_isla.push_back(new cEmbestida("Chimuelo", "Inteligente", "Mediano", "Negro", true, 20, 18, Habilidades5, Ataque5));
-    Dragones_isla.push_back(new cEmbestida("Skrill", "Agresivo", "Grande", "Violeta", false, 19, 10, Habilidades2, Ataque3));
-    Dragones_isla.push_back(new cPiedra("Colmillo Afilado", "Juegueton", "Chico", "Celeste", true, 5, 17, Habilidades3, Ataque1));
-    Dragones_isla.push_back(new cPiedra("Gronckle", "Robusto", "Mediano", "Marron", true, 4, 20, Habilidades6, Ataque6));
-    Dragones_isla.push_back(new cMarejada("Salvajibestia", "Robusto", "Gigante", "Blanco", true, 6, 40, Habilidades7, Ataque7));
+    Dragones_isla.push_back(new cFogonera("Cola Quemante", "Poca paciencia", "Grande", "Naranja", false, Habilidades4, Ataque4, 10, 10));
+    Dragones_isla.push_back(new cFogonera("Muerte Roja", "Poca Paciencia", "Mediano", "Azul", true, Habilidades1, Ataque1, 12, 12));
+    Dragones_isla.push_back(new cEmbestida("Chimuelo", "Inteligente", "Mediano", "Negro", true, 20, 18, 30, Habilidades5, Ataque5));
+    Dragones_isla.push_back(new cEmbestida("Skrill", "Agresivo", "Grande", "Violeta", false, 19, 10,20, Habilidades2, Ataque3));
+    Dragones_isla.push_back(new cMarejada("Salvajibestia", "Robusto", "Gigante", "Blanco", true, Habilidades7, Ataque7, 10));
+    Dragones_isla.push_back(new cMarejada("Scaldaron", "Redondo", "Grande", "Verde", true, Habilidades3, Ataque2, 15));
 
     vector<cPersona*> Personas_isla;
     Personas_isla.push_back(new cVikingo("Juliana", "Aguilar Iuzchuk", "Juju", "31-03-2004", "Guerrera", Dragones_isla[0], 32));
@@ -72,8 +63,14 @@ int main()
         }
     }
 
+    //me copio los dragones en otro vector para la asignación de dragones
+    vector<cDragon*> vectorDragones(Dragones_isla);
+    for (const auto& dragon : vectorDragones) {
+        cout << *dragon << endl;
+    }
+
     // asigno a cada jinete los dragones
-    AsignarDragonesJinetes(Jinetes_isla, Dragones_isla);
+    AsignarDragonesJinetes(Jinetes_isla, vectorDragones);
 
     /*
     // Mostrar información de jinetes
@@ -102,11 +99,15 @@ int main()
     //PRUEBOOOOO
     cIslaBerk ISLA(Jinetes_isla, Dragones_isla, Vikingos_isla);
     ISLA.mainBerk();
-
+   
     
-    for (int i = 0; i < Dragones_isla.size(); i++) {
-        delete Dragones_isla[i];
+    for (int i = 0; i < vectorDragones.size(); i++) {
+        delete vectorDragones[i];
     }
+
+   /* for (int i = 0; i < Dragones_isla.size(); i++) {
+        delete Dragones_isla[i];
+    }*/
 
     for (int i = 0; i < Jinetes_isla.size(); i++) {
         delete Jinetes_isla[i];

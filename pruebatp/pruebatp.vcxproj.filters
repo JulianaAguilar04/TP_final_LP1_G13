@@ -39,13 +39,7 @@
     <ClCompile Include="cEmbestida.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="cPiedra.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="cMarejada.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="cRastreadora.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="cIslaBerk.cpp">
@@ -83,13 +77,7 @@
     <ClInclude Include="cEmbestida.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="cPiedra.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="cMarejada.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="cRastreadora.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="cIslaBerk.h">

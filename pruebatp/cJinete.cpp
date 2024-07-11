@@ -1,12 +1,5 @@
 #include "cJinete.h"
 
-//constructor por parametros
-cJinete::cJinete(string Nombre, string Apellido, string Apodo, string FecNac, string Caracteristicas, double Efectividad, int Fuerza):cPersona (Nombre, Apellido, Apodo, FecNac, Fuerza)
-{
-    this->Caracteristicas = Caracteristicas;
-    this->Efectividad = Efectividad;
-}
-
 string cJinete::to_string()
 {
     stringstream ss;

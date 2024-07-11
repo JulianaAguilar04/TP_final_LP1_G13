@@ -96,7 +96,7 @@ void cEscueladeDragones::EstudioDeDragones(vector<cDragon*> &Dragones_isla)
     cAtaque* ataque = new cAtaque(tipoAtaque, danioAtaque, alcanceAtaque);
 
     // Crear el nuevo objeto cDragon y agregarlo al vector
-    Dragones_isla.push_back(new cDragon(nombre, caracteristica, tamano, color, estado, velocidad, resistencia, v_habilidades, ataque));
+    Dragones_isla.push_back(new cDragon(nombre, caracteristica, tamano, color, estado, /*velocidad, resistencia, */ v_habilidades, ataque));
     cout << "Dragon agregado exitosamente!" << endl;
 }
 
@@ -115,10 +115,22 @@ void cEscueladeDragones::EntrenarDragones(vector<cJinete*>& Jinetes_isla)
         vector<cDragon*> dragones = jinete->getMisDragones();
         for (cDragon* dragon : dragones) {
             //entreno cada dragon de la lista del jinete
-            dragon->Entrenar("Velocidad", (*jinete));
-            dragon->Entrenar("Resistencia", (*jinete));
-            dragon->Entrenar("Habilidades", (*jinete));
-            cout << endl;
+            //verifico que clase de dragon es y llamo a su metodo de entrenar correspondiente
+            if (cFogonera* fogonera = dynamic_cast<cFogonera*>(dragon)) {
+                fogonera->EntrenarFogonera("Resistencia al calor", (*jinete));
+                fogonera->EntrenarFogonera("Control de fuego", (*jinete));
+                cout << endl;
+            }
+            else if (cEmbestida* embestida = dynamic_cast<cEmbestida*>(dragon)) {
+                embestida->EntrenarEmbestida("Obstaculos", (*jinete));
+                embestida->EntrenarEmbestida("Carrera de velocidad", (*jinete));
+                embestida->EntrenarEmbestida("Fuerza de impacto", (*jinete));
+                cout << endl;
+            }
+            else if (cMarejada* marejada = dynamic_cast<cMarejada*>(dragon)) {
+                marejada->EntrenarMarejada("Diferentes terrenos", (*jinete));
+                cout << endl;
+            }
         }
         cout << endl;
     }

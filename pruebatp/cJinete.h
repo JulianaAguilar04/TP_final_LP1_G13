@@ -7,15 +7,6 @@
 
 class cDragon;
 
-using namespace std;
-enum eResultadoEntrenamiento {
-	NoAsistio,
-	Aprobado,
-	Desaprobado,
-	Primero,
-	Ultimo,
-};
-
 class cJinete:public cPersona
 {
 private:
@@ -25,7 +16,7 @@ private:
 	//eResultadoEntrenamiento ResultadoEntrenamiento;
 
 public:
-	cJinete(string Nombre, string Apellido, string Apodo, string FecNac, string Caracteristicas, double Efectividad, int Fuerza);
+	cJinete(string Nombre, string Apellido, string Apodo, string FecNac, string Caracteristicas, double Efectividad, int Fuerza) : cPersona(Nombre, Apellido, Apodo, FecNac, Fuerza), Caracteristicas(Caracteristicas), Efectividad(Efectividad) {};
 	string to_string();
 
 	void mostrarDragones() const;

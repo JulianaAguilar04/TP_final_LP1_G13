@@ -138,8 +138,6 @@
     <ClCompile Include="cJinete.cpp" />
     <ClCompile Include="cMarejada.cpp" />
     <ClCompile Include="cPersona.cpp" />
-    <ClCompile Include="cPiedra.cpp" />
-    <ClCompile Include="cRastreadora.cpp" />
     <ClCompile Include="cVikingo.cpp" />
     <ClCompile Include="pruebatp.cpp" />
   </ItemGroup>
@@ -155,8 +153,6 @@
     <ClInclude Include="cJinete.h" />
     <ClInclude Include="cMarejada.h" />
     <ClInclude Include="cPersona.h" />
-    <ClInclude Include="cPiedra.h" />
-    <ClInclude Include="cRastreadora.h" />
     <ClInclude Include="cVikingo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

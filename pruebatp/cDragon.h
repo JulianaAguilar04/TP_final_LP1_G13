@@ -3,9 +3,8 @@
 #include <sstream>
 #include <string>
 #include "cAtaque.h"
+#include "cJinete.h"
 using namespace std;
-
-class cJinete;
 
 class cDragon
 {
@@ -15,8 +14,8 @@ protected:
 	string Tamano;
 	string Color;
 	bool Estado;
-	int Velocidad=0;
-	int Resistencia=0;
+	//int Velocidad=0;
+	//int Resistencia=0;
 	vector <string> Habilidades; 
 	vector<string> EstrategiasAtaque;
 	vector<string> EstrategiasDefensa;
@@ -26,7 +25,7 @@ protected:
 
 public:
 	//constructor por parametros 
-	cDragon(string Nombre, string Caracteristica, string Tamano, string Color, bool Estado, int Velocidad, int Resistencia, vector<string>& Habilidades, cAtaque* miAtaque) : Nombre(Nombre), Caracteristica(Caracteristica), Tamano(Tamano), Color(Color), Estado(Estado), Velocidad(Velocidad), Resistencia(Resistencia), Habilidades(Habilidades), NivelEntrenamiento(1), FormadeAtaque(miAtaque) {};
+	cDragon(string Nombre, string Caracteristica, string Tamano, string Color, bool Estado, /*int Velocidad, int Resistencia,*/ vector<string>& Habilidades, cAtaque* miAtaque) : Nombre(Nombre), Caracteristica(Caracteristica), Tamano(Tamano), Color(Color), Estado(Estado), /*Velocidad(Velocidad), Resistencia(Resistencia),*/ Habilidades(Habilidades), NivelEntrenamiento(1), FormadeAtaque(miAtaque) {};
 	//constructor por copia
 	cDragon(cDragon& Dragoncito);
 	string getNombre();
@@ -43,12 +42,12 @@ public:
 	bool Domado();							//funcion que se pide
 	string to_string();
 	friend ostream& operator<<(ostream& s, cDragon& d);
-	void DesarrollarEstrategia(const string& tipo);
+	//void DesarrollarEstrategia(const string& tipo);
 	// void AltaDragon(cDragon *dragon); ???
-	void Entrenar(const string &tipoEntrenamiento, const cJinete &Jinete);	//funcion que se pide
+	//void Entrenar(const string &tipoEntrenamiento, const cJinete &Jinete);	//funcion que se pide
 	void mostrarHabilidades();  
 	void Baja(vector<cDragon*> &Dragones_isla);  //funcion que se pide
-	~cDragon();
+	virtual ~cDragon();
 };
 
 
