@@ -1,6 +1,6 @@
 #include "cMarejada.h"
 
-void cMarejada::EntrenarMarejada(string tipoEntrenamiento, cJinete& jinete)
+void cMarejada::Entrenar(const string tipoEntrenamiento,const cJinete& jinete)
 {
     double efectividad = jinete.getEfectividad();
     int incremento = static_cast<int>(efectividad * NivelEntrenamiento);
@@ -10,13 +10,13 @@ void cMarejada::EntrenarMarejada(string tipoEntrenamiento, cJinete& jinete)
         cout << Nombre << "ha mejorado su adaptabilidad en: " << incremento << ". Su adaptabilidad ahora es de:" << adaptabilidad << endl;
     }
     if (Estado) {
-        DesarrollarEstrategiaMarejada("Ataque");
-        DesarrollarEstrategiaMarejada("Defensa");
+        DesarrollarEstrategia("Ataque");
+        DesarrollarEstrategia("Defensa");
     }
     NivelEntrenamiento++;
 }
 
-void cMarejada::DesarrollarEstrategiaMarejada(const string& tipo)
+void cMarejada::DesarrollarEstrategia(const string& tipo)
 {
     if (tipo == "Ataque") { //hago random que estrategia desarrolla
         string nuevaEstrategia = "Estrategia de ataque:" + std::to_string(EstrategiasAtaque.size() + 1);
@@ -28,5 +28,9 @@ void cMarejada::DesarrollarEstrategiaMarejada(const string& tipo)
         EstrategiasDefensa.push_back(nuevaEstrategia);
         cout << Nombre << "ha desarrollado una nueva estrategia de defensa:" << nuevaEstrategia << endl;
     }
+}
+
+cMarejada::~cMarejada()
+{
 }
 

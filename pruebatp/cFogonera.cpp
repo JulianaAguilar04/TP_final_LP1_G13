@@ -1,6 +1,6 @@
 #include "cFogonera.h"
 
-void cFogonera::EntrenarFogonera(string tipoEntrenamiento, cJinete& jinete)
+void cFogonera::Entrenar(const string tipoEntrenamiento, const cJinete& jinete)
 {
     double efectividad = jinete.getEfectividad();
     int incremento = static_cast<int>(efectividad * NivelEntrenamiento);
@@ -15,8 +15,8 @@ void cFogonera::EntrenarFogonera(string tipoEntrenamiento, cJinete& jinete)
     }
     //aca va lo de habilidades
     if (Estado) {
-        DesarrollarEstrategiaFogonera("Ataque");
-        DesarrollarEstrategiaFogonera("Defensa");
+        DesarrollarEstrategia("Ataque");
+        DesarrollarEstrategia("Defensa");
     }
     NivelEntrenamiento++;
 }
@@ -50,7 +50,7 @@ double efectividad = Jinete.getEfectividad();
     NivelEntrenamiento++;
 */
 
-void cFogonera::DesarrollarEstrategiaFogonera(const string& tipo)
+void cFogonera::DesarrollarEstrategia(const string& tipo)
 {
     if (tipo == "Ataque") { //hago random que estrategia desarrolla
         string nuevaEstrategia = "Estrategia de ataque:" + std::to_string(EstrategiasAtaque.size()+1);
@@ -62,6 +62,10 @@ void cFogonera::DesarrollarEstrategiaFogonera(const string& tipo)
         EstrategiasDefensa.push_back(nuevaEstrategia);
         cout << Nombre << "ha desarrollado una nueva estrategia de defensa:" << nuevaEstrategia << endl;
     }
+}
+
+cFogonera::~cFogonera()
+{
 }
 
 /*

@@ -4,8 +4,7 @@
 #include <string>
 #include <vector>
 #include "cPersona.h"
-
-class cDragon;
+#include "cDragon.h"
 
 class cJinete:public cPersona
 {

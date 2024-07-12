@@ -52,12 +52,15 @@ void cEscueladeDragones::MOSTRAR()
 void cEscueladeDragones::EstudioDeDragones(vector<cDragon*> &Dragones_isla)
 {
     string nombre, caracteristica, tamano, color;
-    int velocidad = 0, resistencia = 0, hab = 0;
+    int velocidad = 0, resistencia = 0, hab = 0, clase=0;
     bool estado;
     char domado;
     vector<string> v_habilidades;
 
     cout << "Usted ha encontrado un nuevo dragon!" << endl;
+    cout << "¿A que clase pertenece este nuevo dragon?" << endl;
+    cout << "1) Fogonera\n2)Embestida\n3)Marejada" << endl;
+    cin >> clase;
     cout << "Ingrese el nombre del dragon: ";
     cin >> nombre;
     cout << "Ingrese las caracteristicas del dragon: ";
@@ -96,7 +99,13 @@ void cEscueladeDragones::EstudioDeDragones(vector<cDragon*> &Dragones_isla)
     cAtaque* ataque = new cAtaque(tipoAtaque, danioAtaque, alcanceAtaque);
 
     // Crear el nuevo objeto cDragon y agregarlo al vector
-    Dragones_isla.push_back(new cDragon(nombre, caracteristica, tamano, color, estado, /*velocidad, resistencia, */ v_habilidades, ataque));
+    if(clase == 1)
+    Dragones_isla.push_back(new cFogonera(nombre, caracteristica, tamano, color, estado, /*velocidad, resistencia, */ v_habilidades, ataque, 20, 20));
+    if (clase == 2)
+        Dragones_isla.push_back(new cEmbestida(nombre, caracteristica, tamano, color, estado, 20, 20, 20, v_habilidades, ataque));
+    if (clase == 3)
+        Dragones_isla.push_back(new cMarejada(nombre, caracteristica, tamano, color, estado, v_habilidades, ataque, 20));
+    else
     cout << "Dragon agregado exitosamente!" << endl;
 }
 
@@ -117,18 +126,18 @@ void cEscueladeDragones::EntrenarDragones(vector<cJinete*>& Jinetes_isla)
             //entreno cada dragon de la lista del jinete
             //verifico que clase de dragon es y llamo a su metodo de entrenar correspondiente
             if (cFogonera* fogonera = dynamic_cast<cFogonera*>(dragon)) {
-                fogonera->EntrenarFogonera("Resistencia al calor", (*jinete));
-                fogonera->EntrenarFogonera("Control de fuego", (*jinete));
+                fogonera->Entrenar("Resistencia al calor", (*jinete));
+                fogonera->Entrenar("Control de fuego", (*jinete));
                 cout << endl;
             }
             else if (cEmbestida* embestida = dynamic_cast<cEmbestida*>(dragon)) {
-                embestida->EntrenarEmbestida("Obstaculos", (*jinete));
-                embestida->EntrenarEmbestida("Carrera de velocidad", (*jinete));
-                embestida->EntrenarEmbestida("Fuerza de impacto", (*jinete));
+                embestida->Entrenar("Obstaculos", (*jinete));
+                embestida->Entrenar("Carrera de velocidad", (*jinete));
+                embestida->Entrenar("Fuerza de impacto", (*jinete));
                 cout << endl;
             }
             else if (cMarejada* marejada = dynamic_cast<cMarejada*>(dragon)) {
-                marejada->EntrenarMarejada("Diferentes terrenos", (*jinete));
+                marejada->Entrenar("Diferentes terrenos", (*jinete));
                 cout << endl;
             }
         }

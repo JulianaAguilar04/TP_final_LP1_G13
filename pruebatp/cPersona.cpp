@@ -35,6 +35,10 @@ ostream& operator<<(ostream& os, cPersona& p)
 	return os;
 }
 
+void cPersona::mostrarInfo(ostream& os) const
+{
+}
+
 string cPersona::getNombre() const
 {
 	return Nombre;

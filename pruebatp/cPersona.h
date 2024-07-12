@@ -16,9 +16,9 @@ protected:
     int Fuerza; 
 public:
 	cPersona(string Nombre, string Apellido, string Apodo, string FecNac, int Fuerza);
-	virtual string to_string() const;
+	string to_string() const;
 	friend ostream& operator <<(ostream& os,const cPersona& p);
-	virtual void mostrarInfo(ostream& os) const = 0;
+	void mostrarInfo(ostream& os) const;
     string getNombre() const;
     int getFuerza() const;
 	virtual ~cPersona() = 0;

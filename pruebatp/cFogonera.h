@@ -1,5 +1,6 @@
 #pragma once
 #include "cDragon.h"
+#include "cJinete.h"
 
 class cFogonera:public cDragon
 {
@@ -9,8 +10,8 @@ private:
 
 public: 
 	cFogonera(string Nombre, string Caracteristica, string Tamano, string Color, bool Estado, /*int Velocidad, int Resistencia,*/ vector<string>& Habilidades, cAtaque* miAtaque, int pres, int resCalor) : cDragon(Nombre, Caracteristica, Tamano, Color, Estado, /*Velocidad, Resistencia,*/ Habilidades, miAtaque), resistenciaAlCalor(resCalor), precision(pres) {};
-	void EntrenarFogonera(string tipoEntrenamiento, cJinete &jinete);
-	void DesarrollarEstrategiaFogonera(const string &tipo);
-	~cFogonera() {};
+	void Entrenar(const string tipoEntrenamiento,const cJinete &jinete) override;
+	void DesarrollarEstrategia(const string &tipo) override;
+	~cFogonera() override;
 };
 

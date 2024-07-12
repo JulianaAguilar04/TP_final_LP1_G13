@@ -1,6 +1,6 @@
 #include "cEmbestida.h"
 
-void cEmbestida::EntrenarEmbestida(string tipoEntrenamiento, cJinete& jinete)
+void cEmbestida::Entrenar(const string tipoEntrenamiento, const cJinete& jinete)
 {
     double efectividad = jinete.getEfectividad();
     int incremento = static_cast<int>(efectividad * NivelEntrenamiento);
@@ -19,13 +19,13 @@ void cEmbestida::EntrenarEmbestida(string tipoEntrenamiento, cJinete& jinete)
     }
     //aca va lo de habilidades
     if (Estado) {
-        DesarrollarEstrategiaEmbestida("Ataque");
-        DesarrollarEstrategiaEmbestida("Defensa");
+        DesarrollarEstrategia("Ataque");
+        DesarrollarEstrategia("Defensa");
     }
     NivelEntrenamiento++;
 }
 
-void cEmbestida::DesarrollarEstrategiaEmbestida(const string& tipo)
+void cEmbestida::DesarrollarEstrategia(const string& tipo)
 {
     if (tipo == "Ataque") { //hago random que estrategia desarrolla
         string nuevaEstrategia = "Estrategia de ataque:" + std::to_string(EstrategiasAtaque.size() + 1);
@@ -37,4 +37,8 @@ void cEmbestida::DesarrollarEstrategiaEmbestida(const string& tipo)
         EstrategiasDefensa.push_back(nuevaEstrategia);
         cout << Nombre << "ha desarrollado una nueva estrategia de defensa:" << nuevaEstrategia << endl;
     }
+}
+
+cEmbestida::~cEmbestida()
+{
 }

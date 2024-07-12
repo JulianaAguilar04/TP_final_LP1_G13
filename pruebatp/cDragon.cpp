@@ -1,27 +1,26 @@
 #include "cDragon.h"
-#include "cJinete.h"
 
-string cDragon::getNombre()
+string cDragon::getNombre() const
 {
     return Nombre;
 }
-string cDragon::getCaracteristica()
+string cDragon::getCaracteristica() const
 {
     return Caracteristica;
 }
-string cDragon::getTamano()
+string cDragon::getTamano() const
 {
     return Tamano;
 }
-string cDragon::getColor()
+string cDragon::getColor() const
 {
     return Color;
 }
-/* cDragon::getResistencia()
+int cDragon::getResistencia() const
 {
    return Resistencia;
-}*/
-bool cDragon::getEstado()
+}
+bool cDragon::getEstado() const
 {
     return Estado;
 }
@@ -42,9 +41,9 @@ void cDragon::setEstado(bool nuevoEstado)
 {
     Estado = nuevoEstado;
 }
-void cDragon::AltaNombre(string Nombre)
+void cDragon::AltaNombre(string nuevoNombre)
 {
-    
+    Nombre = nuevoNombre;
 }
 
 bool cDragon::Domado()
