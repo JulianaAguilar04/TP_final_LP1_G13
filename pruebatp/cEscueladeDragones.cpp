@@ -51,61 +51,27 @@ void cEscueladeDragones::MOSTRAR()
 
 void cEscueladeDragones::EstudioDeDragones(vector<cDragon*> &Dragones_isla)
 {
-    string nombre, caracteristica, tamano, color;
-    int velocidad = 0, resistencia = 0, hab = 0, clase=0;
-    bool estado;
-    char domado;
-    vector<string> v_habilidades;
+    int clase = 0;
+    cDragon* nuevoDragon = nullptr;
 
     cout << "Usted ha encontrado un nuevo dragon!" << endl;
-    cout << "¿A que clase pertenece este nuevo dragon?" << endl;
-    cout << "1) Fogonera\n2)Embestida\n3)Marejada" << endl;
+    cout << "A que clase pertenece este nuevo dragon?" << endl;
+    cout << "1) Fogonera" << endl;
+    cout << "2) Embestida" << endl;
+    cout << "3) Marejada" << endl;
     cin >> clase;
-    cout << "Ingrese el nombre del dragon: ";
-    cin >> nombre;
-    cout << "Ingrese las caracteristicas del dragon: ";
-    cin >> caracteristica;
-    cout << "Ingrese el tamano del dragon: ";
-    cin >> tamano;
-    cout << "Ingrese el color del dragon: ";
-    cin >> color;
-    cout << "El dragon esta domado? (s/n): ";
-    cin >> domado;
-    estado = (domado == 's' || domado == 'S');
-    cout << "Ingrese la velocidad del dragon:" << endl;
-    cin >> velocidad;
-    cout << "Ingrese la resistencia del dragon:" << endl;
-    cin >> resistencia;
-    cout << "HABILIDADES" << endl;
-    cout << "Cantidad de habilidades:" << endl;
-    cin >> hab;
 
-    v_habilidades.reserve(hab); //reservo espacio para la cantidades de habilidades
-    for (int i = 0; i < hab; i++)
-    {
-        string habilidad;
-        cout << "Ingrese habilidad:" << (i + 1) << ":" << endl;
-        cin >> habilidad;
-        v_habilidades.push_back(habilidad);
+    if (clase == 1) {
+        nuevoDragon = cFogonera::AltaDragon();
+    }
+    else if (clase == 2) {
+        nuevoDragon = cEmbestida::AltaDragon();
+    }
+    else if (clase == 3) {
+        nuevoDragon = cMarejada::AltaDragon();
     }
 
-    string tipoAtaque, danioAtaque, alcanceAtaque;
-    cout << "Ingrese el tipo de ataque del dragón: ";
-    cin >> tipoAtaque;
-    cout << "Ingrese el daño del ataque del dragón: ";
-    cin >> danioAtaque;
-    cout << "Ingrese el alcance del ataque del dragón: ";
-    cin >> alcanceAtaque;
-    cAtaque* ataque = new cAtaque(tipoAtaque, danioAtaque, alcanceAtaque);
-
-    // Crear el nuevo objeto cDragon y agregarlo al vector
-    if(clase == 1)
-    Dragones_isla.push_back(new cFogonera(nombre, caracteristica, tamano, color, estado, /*velocidad, resistencia, */ v_habilidades, ataque, 20, 20));
-    if (clase == 2)
-        Dragones_isla.push_back(new cEmbestida(nombre, caracteristica, tamano, color, estado, 20, 20, 20, v_habilidades, ataque));
-    if (clase == 3)
-        Dragones_isla.push_back(new cMarejada(nombre, caracteristica, tamano, color, estado, v_habilidades, ataque, 20));
-    else
+    Dragones_isla.push_back(nuevoDragon);
     cout << "Dragon agregado exitosamente!" << endl;
 }
 

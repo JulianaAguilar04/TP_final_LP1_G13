@@ -14,7 +14,6 @@ protected:
 	string Tamano;
 	string Color;
 	bool Estado;
-	//int Velocidad=0;
 	int Resistencia=0;
 	vector <string> Habilidades; 
 	vector<string> EstrategiasAtaque;
@@ -25,7 +24,7 @@ protected:
 
 public:
 	//constructor por parametros 
-	cDragon(string Nombre, string Caracteristica, string Tamano, string Color, bool Estado, /*int Velocidad, int Resistencia,*/ vector<string>& Habilidades, cAtaque* miAtaque) : Nombre(Nombre), Caracteristica(Caracteristica), Tamano(Tamano), Color(Color), Estado(Estado), /*Velocidad(Velocidad), Resistencia(Resistencia),*/ Habilidades(Habilidades), NivelEntrenamiento(1), FormadeAtaque(miAtaque) {};
+	cDragon(string Nombre, string Caracteristica, string Tamano, string Color, bool Estado, int Resistencia, vector<string>& Habilidades, cAtaque* miAtaque) : Nombre(Nombre), Caracteristica(Caracteristica), Tamano(Tamano), Color(Color), Estado(Estado), Resistencia(Resistencia), Habilidades(Habilidades), NivelEntrenamiento(1), FormadeAtaque(miAtaque) {};
 	//constructor por copia
 	cDragon(cDragon& Dragoncito);
 	string getNombre() const;
@@ -38,15 +37,15 @@ public:
 	void setTamano(string nuevoTamano);
 	void setColor(string nuevoColor);
 	void setEstado(bool nuevoEstado);	
-	void AltaNombre(string Nombre);			//funcion que se pide
+	void AltaNombre(string Nombre);			
 	bool Domado();							//funcion que se pide
 	string to_string();
-	friend ostream& operator<<(ostream& s, cDragon& d);
 	virtual void DesarrollarEstrategia(const string& tipo);
-	//void AltaDragon(cDragon *dragon); ???
+	static cDragon* AltaDragon();													//funcion que se pide
 	virtual void Entrenar(const string tipoEntrenamiento, const cJinete& jinete);	//funcion que se pide
 	void mostrarHabilidades();  
 	void Baja(vector<cDragon*> &Dragones_isla);  //funcion que se pide
+	friend ostream& operator<<(ostream& s, cDragon& d);
 	virtual ~cDragon();
 };
 
