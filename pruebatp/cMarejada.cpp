@@ -1,7 +1,6 @@
 #include "cMarejada.h"
 
-void cMarejada::Entrenar(const string tipoEntrenamiento,const cJinete& jinete)
-{
+void cMarejada::Entrenar(const string tipoEntrenamiento, const cJinete& jinete) {
     double efectividad = jinete.getEfectividad();
     int incremento = static_cast<int>(efectividad * NivelEntrenamiento);
 

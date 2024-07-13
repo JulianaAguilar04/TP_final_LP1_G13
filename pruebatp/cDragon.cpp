@@ -1,4 +1,5 @@
 #include "cDragon.h"
+#include "cJinete.h"
 
 string cDragon::getNombre() const
 {
@@ -63,6 +64,10 @@ string cDragon::to_string()
     return ss.str();
 }
 
+void cDragon::DesarrollarEstrategia(const string& tipo)
+{
+}
+
 void cDragon::Baja(vector<cDragon*>& Dragones_isla)
 {
     //necesito especificamente el dragon que se quiere sacar de la lista
@@ -72,7 +77,6 @@ void cDragon::Baja(vector<cDragon*>& Dragones_isla)
 {
 
 }*/
-
 /*
 void cDragon::Entrenar(const string &tipoEntrenamiento, const cJinete& Jinete)
 {
@@ -103,8 +107,8 @@ void cDragon::Entrenar(const string &tipoEntrenamiento, const cJinete& Jinete)
     }
     
     NivelEntrenamiento++;
-}
-
+}*/
+/*
 void cDragon::DesarrollarEstrategia(const string& tipo) {
     if (tipo == "Ataque") {
         string nuevaEstrategia = "Estrategia de ataque " + std::to_string(EstrategiasAtaque.size() + 1);
@@ -115,8 +119,11 @@ void cDragon::DesarrollarEstrategia(const string& tipo) {
         EstrategiasDefensa.push_back(nuevaEstrategia);
         cout << Nombre << " ha desarrollado una nueva estrategia de defensa: " << nuevaEstrategia << endl;
     }
+}*/
+
+void cDragon::Entrenar(const string tipoEntrenamiento, const cJinete& jinete)
+{
 }
-*/
 
 void cDragon::mostrarHabilidades()
 {

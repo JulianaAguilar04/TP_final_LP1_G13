@@ -21,5 +21,5 @@ public:
 	void mostrarInfo(ostream& os) const;
     string getNombre() const;
     int getFuerza() const;
-	virtual ~cPersona() = 0;
+	virtual ~cPersona();
 };

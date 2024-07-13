@@ -8,9 +8,7 @@
 #include "cVikingo.h"
 #include "cEmbestida.h"
 #include "cFogonera.h"
-#include "cPiedra.h"
 #include "cMarejada.h"
-#include "cRastreadora.h"
 #include "cIslaBerk.h"
 #include "cEscueladeDragones.h" 
 
@@ -99,15 +97,57 @@ int main()
     //PRUEBOOOOO
     cIslaBerk ISLA(Jinetes_isla, Dragones_isla, Vikingos_isla);
     ISLA.mainBerk();
-   
-    
+ 
+    vectorDragones.clear();
+
+    // Eliminar dragones de Dragones_isla solo si no se han movido a otra parte
+    for (cDragon* dragon : Dragones_isla) {
+        if (dragon != nullptr) {
+            delete dragon;
+        }
+    }
+    Dragones_isla.clear();
+
+    // Eliminar jinetes de Jinetes_isla
+    for (cJinete* jinete : Jinetes_isla) {
+        if (jinete != nullptr) {
+            delete jinete;
+        }
+    }
+    Jinetes_isla.clear();
+
+    // Eliminar vikingos de Vikingos_isla
+    for (cVikingo* vikingo : Vikingos_isla) {
+        if (vikingo != nullptr) {
+            delete vikingo;
+        }
+    }
+    Vikingos_isla.clear();
+
+    // Eliminar personas de Personas_isla
+    for (cPersona* persona : Personas_isla) {
+        if (persona != nullptr) {
+            delete persona;
+        }
+    }
+    Personas_isla.clear();
+
+    // Eliminar ataques
+    delete Ataque1;
+    delete Ataque2;
+    delete Ataque3;
+    delete Ataque4;
+    delete Ataque5;
+    delete Ataque6;
+    delete Ataque7;
+   /*
     for (int i = 0; i < vectorDragones.size(); i++) {
         delete vectorDragones[i];
     }
 
-   /* for (int i = 0; i < Dragones_isla.size(); i++) {
+   for (int i = 0; i < Dragones_isla.size(); i++) {
         delete Dragones_isla[i];
-    }*/
+    }
 
     for (int i = 0; i < Jinetes_isla.size(); i++) {
         delete Jinetes_isla[i];
@@ -118,6 +158,7 @@ int main()
     }
     
     delete Ataque1, Ataque2, Ataque3, Ataque4, Ataque5, Ataque6, Ataque7;
+    */
 
    return 0;
 }

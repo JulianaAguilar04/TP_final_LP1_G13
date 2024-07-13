@@ -42,12 +42,12 @@ public:
 	bool Domado();							//funcion que se pide
 	string to_string();
 	friend ostream& operator<<(ostream& s, cDragon& d);
-	virtual void DesarrollarEstrategia(const string& tipo) = 0;
+	virtual void DesarrollarEstrategia(const string& tipo);
 	//void AltaDragon(cDragon *dragon); ???
-	virtual void Entrenar(const string &tipoEntrenamiento, const cJinete &Jinete) = 0;	//funcion que se pide
+	virtual void Entrenar(const string tipoEntrenamiento, const cJinete& jinete);	//funcion que se pide
 	void mostrarHabilidades();  
 	void Baja(vector<cDragon*> &Dragones_isla);  //funcion que se pide
-	virtual ~cDragon() = 0;
+	virtual ~cDragon();
 };
 
 

@@ -10,7 +10,7 @@ private:
 	int fuerzaImpacto;
 public:
 	cEmbestida (string Nombre, string Caracteristica, string Tamano, string Color, bool Estado, int Velocidad, int Agilidad, int Fuerza, vector<string>& Habilidades, cAtaque* miAtaque) : cDragon(Nombre, Caracteristica, Tamano, Color, Estado, /*Velocidad, Resistencia*/ Habilidades, miAtaque), agilidad(Agilidad), velocidad(Velocidad), fuerzaImpacto(Fuerza) {};
-	void Entrenar(const string tipoEntrenamiento, const cJinete& jinete) override;
+	void Entrenar(const string tipoEntrenamiento, const cJinete& jinete);
 	void DesarrollarEstrategia(const string& tipo) override;
 	~cEmbestida() override;
 };
