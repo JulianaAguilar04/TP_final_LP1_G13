@@ -47,6 +47,13 @@ bool cJinete::tieneDragon(cDragon* dragon)
     return false;
 }
 
+cJinete::cJinete(const std::string& nombre) : Nombre(nombre) {}
+
+string cJinete::getNombre() const
+{
+    return string();
+}
+
 double cJinete::getEfectividad() const
 {
     return Efectividad;
@@ -59,6 +66,14 @@ vector<cDragon*> cJinete::getMisDragones()
 
 void cJinete::IncorporarDragon(cDragon* dragon) {
     misDragones.push_back(dragon);
+}
+
+void cJinete::incrementarOvejas(int cantidad) {
+    numeroOvejas += cantidad;
+}
+
+int cJinete::getNumeroOvejas() const {
+    return numeroOvejas;
 }
 
 cJinete::~cJinete() {

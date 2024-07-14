@@ -1,5 +1,5 @@
 #include "cIslaBerk.h"
-
+#include "cCarreradeDragones.h"
 
 cIslaBerk::cIslaBerk(vector<cJinete*> Jinetes_isla, vector<cDragon*> Dragones_isla, vector<cVikingo*> Vikingos_isla)
 {
@@ -14,9 +14,10 @@ int cIslaBerk::mainBerk()
         cout << "------BIENVENIDO A LA ISLA DE BERK------" << endl;
         cout << "1) Escuela de dragones" << endl;
         cout << "2) Batalla de dragones" << endl;
-        cout << "3) Lista de habitantes de la isla" << endl;
-        cout << "4) Historial de logros de vikingos " << endl;
-        cout << "5) Salir" << endl;
+        cout << "3) Carrera de dragones" << endl;
+        cout << "4) Lista de habitantes de la isla" << endl;
+        cout << "5) Historial de logros de vikingos " << endl;
+        cout << "6) Salir" << endl;
         cin >> opcion;
 
         switch (opcion)
@@ -28,11 +29,17 @@ int cIslaBerk::mainBerk()
             Batalla->mainB();
             break;
         case 3:
+        {
+            cCarreraDeDragones carrera(Jinetes_isla);
+            carrera.iniciarCarrera();
+            break;
+        }
+        case 4:
             //ListaDePersonas(Personas_isla);
             break;
-        case 4:
-            //MostrarDragonesMatados(Vikingos_isla);
         case 5:
+            //MostrarDragonesMatados(Vikingos_isla);
+        case 6:
             cout << "Muchas gracias por visitar la Isla de Berk" << endl;
             break;
 
