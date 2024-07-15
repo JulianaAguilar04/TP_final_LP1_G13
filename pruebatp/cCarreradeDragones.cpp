@@ -121,4 +121,7 @@ void cCarreraDeDragones::recolectarOvejas(cJinete* jinete) {
     jinete->incrementarOvejas(ovejasRecolectadas);
     cout << jinete->getNombre() << " ha recolectado " << ovejasRecolectadas << " ovejas." << endl;
 }
+
+xdxdxd 
+
 */
