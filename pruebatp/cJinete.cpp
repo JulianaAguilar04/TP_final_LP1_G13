@@ -1,4 +1,84 @@
 #include "cJinete.h"
+#include <iostream>
+#include <sstream>
+#include <vector>
+
+using namespace std;
+
+string cJinete::to_string() {
+    stringstream ss;
+    ss << cPersona::to_string();
+    ss << "Caracteristicas: " << Caracteristicas << endl;
+    return ss.str();
+}
+
+void cJinete::mostrarDragones() const {
+    cout << "El jinete: " << Nombre << " tiene estos dragones:" << endl;
+    for (const auto& dragon : misDragones) {
+        cout << "-" << dragon->getNombre() << endl;
+    }
+}
+
+void cJinete::mostrarInfo(ostream& os) const {
+    os << "Nombre: " << Nombre << endl;
+    os << "Apellido: " << Apellido << endl;
+    os << "Apodo: " << Apodo << endl;
+    os << "Fecha de nacimiento: " << FecNac << endl;
+    os << "Caracteristicas: " << Caracteristicas << endl;
+    os << "Efectividad: " << Efectividad << endl;
+    os << "Fuerza: " << Fuerza << endl;
+    os << "Dragones:" << endl;
+    for (const auto& dragon : misDragones) {
+        os << "- " << dragon->to_string() << std::endl;
+    }
+}
+
+ostream& operator<<(ostream& os, const cJinete& j) {
+    j.mostrarInfo(os);
+    return os;
+}
+
+bool cJinete::tieneDragon(cDragon* dragon) {
+    for (cDragon* d : misDragones) {
+        if (d == dragon) {
+            return true;
+        }
+    }
+    return false;
+}
+
+string cJinete::getNombre() const {
+    return Nombre;
+}
+
+double cJinete::getEfectividad() const {
+    return Efectividad;
+}
+
+vector<cDragon*> cJinete::getMisDragones() {
+    return misDragones;
+}
+
+void cJinete::IncorporarDragon(cDragon* dragon) {
+    misDragones.push_back(dragon);
+}
+
+void cJinete::incrementarOvejas(int cantidad) {
+    numeroOvejas += cantidad;
+}
+
+int cJinete::getNumeroOvejas() const {
+    return numeroOvejas;
+}
+
+cJinete::~cJinete() {
+}
+
+
+/*
+LO COMENTO PARA PONERLO MAS LIMPIO Y VER QUE FALLA (15/07  15hs) 
+
+#include "cJinete.h"
 
 string cJinete::to_string()
 {
@@ -46,8 +126,6 @@ bool cJinete::tieneDragon(cDragon* dragon)
     }
     return false;
 }
-
-cJinete::cJinete(const std::string& nombre) : Nombre(nombre) {}
 
 string cJinete::getNombre() const
 {
