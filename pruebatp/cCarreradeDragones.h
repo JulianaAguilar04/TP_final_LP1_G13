@@ -1,8 +1,14 @@
 #pragma once
 #include <vector>
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <thread>
+#include <chrono>
 #include "cJinete.h"
+
 using namespace std;
+
 inline void limpiarPantalla()
 {
 #ifdef _WIN32
@@ -20,6 +26,8 @@ public:
     void iniciarCarrera();
     ~cCarreradeDragones();
 };
+
+
 
 
 /*

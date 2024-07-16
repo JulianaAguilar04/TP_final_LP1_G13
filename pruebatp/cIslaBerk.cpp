@@ -1,3 +1,4 @@
+#pragma once
 #include "cIslaBerk.h"
 #include "cCarreradeDragones.h"
 
@@ -19,6 +20,25 @@ int cIslaBerk::mainBerk()
         cout << "4) Lista de habitantes de la isla" << endl;
         cout << "5) Historial de logros de vikingos " << endl;
         cout << "6) Salir" << endl;
+        cout << "" << endl; 
+        cout << "                  __/>^^^;:," << endl;
+        cout << "     __  __      /-.       :,/|/|" << endl;
+        cout << "    /  \\/  \\  __/ ^         :,/ \\__" << endl;
+        cout << "   |   \\/   |(~             ;/ /  /" << endl;
+        cout << "   \\       {  `-'--._       / / ,<  " << endl;
+        cout << "    \\      /,__.   /=\     /  _/  >|_'." << endl;
+        cout << "     \\    /  `_ `--------'    __ / ',\ \\""" << endl;
+        cout << "      \\  / ,_// ,---_____,   ,_  \_  ,| |" << endl;
+        cout << "       \\/   `--' |=|           \._/ ,/  |" << endl;
+        cout << "                  \\=\\            `,,/   |" << endl;
+        cout << "                   \\=\\            ||    /"<< endl;
+        cout << "                    \\=\\____       |\\    \\""" << endl;
+        cout << "                   / \\/    `     <__)    \\""" << endl;
+        cout << "                   | |                    |" << endl;
+        cout << "                 ,__\\,\\                  ./" << endl;
+        cout << "                '-__________>  \\.______/"<< endl;
+        cout << "" << endl;
+ 
         cin >> opcion;
         limpiarPantalla();
 

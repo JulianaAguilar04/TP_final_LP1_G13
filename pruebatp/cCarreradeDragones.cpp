@@ -1,6 +1,9 @@
 #include "cCarreradeDragones.h"
 
-cCarreradeDragones::cCarreradeDragones(vector<cJinete*>& Jinetes_isla) : jinetes(Jinetes_isla) {}
+cCarreradeDragones::cCarreradeDragones(vector<cJinete*>& Jinetes_isla) : jinetes(Jinetes_isla) {
+    srand(static_cast<unsigned int>(time(0))); // Inicializar la semilla del generador de números aleatorios
+
+}
 
 int cCarreradeDragones::mainC()
 {
@@ -13,8 +16,8 @@ void cCarreradeDragones::iniciarCarrera() {
 
     cout << "¡La carrera ha comenzado!" << endl;
 
-    for (size_t i = 0; i < jinetes.size(); ++i) {
-        int ovejasRecogidas = rand() % 10; // Simula la recolección de 0 a 9 ovejas
+    for (size_t i = 0 ; i < jinetes.size(); ++i) {
+        int ovejasRecogidas = rand() % (10 - 1) + 1 ; // Simula la recolección de 0 a 9 ovejas
         conteoOvejas[i] = ovejasRecogidas;
         cout << jinetes[i]->getNombre() << " ha recogido " << ovejasRecogidas << " ovejas." << endl;
     }
@@ -32,11 +35,11 @@ void cCarreradeDragones::iniciarCarrera() {
         }
     }
 
-    if (!ganador.empty()) {
+    if (maxOvejas > 0) {
         cout << "¡El ganador es " << ganador << " con " << maxOvejas << " ovejas recolectadas!" << endl;
     }
     else {
-        cout << "No hay ganador, ningún jinete recogió ovejas." << endl;
+        cout << "No hay ganador, ningun jinete recogio ovejas." << endl;
     }
 }
 
@@ -47,6 +50,7 @@ cCarreradeDragones::~cCarreradeDragones()
 void cCarreradeDragones::contarRegreso() {
     for (int i = 10; i >= 0; --i) {
         cout << i << "..." << endl;
+        this_thread::sleep_for(chrono::seconds(1)); // Pausar un segundo entre cada número
     }
 }
 
