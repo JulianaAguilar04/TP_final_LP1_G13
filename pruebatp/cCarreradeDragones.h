@@ -18,10 +18,10 @@ inline void limpiarPantalla()
 
 class cCarreradeDragones {
 private:
-    vector<cJinete*>& jinetes;
+    vector<cJinete*> Jinetes_isla;
     void contarRegreso();
 public:
-    cCarreradeDragones(vector<cJinete*>& Jinetes_isla);
+    cCarreradeDragones(vector<cJinete*> Jinetes_isla);
     int mainC();
     void iniciarCarrera();
     ~cCarreradeDragones();

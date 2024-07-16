@@ -1,25 +1,25 @@
 #include "cCarreradeDragones.h"
 
-cCarreradeDragones::cCarreradeDragones(vector<cJinete*>& Jinetes_isla) : jinetes(Jinetes_isla) {
-    srand(static_cast<unsigned int>(time(0))); // Inicializar la semilla del generador de números aleatorios
-
+cCarreradeDragones::cCarreradeDragones(vector<cJinete*> Jinetes_isla) {
+    this->Jinetes_isla = Jinetes_isla;
 }
 
 int cCarreradeDragones::mainC()
 {
+    srand(static_cast<unsigned int>(time(0))); // Inicializar la semilla del generador de números aleatorios
     iniciarCarrera();
     return 0;
 }
 
-void cCarreradeDragones::iniciarCarrera() {
-    vector<int> conteoOvejas(jinetes.size(), 0);
-
+void cCarreradeDragones::iniciarCarrera() { 
+    vector<int> conteoOvejas(Jinetes_isla.size(), 0);
+   
     cout << "¡La carrera ha comenzado!" << endl;
 
-    for (size_t i = 0 ; i < jinetes.size(); ++i) {
-        int ovejasRecogidas = rand() % (10 - 1) + 1 ; // Simula la recolección de 0 a 9 ovejas
+    for (int i = 0 ; i < Jinetes_isla.size(); i++) {
+        int ovejasRecogidas = rand() % 100; 
         conteoOvejas[i] = ovejasRecogidas;
-        cout << jinetes[i]->getNombre() << " ha recogido " << ovejasRecogidas << " ovejas." << endl;
+        cout << Jinetes_isla[i]->getNombre() << " ha recogido " << ovejasRecogidas << " ovejas." << endl;
     }
 
     contarRegreso();
@@ -28,10 +28,10 @@ void cCarreradeDragones::iniciarCarrera() {
     int maxOvejas = -1;
     string ganador;
 
-    for (size_t i = 0; i < jinetes.size(); ++i) {
+    for (size_t i = 0; i < Jinetes_isla.size(); ++i) {
         if (conteoOvejas[i] > maxOvejas) {
             maxOvejas = conteoOvejas[i];
-            ganador = jinetes[i]->getNombre();
+            ganador = Jinetes_isla[i]->getNombre();
         }
     }
 
