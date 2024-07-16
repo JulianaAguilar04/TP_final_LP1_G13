@@ -9,6 +9,12 @@
 #include "cEmbestida.h"
 using namespace std;
 
+inline void limpiarPantallaE()
+{
+#ifdef _WIN32
+	system("cls");
+#endif
+};
 
 class cEscueladeDragones
 {
@@ -18,7 +24,6 @@ private:
 public:
 	cEscueladeDragones(vector<cJinete*> Jinetes_isla, vector<cDragon*> Dragones_isla);
 	int mainE();
-	void MOSTRAR();
 	void EstudioDeDragones(vector<cDragon*> &Dragones_isla);
 	void ListaDeDragones(const vector<cDragon*>& Dragones_isla);
 	void EntrenarDragones(vector<cJinete*>& Jinetes_isla);

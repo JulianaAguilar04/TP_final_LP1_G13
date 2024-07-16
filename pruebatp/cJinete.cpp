@@ -25,7 +25,7 @@ void cJinete::mostrarInfo(ostream& os) const {
     os << "Apodo: " << Apodo << endl;
     os << "Fecha de nacimiento: " << FecNac << endl;
     os << "Caracteristicas: " << Caracteristicas << endl;
-    os << "Efectividad: " << Efectividad << endl;
+    os << "Resultado de entrenaminto: " << ResulEntrenamientostring(Resultado) << endl;
     os << "Fuerza: " << Fuerza << endl;
     os << "Dragones:" << endl;
     for (const auto& dragon : misDragones) {
@@ -51,8 +51,9 @@ string cJinete::getNombre() const {
     return Nombre;
 }
 
-double cJinete::getEfectividad() const {
-    return Efectividad;
+ResulEntrenamiento cJinete::getResultado() const
+{
+    return Resultado;
 }
 
 vector<cDragon*> cJinete::getMisDragones() {

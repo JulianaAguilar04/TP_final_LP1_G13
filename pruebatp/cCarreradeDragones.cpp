@@ -1,9 +1,14 @@
-#include "cCarreraDeDragones.h"
-#include "cJinete.h"
+#include "cCarreradeDragones.h"
 
-cCarreraDeDragones::cCarreraDeDragones(vector<cJinete*>& Jinetes_isla) : jinetes(Jinetes_isla) {}
+cCarreradeDragones::cCarreradeDragones(vector<cJinete*>& Jinetes_isla) : jinetes(Jinetes_isla) {}
 
-void cCarreraDeDragones::iniciarCarrera() {
+int cCarreradeDragones::mainC()
+{
+    iniciarCarrera();
+    return 0;
+}
+
+void cCarreradeDragones::iniciarCarrera() {
     vector<int> conteoOvejas(jinetes.size(), 0);
 
     cout << "¡La carrera ha comenzado!" << endl;
@@ -35,7 +40,11 @@ void cCarreraDeDragones::iniciarCarrera() {
     }
 }
 
-void cCarreraDeDragones::contarRegreso() {
+cCarreradeDragones::~cCarreradeDragones()
+{
+}
+
+void cCarreradeDragones::contarRegreso() {
     for (int i = 10; i >= 0; --i) {
         cout << i << "..." << endl;
     }
@@ -45,12 +54,12 @@ void cCarreraDeDragones::contarRegreso() {
 /*
 LO COMENTO PARA HACERLO NUEVAMENTE MAS LIMPIO (15/07 - 15hs)
 
-#include "cCarreraDeDragones.h"
+#include "cCarreradeDragones.h"
 #include "cJinete.h"
 
-cCarreraDeDragones::cCarreraDeDragones(vector<cJinete*>& Jinetes_isla) : jinetes(Jinetes_isla) {}
+cCarreradeDragones::cCarreradeDragones(vector<cJinete*>& Jinetes_isla) : jinetes(Jinetes_isla) {}
 
-void cCarreraDeDragones::iniciarCarrera() {
+void cCarreradeDragones::iniciarCarrera() {
     vector<int> conteoOvejas(jinetes.size(), 0);
 
     cout << "¡La carrera ha comenzado!" << endl;
@@ -77,21 +86,21 @@ void cCarreraDeDragones::iniciarCarrera() {
     cout << "¡El ganador es " << ganador << " con " << maxOvejas << " ovejas recolectadas!" << endl;
 }
 
-void cCarreraDeDragones::contarRegreso() {
+void cCarreradeDragones::contarRegreso() {
     for (int i = 10; i >= 0; --i) {
         cout << i << "..." << endl;
     }
 }
 
 /*
-/#include "cCarreraDeDragones.h"
+/#include "cCarreradeDragones.h"
 #include "cJinete.h"
 
-cCarreraDeDragones::cCarreraDeDragones(vector<cJinete*> Jinetes_isla) : jinetes(jinetes) {
+cCarreradeDragones::cCarreradeDragones(vector<cJinete*> Jinetes_isla) : jinetes(jinetes) {
     srand(static_cast<unsigned>(time(0))); // Inicializa la semilla aleatoria
 }
 
-void cCarreraDeDragones::iniciarCarrera() {
+void cCarreradeDragones::iniciarCarrera() {
     cout << "¡La carrera de dragones ha comenzado!" << endl;
     for (auto& jinete : jinetes) {
         recolectarOvejas(jinete);
@@ -116,7 +125,7 @@ void cCarreraDeDragones::iniciarCarrera() {
     cout << "¡El ganador es " << ganador->getNombre() << " con " << maxOvejas << " ovejas recolectadas!" << endl;
 }
 
-void cCarreraDeDragones::recolectarOvejas(cJinete* jinete) {
+void cCarreradeDragones::recolectarOvejas(cJinete* jinete) {
     int ovejasRecolectadas = rand() % 10; // Simula la recolección de entre 0 y 9 ovejas
     jinete->incrementarOvejas(ovejasRecolectadas);
     cout << jinete->getNombre() << " ha recolectado " << ovejasRecolectadas << " ovejas." << endl;

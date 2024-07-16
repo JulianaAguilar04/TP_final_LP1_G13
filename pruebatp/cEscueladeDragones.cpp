@@ -17,6 +17,7 @@ int cEscueladeDragones::mainE()
         cout << "3) Entrenar " << endl;
         cout << "4) Salir" << endl;
         cin >> opcion;
+        limpiarPantallaE();
 
         switch (opcion)
         {
@@ -38,15 +39,16 @@ int cEscueladeDragones::mainE()
             cout << "Opcion invalida: Vuelva a intentarlo" << endl;
             break;
         }
+        if (opcion != 4) {
+            cout << "Presione Enter para continuar..." << endl;
+            cin.ignore();
+            cin.get();
+            limpiarPantallaE();
+        }
 
     } while (opcion != 4);
    
     return 0;
-}
-
-void cEscueladeDragones::MOSTRAR()
-{
-	cout << "HOLAAA" << endl;
 }
 
 void cEscueladeDragones::EstudioDeDragones(vector<cDragon*> &Dragones_isla)
@@ -61,25 +63,32 @@ void cEscueladeDragones::EstudioDeDragones(vector<cDragon*> &Dragones_isla)
     cout << "3) Marejada" << endl;
     cin >> clase;
 
-    if (clase == 1) {
-        nuevoDragon = cFogonera::AltaDragon();
-    }
-    else if (clase == 2) {
-        nuevoDragon = cEmbestida::AltaDragon();
-    }
-    else if (clase == 3) {
-        nuevoDragon = cMarejada::AltaDragon();
-    }
+    try {
+        if (clase != 1 && clase != 2 && clase != 3)
+            throw "Ninguna opcion es válida";
 
-    Dragones_isla.push_back(nuevoDragon);
-    cout << "Dragon agregado exitosamente!" << endl;
+        if (clase == 1) {
+            nuevoDragon = cFogonera::AltaDragon();
+        }
+        else if (clase == 2) {
+            nuevoDragon = cEmbestida::AltaDragon();
+        }
+        else if (clase == 3) {
+            nuevoDragon = cMarejada::AltaDragon();
+        }
+        Dragones_isla.push_back(nuevoDragon);
+        cout << "Dragon agregado exitosamente!" << endl;
+    }
+    catch (const char* s) {
+        cout << "catch:" << s << endl;
+    }
 }
 
 void cEscueladeDragones::ListaDeDragones(const vector<cDragon*>& Dragones_isla)
 {
     cout << "\nLista de Dragones Conocidos:" << endl;
-    for (const auto& dragon : Dragones_isla) {
-        cout << dragon->to_string();
+    for (cDragon *dragon : Dragones_isla) {
+        cout << (*dragon);
     }
 }
 

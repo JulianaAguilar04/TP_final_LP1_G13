@@ -2,17 +2,23 @@
 #include <vector>
 #include <iostream>
 #include "cJinete.h"
-
 using namespace std;
+inline void limpiarPantalla()
+{
+#ifdef _WIN32
+    system("cls");
+#endif
+};
 
-class cCarreraDeDragones {
-public:
-    cCarreraDeDragones(vector<cJinete*>& Jinetes_isla);
-    void iniciarCarrera();
-
+class cCarreradeDragones {
 private:
     vector<cJinete*>& jinetes;
     void contarRegreso();
+public:
+    cCarreradeDragones(vector<cJinete*>& Jinetes_isla);
+    int mainC();
+    void iniciarCarrera();
+    ~cCarreradeDragones();
 };
 
 
@@ -27,9 +33,9 @@ LO COMENTO PARA HACERLO DE NUEVO Y VER QUE FALLA (15/07 -15hs)
 
 using namespace std;
 
-class cCarreraDeDragones {
+class cCarreradeDragones {
 public:
-    cCarreraDeDragones(vector<cJinete*>& Jinetes_isla);
+    cCarreradeDragones(vector<cJinete*>& Jinetes_isla);
     void iniciarCarrera();
 
 private:

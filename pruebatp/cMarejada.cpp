@@ -1,5 +1,27 @@
 #include "cMarejada.h"
 
+string cMarejada::EstrategiaAtaque(int opcion)
+{
+    switch (opcion)
+    {
+    case 1: return "Torbelino de agua";
+    case 2: return "Lluvia acida";
+    case 3: return "Ola devastadora";
+    default: return "Estrategia desconocida";
+    }
+}
+
+string cMarejada::EstrategiaDefensa(int opcion)
+{
+    switch (opcion)
+    {
+    case 1: return "Escudo";
+    case 2: return "Respiracion submarina";
+    case 3: return "Cambio de presion";
+    default: return "Estrategia desconocida";
+    }
+}
+
 cMarejada* cMarejada::AltaDragon()
 {
     string nombre, caracteristica, tamano, color;
@@ -48,7 +70,7 @@ cMarejada* cMarejada::AltaDragon()
 }
 
 void cMarejada::Entrenar(const string tipoEntrenamiento, const cJinete& jinete) {
-    double efectividad = jinete.getEfectividad();
+    int efectividad = jinete.getResultado();
     int incremento = static_cast<int>(efectividad * NivelEntrenamiento);
 
     if (tipoEntrenamiento == "Diferentes terrenos") {
@@ -65,15 +87,23 @@ void cMarejada::Entrenar(const string tipoEntrenamiento, const cJinete& jinete) 
 void cMarejada::DesarrollarEstrategia(const string& tipo)
 {
     if (tipo == "Ataque") { //hago random que estrategia desarrolla
-        string nuevaEstrategia = "Estrategia de ataque:" + std::to_string(EstrategiasAtaque.size() + 1);
+        int randomNum = rand() % 3 + 1;
+        string nuevaEstrategia = EstrategiaAtaque(randomNum);
         EstrategiasAtaque.push_back(nuevaEstrategia);
         cout << Nombre << "ha desarrollado una nueva estrategia de ataque:" << nuevaEstrategia << endl;
     }
     else if (tipo == "Defensa") {
-        string nuevaEstrategia = "Estrategia de defensa:" + std::to_string(EstrategiasDefensa.size() + 1);
+        int randomNum = rand() % 3 + 1;
+        string nuevaEstrategia = EstrategiaDefensa(randomNum);
         EstrategiasDefensa.push_back(nuevaEstrategia);
         cout << Nombre << "ha desarrollado una nueva estrategia de defensa:" << nuevaEstrategia << endl;
     }
+}
+
+void cMarejada::print(ostream& os)
+{
+    cDragon::print(os);
+    os << "Adaptabilidad:" << adaptabilidad << endl;
 }
 
 cMarejada::~cMarejada()

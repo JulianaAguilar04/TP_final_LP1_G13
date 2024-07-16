@@ -64,15 +64,43 @@ string cDragon::to_string()
     return ss.str();
 }
 
+void cDragon::print(ostream& os)
+{
+    os << "Nombre del dragon:" << Nombre << endl;
+    os << "Caracteristicas:" << Caracteristica << endl;
+    os << "Tamanio:" << Tamano << endl;
+    os << "Color: " << Color << endl;
+    os << "Estado: " << ((Estado == false) ? "No domado" : "Domado") << endl;
+    os << "Resistencia:" << Resistencia << endl;
+    if (FormadeAtaque) {
+        os << "Ataque:" << (FormadeAtaque->to_string()) << endl;
+    }
+    else {
+        os << "No hay forma de ataque asignado" << endl;
+    }
+    os << "Habilidades:" << endl;
+    for (const auto& habilidad : Habilidades) {
+        os << "-" << habilidad << endl;
+    }
+    os << "Estrategias de ataque:" << endl;
+    for (const auto& ataque : EstrategiasAtaque) {
+        os << "-" << ataque << endl;
+    }
+    os << "Estrategias de defensa:" << endl;
+    for (const auto& defensa : EstrategiasDefensa) {
+        os << defensa << endl;
+    }
+
+    os << endl;
+}
+
 void cDragon::DesarrollarEstrategia(const string& tipo)
 {
 }
 
-/*
-cDragon* cDragon::AltaDragon()
+void cDragon::Entrenar(const string tipoEntrenamiento, const cJinete& jinete)
 {
 }
-*/
 
 void cDragon::Baja(vector<cDragon*>& Dragones_isla)
 {
@@ -80,39 +108,21 @@ void cDragon::Baja(vector<cDragon*>& Dragones_isla)
 }
 
 
-void cDragon::Entrenar(const string tipoEntrenamiento, const cJinete& jinete)
-{
-}
-
 void cDragon::mostrarHabilidades()
 {
     cout << "Habilidades de " << Nombre << ": ";
     for (const auto& habilidad : Habilidades) {
-        cout << habilidad << " ";
+        cout << habilidad << endl;
+        cout << endl;
     }
     cout << endl;
 }
 
 
-ostream& operator<<(ostream& s, cDragon& d)
+ostream& operator<<(ostream& os, cDragon& d)
 {
-    s << "Nombre del dragon:" << d.Nombre << endl;
-    s << "Caracteristicas:" << d.Caracteristica << endl;
-    s << "Tamanio:" << d.Tamano << endl;
-    s << "Color: " << d.Color << endl;
-    s << "Estado: " << ((d.Estado == false) ? "No domado" : "Domado") << endl;
-    if (d.FormadeAtaque) {
-        s << "Ataque: \n" << (d.FormadeAtaque->to_string()) << endl;
-    }
-    else {
-        s << "No hay forma de ataque asiignado" << endl;
-    }
-    s << "Habilidades:" << endl;
-    for (const auto& habilidad : d.Habilidades) {
-        s << habilidad << " ";
-    }
-    s << endl;
-    return s;
+    d.print(os);
+    return os;
 }
 
 cDragon::~cDragon()

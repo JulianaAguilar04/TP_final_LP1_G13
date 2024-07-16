@@ -15,7 +15,13 @@ int cBatalladeDragones::mainB()
 void cBatalladeDragones::BatalladeDragones(vector<cVikingo*>& Vikingos_isla, vector<cDragon*>& Dragones_isla)
 {
     cout << "La aldea esta en peligro! Preparense para la batalla contra los dragones malos!" << endl;
+    cout << endl;
+    cVikingo::AtacarDragones();
 
+    for (cVikingo* vik : Vikingos_isla) {
+        vik->Trabajar();
+    }
+ 
     // Filtrar dragones malos (no domados)
     vector<cDragon*> dragonesMalos;
     for (auto dragon : Dragones_isla) {

@@ -1,5 +1,27 @@
 #include "cFogonera.h"
 
+string cFogonera::EstrategiaAtaque(int opcion)
+{
+    switch (opcion)
+    {
+    case 1: return "Lanzallamas";
+    case 2: return "Explosion de fuego";
+    case 3: return "Rayo de fuego";
+    default: return "Estrategia desconocida";
+    }
+}
+
+string cFogonera::EstrategiaDefensa(int opcion)
+{
+    switch (opcion)
+    {
+    case 1: return "Escudo de fuego";
+    case 2: return "Niebla de humo";
+    case 3: return "Regeneracion por calor";
+    default: return "Estrategia desconocida";
+    }
+}
+
 cFogonera* cFogonera::AltaDragon()
 {
     string nombre, caracteristica, tamano, color;
@@ -53,7 +75,7 @@ cFogonera* cFogonera::AltaDragon()
 
 void cFogonera::Entrenar(const string tipoEntrenamiento, const cJinete& jinete)
 {
-    double efectividad = jinete.getEfectividad();
+    int efectividad = jinete.getResultado();
     int incremento = static_cast<int>(efectividad * NivelEntrenamiento);
 
     if (tipoEntrenamiento == "Control de fuego") {
@@ -72,61 +94,29 @@ void cFogonera::Entrenar(const string tipoEntrenamiento, const cJinete& jinete)
     NivelEntrenamiento++;
 }
 
-/*
-double efectividad = Jinete.getEfectividad();
-    int incremento = static_cast<int>(efectividad * NivelEntrenamiento);
-
-    if (tipoEntrenamiento == "Velocidad") {
-        Velocidad += incremento;
-        cout << Nombre << " ha mejorado su velocidad en " << incremento << ". Nueva velocidad: " << Velocidad << endl;
-    }
-    else if (tipoEntrenamiento == "Resistencia") {
-        Resistencia += incremento;
-        cout << Nombre << " ha mejorado su resistencia en " << incremento << ". Nueva resistencia: " << Resistencia << endl;
-    }
-    else if (tipoEntrenamiento == "Habilidades") {
-        string nuevaHabilidad = "Habilidad avanzada " + std::to_string(NivelEntrenamiento);
-        Habilidades.push_back(nuevaHabilidad);
-        cout << Nombre << " ha aprendido una nueva habilidad: " << nuevaHabilidad << endl;
-    }
-    else {
-        cout << "Tipo de entrenamiento no reconocido. Por favor, elige entre 'Velocidad', 'Resistencia' o 'Habilidades'." << endl;
-    }
-
-    if (Estado) {
-        DesarrollarEstrategia("Ataque");
-        DesarrollarEstrategia("Defensa");
-    }
-
-    NivelEntrenamiento++;
-*/
-
 void cFogonera::DesarrollarEstrategia(const string& tipo)
 {
     if (tipo == "Ataque") { //hago random que estrategia desarrolla
-        string nuevaEstrategia = "Estrategia de ataque:" + std::to_string(EstrategiasAtaque.size()+1);
+        int randomNum = rand() % 3 + 1;
+        string nuevaEstrategia = EstrategiaAtaque(randomNum);
         EstrategiasAtaque.push_back(nuevaEstrategia);
         cout << Nombre << "ha desarrollado una nueva estrategia de ataque:" << nuevaEstrategia << endl;
     }
     else if (tipo == "Defensa") {
-        string nuevaEstrategia = "Estrategia de defensa:" + std::to_string(EstrategiasDefensa.size() + 1);
+        int randomNum = rand() % 3 + 1;
+        string nuevaEstrategia = EstrategiaDefensa(randomNum);
         EstrategiasDefensa.push_back(nuevaEstrategia);
         cout << Nombre << "ha desarrollado una nueva estrategia de defensa:" << nuevaEstrategia << endl;
     }
 }
 
+void cFogonera::print(ostream& os)
+{
+    cDragon::print(os);
+    os << "Presicion:" << precision << endl;
+    os << "Resistencia al calor:" << resistenciaAlCalor << endl;
+}
+
 cFogonera::~cFogonera()
 {
 }
-
-/*
-if (tipo == "Ataque") {
-        string nuevaEstrategia = "Estrategia de ataque " + std::to_string(EstrategiasAtaque.size() + 1);
-        EstrategiasAtaque.push_back(nuevaEstrategia);
-        cout << Nombre << " ha desarrollado una nueva estrategia de ataque: " << nuevaEstrategia << endl;
-    } else if (tipo == "Defensa") {
-        string nuevaEstrategia = "Estrategia de defensa " + std::to_string(EstrategiasDefensa.size() + 1);
-        EstrategiasDefensa.push_back(nuevaEstrategia);
-        cout << Nombre << " ha desarrollado una nueva estrategia de defensa: " << nuevaEstrategia << endl;
-    }
-*/

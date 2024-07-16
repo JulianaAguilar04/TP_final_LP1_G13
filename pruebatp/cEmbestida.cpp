@@ -1,5 +1,27 @@
 #include "cEmbestida.h"
 
+string cEmbestida::EstrategiaAtaque(int opcion)
+{
+    switch (opcion)
+    {
+    case 1: return "Embestir a gran velocidad";
+    case 2: return "Rafaga de ataque con sus cuernos";
+    case 3: return "Golpe sismico";
+    default: return "Estrategia desconocida";
+    }
+}
+
+string cEmbestida::EstrategiaDefensa(int opcion)
+{
+    switch (opcion)
+    {
+    case 1: return "Escudo";
+    case 2: return "Disparo de espinas";
+    case 3: return "Camuflaje terrestre";
+    default: return "Estrategia desconocida";
+    }
+}
+
 cEmbestida* cEmbestida::AltaDragon()
 {
     string nombre, caracteristica, tamano, color;
@@ -51,9 +73,17 @@ cEmbestida* cEmbestida::AltaDragon()
     return new cEmbestida(nombre, caracteristica, tamano, color, estado, resistencia, velocidad, agilidad, fuerza, v_habilidades, ataque);
 }
 
+void cEmbestida::print(ostream& os)
+{
+    cDragon::print(os);
+    os << "Velocidad:" << velocidad << endl;
+    os << "Agilidad:" << agilidad << endl;
+    os << "Fuerza de impacto:" << fuerzaImpacto;
+}
+
 void cEmbestida::Entrenar(const string tipoEntrenamiento, const cJinete& jinete)
 {
-    double efectividad = jinete.getEfectividad();
+    int efectividad = jinete.getResultado();
     int incremento = static_cast<int>(efectividad * NivelEntrenamiento);
 
     if (tipoEntrenamiento == "Carrera de velocidad") {
@@ -78,13 +108,18 @@ void cEmbestida::Entrenar(const string tipoEntrenamiento, const cJinete& jinete)
 
 void cEmbestida::DesarrollarEstrategia(const string& tipo)
 {
+    if (tipo != "Ataque" && tipo != "Defensa") {
+        throw invalid_argument("El tipo de estrategia no es valida!");
+    }
     if (tipo == "Ataque") { //hago random que estrategia desarrolla
-        string nuevaEstrategia = "Estrategia de ataque:" + std::to_string(EstrategiasAtaque.size() + 1);
+        int randomNum = rand() % 3 + 1;
+        string nuevaEstrategia = EstrategiaAtaque(randomNum);
         EstrategiasAtaque.push_back(nuevaEstrategia);
         cout << Nombre << "ha desarrollado una nueva estrategia de ataque:" << nuevaEstrategia << endl;
     }
     else if (tipo == "Defensa") {
-        string nuevaEstrategia = "Estrategia de defensa:" + std::to_string(EstrategiasDefensa.size() + 1);
+        int randomNum = rand() % 3 + 1;
+        string nuevaEstrategia = EstrategiaDefensa(randomNum);
         EstrategiasDefensa.push_back(nuevaEstrategia);
         cout << Nombre << "ha desarrollado una nueva estrategia de defensa:" << nuevaEstrategia << endl;
     }

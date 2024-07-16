@@ -57,7 +57,27 @@ void cVikingo::setPosicion(string Posicion)
 
 void cVikingo::Trabajar()
 {
-	//completar
+	if (Posicion == "Agricultor" || Posicion == "Agricultora") {
+		cout << Nombre << " que es " << Posicion << " esta trabajando en la huerta cosechando cereales y vegetales." << endl;
+		cout << endl;
+	}
+	else if (Posicion == "Ganadero" || Posicion == "Ganadera") {
+		cout << Nombre << " que es " << Posicion << " esta trabajando en el campo con las ovejas." << endl;
+		cout << endl;
+	}
+	else if (Posicion == "Herrero" || Posicion == "Herrera") {
+		cout << Nombre << " que es " << Posicion << " esta trabajando en la herreria preparando el nuevo armamento de los vikingos." << endl;
+		cout << endl;
+	}
+	else if (Posicion == "Constructor" || Posicion == "Constructora") {
+		cout << Nombre << " que es " << Posicion << " esta ayudando a construir nuevos barcos y casas para los nuevos vikingos." << endl;
+		cout << endl;
+	}
+	else if (Posicion == "Pescador" || Posicion == "Pescadora") {
+		cout << Nombre << " que es " << Posicion << " esta en el Mar de Norte con los demás pescadores." << endl;
+		cout << endl;
+	}
+
 }
 
 vector<string> cVikingo::getdragonesMatados()
@@ -66,7 +86,7 @@ vector<string> cVikingo::getdragonesMatados()
 }
 
 void cVikingo::AtacarDragones() {
-	cout << "¡Todos los vikingos, prepárense para la batalla contra los dragones!" << endl;
+	cout << "Todos los vikingos, dejen sus puestos de trabajo y preparense para la batalla contra los dragones!" << endl;
 }
 
 

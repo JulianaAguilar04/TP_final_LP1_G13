@@ -40,6 +40,7 @@ public:
 	void AltaNombre(string Nombre);			
 	bool Domado();							//funcion que se pide
 	string to_string();
+	virtual void print(ostream& os);
 	virtual void DesarrollarEstrategia(const string& tipo);
 	static cDragon* AltaDragon();													//funcion que se pide
 	virtual void Entrenar(const string tipoEntrenamiento, const cJinete& jinete);	//funcion que se pide

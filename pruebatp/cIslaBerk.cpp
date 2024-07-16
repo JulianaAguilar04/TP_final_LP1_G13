@@ -5,6 +5,7 @@ cIslaBerk::cIslaBerk(vector<cJinete*> Jinetes_isla, vector<cDragon*> Dragones_is
 {
     Escuela = new cEscueladeDragones(Jinetes_isla, Dragones_isla);
     Batalla = new cBatalladeDragones(Vikingos_isla, Dragones_isla);
+    Carrera = new cCarreradeDragones(Jinetes_isla);
 }
 
 int cIslaBerk::mainBerk()
@@ -19,6 +20,7 @@ int cIslaBerk::mainBerk()
         cout << "5) Historial de logros de vikingos " << endl;
         cout << "6) Salir" << endl;
         cin >> opcion;
+        limpiarPantalla();
 
         switch (opcion)
         {
@@ -30,12 +32,11 @@ int cIslaBerk::mainBerk()
             break;
         case 3:
         {
-            cCarreraDeDragones carrera(Jinetes_isla);
-            carrera.iniciarCarrera();
+            Carrera->mainC();
             break;
         }
         case 4:
-            //ListaDePersonas(Personas_isla);
+            //ListaDePersonas(Jinetes_isla, Vikingos_isla);
             break;
         case 5:
             //MostrarDragonesMatados(Vikingos_isla);
@@ -48,13 +49,35 @@ int cIslaBerk::mainBerk()
             break;
         }
         cout << endl;
-    } while (opcion != 5);
+        if (opcion != 6) {
+            cout << "Presione Enter para continuar..." << endl;
+            cin.ignore();
+            cin.get();
+            limpiarPantalla();
+        }
+
+    } while (opcion != 6);
 
     return 0;
 }
+/*
+void ListaDePersonas(vector<cJinete*>&Jinetes_isla, vector<cVikingo*>Vikingos_isla) {
+
+    //imprimo todas las personas de la isla
+    vector<cPersona*>::iterator it_p = Personas_isla.begin();
+
+    while (it_p != Personas_isla.end()) {
+        cout << *(*it_p) << endl;
+        it_p++;
+    }
+
+}
+*/
+
 
 cIslaBerk::~cIslaBerk()
 {
     delete Escuela;
     delete Batalla;
+    delete Carrera;
 }
