@@ -1,8 +1,10 @@
 #pragma once
-#include <vector>
 #include <iostream>
-#include <cstdlib>
+#include <vector>
+#include <string>
+#include <stdexcept>
 #include <ctime>
+#include <cstdlib>
 #include <thread>
 #include <chrono>
 #include "cJinete.h"
@@ -16,18 +18,32 @@ inline void limpiarPantalla()
 #endif
 };
 
-class cCarreradeDragones {
-private:
-    vector<cJinete*> Jinetes_isla;
-    void contarRegreso();
+class EmpateException : public exception {
 public:
-    cCarreradeDragones(vector<cJinete*> Jinetes_isla);
-    int mainC();
-    void iniciarCarrera();
-    ~cCarreradeDragones();
+    const char* what() const noexcept override {
+        return "Empate: Dos o más jinetes recolectaron la misma cantidad de ovejas.";
+    }
 };
 
+class NingunJineteRecolectaException : public exception {
+public:
+    const char* what() const noexcept override {
+        return "Ningun jinete recolecto ovejas.";
+    }
+};
 
+class cCarreradeDragones {
+private:
+    vector<cJinete*> jinetes;
+
+public:
+    cCarreradeDragones(vector<cJinete*>& Jinetes_isla);
+    int mainC();
+    void iniciarCarrera();
+    void contarRegreso();
+    void anunciarGanador();
+    ~cCarreradeDragones();
+};
 
 
 /*
