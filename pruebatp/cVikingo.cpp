@@ -1,17 +1,13 @@
 #include "cVikingo.h"
 
-//constructor por parametro
-cVikingo::cVikingo(string Nombre, string Apellido, string Apodo, string FecNac, string Posicion, cDragon* Dragoncito, int Fuerza):cPersona(Nombre, Apellido, Apodo, FecNac, Fuerza) {
-	this->Posicion = Posicion;
-	miDragon = Dragoncito;
-}
+cVikingo::cVikingo(string Nombre, string Apellido, string Apodo, string FecNac, string Posicion, cDragon* Dragoncito, int Fuerza)
+	: cPersona(Nombre, Apellido, Apodo, FecNac, Fuerza), miDragon(Dragoncito), Posicion(Posicion) {}
 
-string cVikingo::getNombre()
-{
+string cVikingo::getNombre() {
 	return Nombre;
 }
-void cVikingo::mostrarInfo(ostream& os) const
-{
+
+void cVikingo::mostrarInfo(ostream& os) const {
 	os << "Nombre:" << Nombre << endl;
 	os << "Apellido:" << Apellido << endl;
 	os << "Apodo:" << Apodo << endl;
@@ -24,39 +20,34 @@ void cVikingo::mostrarInfo(ostream& os) const
 	else {
 		os << "Sin dragon asignado" << endl;
 	}
-
 }
 
-ostream& operator<<(ostream& os, const cVikingo& v)
-{
+ostream& operator<<(ostream& os, const cVikingo& v) {
 	v.mostrarInfo(os);
 	return os;
 }
 
-string cVikingo::getApellido()
-{
+string cVikingo::getApellido() {
 	return Apellido;
 }
-string cVikingo::getPosicion() 
-{
+
+string cVikingo::getPosicion() {
 	return Posicion;
 }
 
-void cVikingo::setNombre(string Nombre)
-{
+void cVikingo::setNombre(string Nombre) {
 	this->Nombre = Nombre;
 }
-void cVikingo::setApellido(string Apellido)
-{
+
+void cVikingo::setApellido(string Apellido) {
 	this->Apellido = Apellido;
 }
-void cVikingo::setPosicion(string Posicion)
-{
+
+void cVikingo::setPosicion(string Posicion) {
 	this->Posicion = Posicion;
 }
 
-void cVikingo::Trabajar()
-{
+void cVikingo::Trabajar() {
 	if (Posicion == "Agricultor" || Posicion == "Agricultora") {
 		cout << Nombre << " que es " << Posicion << " esta trabajando en la huerta cosechando cereales y vegetales." << endl;
 		cout << endl;
@@ -77,11 +68,9 @@ void cVikingo::Trabajar()
 		cout << Nombre << " que es " << Posicion << " esta en el Mar de Norte con los demás pescadores." << endl;
 		cout << endl;
 	}
-
 }
 
-vector<string> cVikingo::getdragonesMatados()
-{
+vector<cDragon*> cVikingo::getDragonesMatados() {
 	return dragonesMatados;
 }
 
@@ -89,15 +78,14 @@ void cVikingo::AtacarDragones() {
 	cout << "Todos los vikingos, dejen sus puestos de trabajo y preparense para la batalla contra los dragones!" << endl;
 }
 
-
-void cVikingo::registrarDragonMatado(const string& nombreDragon) {
-	dragonesMatados.push_back(nombreDragon);
+void cVikingo::registrarDragonMatado(cDragon* dragon) {
+	dragonesMatados.push_back(dragon);
 }
 
 void cVikingo::mostrarDragonesMatados() {
 	cout << "Dragones matados por " << Nombre << ":" << endl;
-	for (const auto& nombre : dragonesMatados) {
-		cout << nombre << " "<<endl;
+	for (const auto& dragon : dragonesMatados) {
+		cout << dragon->getNombre() << " " << endl;
 	}
 	cout << endl;
 }
@@ -106,12 +94,10 @@ string cVikingo::to_string() {
 	stringstream ss;
 	ss << cPersona::to_string();
 	ss << "Posicion:" << Posicion;
-	ss << miDragon->to_string();
+	if (miDragon) {
+		ss << miDragon->to_string();
+	}
 	return ss.str();
 }
 
-cVikingo::~cVikingo()
-{
-
-}
-
+cVikingo::~cVikingo() {}
