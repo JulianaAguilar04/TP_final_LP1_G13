@@ -22,7 +22,6 @@ private:
 public:
 	cIslaBerk(vector<cJinete*> Jinetes_isla, vector<cDragon*>Dragones_isla, vector<cVikingo*>Vikingos_isla);
 	int mainBerk();
-	void ListaDePersonas(vector<cPersona*>& Personas_isla);
 	~cIslaBerk();
 };
 

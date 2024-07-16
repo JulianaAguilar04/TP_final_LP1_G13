@@ -4,6 +4,7 @@
 #include <vector>
 #include <cstdlib> // para rand() y srand()
 #include <ctime>   // para time()
+#include <stdexcept>
 #include "cJinete.h"
 #include "cVikingo.h"
 #include "cEmbestida.h"
@@ -63,20 +64,10 @@ int main()
 
     //me copio los dragones en otro vector para la asignación de dragones
     vector<cDragon*> vectorDragones(Dragones_isla);
-    /*
-    for (const auto& dragon : vectorDragones) {
-        cout << *dragon << endl;
-    }*/
 
     // asigno a cada jinete los dragones
     AsignarDragonesJinetes(Jinetes_isla, vectorDragones);
 
-    /*
-    // Mostrar información de jinetes
-    for (const auto& jinete : Jinetes_isla) {
-        cout << *jinete << endl;
-    }
-    */
 
     // me creo un vector de vikingos para utilizarlos en batalla de dragones
     vector<cVikingo*> Vikingos_isla;
@@ -87,50 +78,17 @@ int main()
         }
     }
 
-    /*
-    // Mostrar información de vikingos
-    for (const auto& vikingo : Vikingos_isla) {
-        cout << *vikingo << endl;
-    }
-    */
-
-
-    //PRUEBOOOOO
     cIslaBerk ISLA(Jinetes_isla, Dragones_isla, Vikingos_isla);
     ISLA.mainBerk();
  
+    for (int i = 0; i < vectorDragones.size(); i++) {
+        delete vectorDragones[i];
+    }
+
+    for (int i = 0; i < Personas_isla.size(); i++) {
+        delete Personas_isla[i];
+    }
     vectorDragones.clear();
-
-    // Eliminar dragones de Dragones_isla solo si no se han movido a otra parte
-    for (cDragon* dragon : Dragones_isla) {
-        if (dragon != nullptr) {
-            delete dragon;
-        }
-    }
-    Dragones_isla.clear();
-
-    // Eliminar jinetes de Jinetes_isla
-    for (cJinete* jinete : Jinetes_isla) {
-        if (jinete != nullptr) {
-            delete jinete;
-        }
-    }
-    Jinetes_isla.clear();
-
-    // Eliminar vikingos de Vikingos_isla
-    for (cVikingo* vikingo : Vikingos_isla) {
-        if (vikingo != nullptr) {
-            delete vikingo;
-        }
-    }
-    Vikingos_isla.clear();
-
-    // Eliminar personas de Personas_isla
-    for (cPersona* persona : Personas_isla) {
-        if (persona != nullptr) {
-            delete persona;
-        }
-    }
     Personas_isla.clear();
 
     // Eliminar ataques
@@ -141,25 +99,6 @@ int main()
     delete Ataque5;
     delete Ataque6;
     delete Ataque7;
-   /*
-    for (int i = 0; i < vectorDragones.size(); i++) {
-        delete vectorDragones[i];
-    }
-
-   for (int i = 0; i < Dragones_isla.size(); i++) {
-        delete Dragones_isla[i];
-    }
-
-    for (int i = 0; i < Jinetes_isla.size(); i++) {
-        delete Jinetes_isla[i];
-    }
-
-    for (int i = 0; i < Vikingos_isla.size(); i++) {
-        delete Vikingos_isla[i];
-    }
-    
-    delete Ataque1, Ataque2, Ataque3, Ataque4, Ataque5, Ataque6, Ataque7;
-    */
 
    return 0;
 }
@@ -200,18 +139,8 @@ void AsignarDragonesJinetes(vector<cJinete*>& Jinetes_isla, vector<cDragon*>& Dr
 
 
 
+
 /*
-// funcion imprimir personas 
-void ListaDePersonas(vector<cPersona*>& Personas_isla) {
-
-    //imprimo todas las personas de la isla
-    vector<cPersona*>::iterator it_p = Personas_isla.begin();
-
-    while (it_p != Personas_isla.end()) {
-        cout << *(*it_p) << endl;
-        it_p++;
-    }
-
 }
     // Implementación de la función MostrarDragonesMatados
     void MostrarDragonesMatados(const vector<cVikingo*>& Vikingos_isla) {

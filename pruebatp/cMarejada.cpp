@@ -25,46 +25,64 @@ string cMarejada::EstrategiaDefensa(int opcion)
 cMarejada* cMarejada::AltaDragon()
 {
     string nombre, caracteristica, tamano, color;
-    int resistencia = 0, hab = 0, clase = 0, adaptabilidad=0;
-    bool estado;
+    int resistencia = 0, hab = 0, clase = 0, adaptabilidad = 0;
+    bool estado = false;
     char domado;
     vector<string> v_habilidades;
+    cAtaque* ataque = nullptr;
 
-    cout << "Ingrese el nombre del dragon: ";
-    cin >> nombre;
-    cout << "Ingrese las caracteristicas del dragon: ";
-    cin >> caracteristica;
-    cout << "Ingrese el tamano del dragon: ";
-    cin >> tamano;
-    cout << "Ingrese el color del dragon: ";
-    cin >> color;
-    cout << "El dragon esta domado? (s/n): ";
-    cin >> domado;
-    estado = (domado == 's' || domado == 'S');
-    cout << "Ingrese la resistencia del dragon:" << endl;
-    cin >> resistencia;
-    cout << "Ingrese el nivel de adaptabilidad del dragon:" << endl;
-    cin >> adaptabilidad;
-    cout << "HABILIDADES (ingrese cantidad): " << endl;
-    cin >> hab;
+    try {
+        cout << "Ingrese el nombre del dragon: ";
+        cin >> nombre;
+        cout << "Ingrese las caracteristicas del dragon: ";
+        cin >> caracteristica;
+        cout << "Ingrese el tamano del dragon: ";
+        cin >> tamano;
+        cout << "Ingrese el color del dragon: ";
+        cin >> color;
+        cout << "El dragon esta domado? (s/n): ";
+        cin >> domado;
+        if (domado != 's' && domado != 'S' && domado != 'n' && domado != 'N')
+            throw invalid_argument("Respuesta invalida para domado");
+        estado = (domado == 's' || domado == 'S');
+        cout << "Ingrese la resistencia del dragon:" << endl;
+        cin >> resistencia;
+        if (resistencia <= -1)
+            throw invalid_argument("Respuesta invalida para resistencia ");
+        cout << "Ingrese el nivel de adaptabilidad del dragon:" << endl;
+        cin >> adaptabilidad;
+        if (adaptabilidad <= -1)
+            throw invalid_argument("Respuesta invalida para adaptabilidad");
+        cout << "HABILIDADES (ingrese cantidad): " << endl;
+        cin >> hab;
 
-    v_habilidades.reserve(hab); //reservo espacio para la cantidades de habilidades
-    for (int i = 0; i < hab; i++)
-    {
-        string habilidad;
-        cout << "Ingrese habilidad:" << (i + 1) << ":" << endl;
-        cin >> habilidad;
-        v_habilidades.push_back(habilidad);
+        v_habilidades.reserve(hab); //reservo espacio para la cantidades de habilidades
+        for (int i = 0; i < hab; i++)
+        {
+            string habilidad;
+            cout << "Ingrese habilidad:" << (i + 1) << ":" << endl;
+            cin >> habilidad;
+            v_habilidades.push_back(habilidad);
+        }
+
+        string tipoAtaque, danioAtaque, alcanceAtaque;
+        cout << "Ingrese el tipo de ataque del dragon: ";
+        cin >> tipoAtaque;
+        cout << "Ingrese el daño del ataque del dragon: ";
+        cin >> danioAtaque;
+        cout << "Ingrese el alcance del ataque del dragon: ";
+        cin >> alcanceAtaque;
+
+        ataque = new cAtaque(tipoAtaque, danioAtaque, alcanceAtaque);
     }
-
-    string tipoAtaque, danioAtaque, alcanceAtaque;
-    cout << "Ingrese el tipo de ataque del dragon: ";
-    cin >> tipoAtaque;
-    cout << "Ingrese el daño del ataque del dragon: ";
-    cin >> danioAtaque;
-    cout << "Ingrese el alcance del ataque del dragon: ";
-    cin >> alcanceAtaque;
-    cAtaque* ataque = new cAtaque(tipoAtaque, danioAtaque, alcanceAtaque);
+    catch (const invalid_argument&e) {
+        cout << "Error:" << e.what() << endl;
+        delete ataque;
+    }
+    catch (const exception& e) {
+        cout << "Error:" << e.what() << endl;
+        delete ataque;
+    }
 
     return new cMarejada(nombre, caracteristica, tamano, color, estado, resistencia, adaptabilidad, v_habilidades, ataque);
 }
@@ -75,7 +93,7 @@ void cMarejada::Entrenar(const string tipoEntrenamiento, const cJinete& jinete) 
 
     if (tipoEntrenamiento == "Diferentes terrenos") {
         adaptabilidad += incremento;
-        cout << Nombre << "ha mejorado su adaptabilidad en: " << incremento << ". Su adaptabilidad ahora es de:" << adaptabilidad << endl;
+        cout << Nombre << " ha mejorado su adaptabilidad en: " << incremento << ". Su adaptabilidad ahora es de:" << adaptabilidad << endl;
     }
     if (Estado) {
         DesarrollarEstrategia("Ataque");
@@ -90,13 +108,13 @@ void cMarejada::DesarrollarEstrategia(const string& tipo)
         int randomNum = rand() % 3 + 1;
         string nuevaEstrategia = EstrategiaAtaque(randomNum);
         EstrategiasAtaque.push_back(nuevaEstrategia);
-        cout << Nombre << "ha desarrollado una nueva estrategia de ataque:" << nuevaEstrategia << endl;
+        cout << Nombre << " ha desarrollado una nueva estrategia de ataque:" << nuevaEstrategia << endl;
     }
     else if (tipo == "Defensa") {
         int randomNum = rand() % 3 + 1;
         string nuevaEstrategia = EstrategiaDefensa(randomNum);
         EstrategiasDefensa.push_back(nuevaEstrategia);
-        cout << Nombre << "ha desarrollado una nueva estrategia de defensa:" << nuevaEstrategia << endl;
+        cout << Nombre << " ha desarrollado una nueva estrategia de defensa:" << nuevaEstrategia << endl;
     }
 }
 

@@ -25,14 +25,13 @@ void cCarreradeDragones::iniciarCarrera() {
     for (auto& jinete : jinetes) {
         *jinete += -jinete->getNumeroOvejas(); // Restablecer el conteo a 0
     }
+    contarRegreso();
 
     for (int i = 0; i < jinetes.size(); ++i) {
         int ovejasRecogidas = rand() % 100;
         *jinetes[i] += ovejasRecogidas; // Usando la sobrecarga del operador +=
         cout << jinetes[i]->getNombre() << " ha recogido " << ovejasRecogidas << " ovejas." << endl;
     }
-
-    contarRegreso();
 }
 
 void cCarreradeDragones::contarRegreso() {
