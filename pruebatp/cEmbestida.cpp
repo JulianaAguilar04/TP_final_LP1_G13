@@ -113,7 +113,7 @@ void cEmbestida::Entrenar(const string tipoEntrenamiento, const cJinete& jinete)
         fuerzaImpacto += incremento;
         cout << Nombre << " ha mejorado su resistencia en:" << incremento << ". Su resistencia ahora es de:" << fuerzaImpacto << endl;
     }
-    //aca va lo de habilidades
+    
     if (Estado) {
         DesarrollarEstrategia("Ataque");
         DesarrollarEstrategia("Defensa");

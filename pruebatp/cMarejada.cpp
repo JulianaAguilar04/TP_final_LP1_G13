@@ -146,18 +146,6 @@ void cMarejada::DesarrollarEstrategia(const string& tipo)
     catch (const invalid_argument& e) {
         cout << "Error:" << e.what() << endl;
     }
-    /*if (tipo == "Ataque") { //hago random que estrategia desarrolla
-        int randomNum = rand() % 3 + 1;
-        string nuevaEstrategia = EstrategiaAtaque(randomNum);
-        EstrategiasAtaque.push_back(nuevaEstrategia);
-        cout << Nombre << " ha desarrollado una nueva estrategia de ataque:" << nuevaEstrategia << endl;
-    }
-    else if (tipo == "Defensa") {
-        int randomNum = rand() % 3 + 1;
-        string nuevaEstrategia = EstrategiaDefensa(randomNum);
-        EstrategiasDefensa.push_back(nuevaEstrategia);
-        cout << Nombre << " ha desarrollado una nueva estrategia de defensa:" << nuevaEstrategia << endl;
-    }*/
 }
 
 void cMarejada::print(ostream& os)

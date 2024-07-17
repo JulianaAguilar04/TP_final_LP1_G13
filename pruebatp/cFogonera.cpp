@@ -99,7 +99,7 @@ void cFogonera::Entrenar(const string tipoEntrenamiento, const cJinete& jinete)
         resistenciaAlCalor += incremento;
         cout << Nombre << " ha mejorado su resistencia al calor en:" << incremento << ". Su resistencia ahora es de:" << resistenciaAlCalor << endl;
     }
-    //aca va lo de habilidades
+    
     if (Estado) {
         DesarrollarEstrategia("Ataque");
         DesarrollarEstrategia("Defensa");

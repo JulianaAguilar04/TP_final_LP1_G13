@@ -109,6 +109,7 @@ int main()
     }
     Dragones_isla.clear();
 
+    //Eliminar personas de Personas_isla
     for (int i = 0; i < Personas_isla.size(); i++) {
         delete Personas_isla[i];
     } 
@@ -136,24 +137,24 @@ void AsignarDragonesJinetes(vector<cJinete*>& Jinetes_isla, vector<cDragon*>& Dr
     int indexDragon = 0;
 
     for (cJinete* jinete : Jinetes_isla) {
-        // Reiniciar el indice si alcanza el final del vector de dragones
+        // Reinicio el indice si alcanza el final del vector
         if (indexDragon >= Dragones_isla.size()) {
             break;
         }
 
-        // Comprobar si el jinete puede tener un dragón
+        // Compruebo si el jinete puede tener un dragón (debe tener una calificacion de bocon)
         if (jinete->getResultado() > 0) {
             bool asignado = false;
 
-            // Buscar un dragón disponible para el jinete actual
+            // Busco un dragón disponible para el jinete actual
             while (indexDragon < Dragones_isla.size() && !asignado) {
                 cDragon* dragon = Dragones_isla[indexDragon];
 
-                // Verificar que el dragón esté disponible
+                // Verifio que el dragón este disponible
                 if (dragon->getEstado() == true) {
                     bool yaTieneJinete = false;
 
-                    // Verificar que el dragón no esté ya asignado a otro jinete
+                    // Verifico que el dragón no este ya asignado a otro jinete
                     for (cJinete* otroJinete : Jinetes_isla) {
                         if (otroJinete->tieneDragon(dragon)) {
                             yaTieneJinete = true;
@@ -161,14 +162,12 @@ void AsignarDragonesJinetes(vector<cJinete*>& Jinetes_isla, vector<cDragon*>& Dr
                         }
                     }
 
-                    // Asignar el dragón al jinete si no tiene jinete
+                    // Asigno el dragón al jinete si no tiene jinete
                     if (!yaTieneJinete) {
                         jinete->IncorporarDragon(dragon);
                         asignado = true;
                     }
                 }
-
-                // Avanzar al siguiente dragón
                 indexDragon++;
             }
         }

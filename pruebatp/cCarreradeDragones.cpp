@@ -1,7 +1,7 @@
 #include "cCarreradeDragones.h"
 
 cCarreradeDragones::cCarreradeDragones(vector<cJinete*>& Jinetes_isla) : jinetes(Jinetes_isla) {
-    srand(static_cast<unsigned int>(time(0))); // Inicializar la semilla del generador de números aleatorios
+    srand(static_cast<unsigned int>(time(0))); // Inicializo la semilla para generar numeros aleatorios
 }
 
 int cCarreradeDragones::mainC() {
@@ -19,11 +19,11 @@ int cCarreradeDragones::mainC() {
 }
 
 void cCarreradeDragones::iniciarCarrera() {
-    cout << "¡La carrera ha comenzado!" << endl;
+    cout << "La carrera ha comenzado!" << endl;
 
-    // Reiniciar el conteo de ovejas antes de la carrera
+    // Reinicio el conteo de ovejas antes de la carrera
     for (auto& jinete : jinetes) {
-        *jinete += -jinete->getNumeroOvejas(); // Restablecer el conteo a 0
+        *jinete += -jinete->getNumeroOvejas(); // Restablezco el conteo a 0
     }
     contarRegreso();
 
@@ -37,7 +37,7 @@ void cCarreradeDragones::iniciarCarrera() {
 void cCarreradeDragones::contarRegreso() {
     for (int i = 10; i >= 0; --i) {
         cout << i << "..." << endl;
-        this_thread::sleep_for(chrono::seconds(1)); // Pausar un segundo entre cada número
+        this_thread::sleep_for(chrono::seconds(1)); 
     }
 }
 

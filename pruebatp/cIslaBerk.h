@@ -15,7 +15,7 @@ private:
 	vector<cJinete*> Jinetes_isla;
 	vector<cDragon*>Dragones_isla;
 	vector<cVikingo*>Vikingos_isla;
-	cEscueladeDragones* Escuela; //relación composicion
+	cEscueladeDragones* Escuela; 
 	cBatalladeDragones* Batalla;
 	cCarreradeDragones* Carrera;
 	

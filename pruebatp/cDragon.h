@@ -25,11 +25,9 @@ protected:
     cAtaque* FormadeAtaque;
 
 public:
-    // Constructor por parámetros
     cDragon(string Nombre, string Caracteristica, string Tamano, string Color, bool Estado, int Resistencia, vector<string>& Habilidades, cAtaque* miAtaque)
         : Nombre(Nombre), Caracteristica(Caracteristica), Tamano(Tamano), Color(Color), Estado(Estado), Resistencia(Resistencia), Habilidades(Habilidades), NivelEntrenamiento(1), FormadeAtaque(miAtaque) {};
 
-    // Constructor por copia
     cDragon(cDragon& Dragoncito);
 
     string getNombre() const;
