@@ -11,11 +11,10 @@ using namespace std;
 class cVikingo : public cPersona {
 private:
 	string Posicion;
-	cDragon* miDragon;
 	vector<cDragon*> dragonesMatados; // vector de punteros a cDragon
 
 public:
-	cVikingo(string Nombre, string Apellido, string Apodo, string FecNac, string Posicion, cDragon* Dragoncito, int Fuerza);
+	cVikingo(string Nombre, string Apellido, string Apodo, string FecNac, string Posicion, int Fuerza);
 	string to_string();
 
 	void mostrarInfo(ostream& os) const;

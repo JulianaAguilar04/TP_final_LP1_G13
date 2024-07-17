@@ -1,7 +1,7 @@
 #include "cVikingo.h"
 
-cVikingo::cVikingo(string Nombre, string Apellido, string Apodo, string FecNac, string Posicion, cDragon* Dragoncito, int Fuerza)
-	: cPersona(Nombre, Apellido, Apodo, FecNac, Fuerza), miDragon(Dragoncito), Posicion(Posicion) {}
+cVikingo::cVikingo(string Nombre, string Apellido, string Apodo, string FecNac, string Posicion, int Fuerza)
+	: cPersona(Nombre, Apellido, Apodo, FecNac, Fuerza), Posicion(Posicion) {}
 
 string cVikingo::getNombre() {
 	return Nombre;
@@ -14,12 +14,6 @@ void cVikingo::mostrarInfo(ostream& os) const {
 	os << "Fecha de nacimiento:" << FecNac << endl;
 	os << "Posicion:" << Posicion << endl;
 	os << "Fuerza:" << Fuerza << endl;
-	if (miDragon) {
-		os << "Dragon:" << miDragon->getNombre() << endl;
-	}
-	else {
-		os << "Sin dragon asignado" << endl;
-	}
 }
 
 ostream& operator<<(ostream& os, const cVikingo& v) {
@@ -90,9 +84,7 @@ string cVikingo::to_string() {
 	stringstream ss;
 	ss << cPersona::to_string();
 	ss << "Posicion:" << Posicion;
-	if (miDragon) {
-		ss << miDragon->to_string();
-	}
+	mostrarDragonesMatados();
 	return ss.str();
 }
 

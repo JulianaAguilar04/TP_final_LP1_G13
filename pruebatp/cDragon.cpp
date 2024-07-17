@@ -104,7 +104,13 @@ void cDragon::Entrenar(const string tipoEntrenamiento, const cJinete& jinete)
 
 void cDragon::Baja(vector<cDragon*>& Dragones_isla)
 {
-    //necesito especificamente el dragon que se quiere sacar de la lista
+    auto it = find(Dragones_isla.begin(), Dragones_isla.end(), this);
+    if (it != Dragones_isla.end()) {
+        // Liberar memoria del dragón si es necesario
+        delete* it;
+        // Eliminar el dragón de la lista
+        Dragones_isla.erase(it);
+    }
 }
 
 

@@ -134,14 +134,42 @@ void cEmbestida::DesarrollarEstrategia(const string& tipo)
             throw invalid_argument("El tipo de estrategia no es valida!");
         }
         if (tipo == "Ataque") { //hago random que estrategia desarrolla
-            int randomNum = rand() % 3 + 1;
-            string nuevaEstrategia = EstrategiaAtaque(randomNum);
+            string nuevaEstrategia;
+            bool existe = false;
+            
+            do {
+                int randomNum = rand() % 3 + 1;
+                nuevaEstrategia = EstrategiaAtaque(randomNum);
+
+                existe = false;
+                for (string& estrategia : EstrategiasAtaque) {
+                    if (estrategia == nuevaEstrategia) {
+                        existe = true;
+                        break;
+                    }
+                }
+            } while (existe);
+      
             EstrategiasAtaque.push_back(nuevaEstrategia);
             cout << Nombre << " ha desarrollado una nueva estrategia de ataque:" << nuevaEstrategia << endl;
         }
         else if (tipo == "Defensa") {
-            int randomNum = rand() % 3 + 1;
-            string nuevaEstrategia = EstrategiaDefensa(randomNum);
+            string nuevaEstrategia;
+            bool existe = false;
+
+            do {
+                int randomNum = rand() % 3 + 1;
+                nuevaEstrategia = EstrategiaDefensa(randomNum);
+
+                existe = false;
+                for (string& estrategia : EstrategiasDefensa) {
+                    if (estrategia == nuevaEstrategia) {
+                        existe = true;
+                        break;
+                    }
+                }
+            } while (existe);
+          
             EstrategiasDefensa.push_back(nuevaEstrategia);
             cout << Nombre << " ha desarrollado una nueva estrategia de defensa:" << nuevaEstrategia << endl;
         }

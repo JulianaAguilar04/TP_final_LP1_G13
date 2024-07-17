@@ -46,10 +46,10 @@ int main()
     Dragones_isla.push_back(new cMarejada("Scaldaron", "Redondo", "Grande", "Verde", true, 20, 15, Habilidades3, Ataque2));
 
     vector<cPersona*> Personas_isla;
-    Personas_isla.push_back(new cVikingo("Juliana", "Aguilar Iuzchuk", "Juju", "31-03-2004", "Constructora", Dragones_isla[0], 32));
+    Personas_isla.push_back(new cVikingo("Juliana", "Aguilar Iuzchuk", "Juju", "31-03-2004", "Constructora", 32));
     Personas_isla.push_back(new cJinete("Elias", "Garcia", "Elu", "19-06-2002", "Robusto", ResulEntrenamiento::Aprobado, 20));
-    Personas_isla.push_back(new cVikingo("Nahuel", "Chiariza", "Nahu", "11-12-2003", "Herrero", Dragones_isla[4], 25));
-    Personas_isla.push_back(new cVikingo("Milagros", "Menendez Tuja", "Mili", "26-03-2002", "Agricultora", Dragones_isla[5], 41));
+    Personas_isla.push_back(new cVikingo("Nahuel", "Chiariza", "Nahu", "11-12-2003", "Herrero", 25));
+    Personas_isla.push_back(new cVikingo("Milagros", "Menendez Tuja", "Mili", "26-03-2002", "Agricultora", 41));
     Personas_isla.push_back(new cJinete("Santiago", "Menendez Tuja", "Santi", "28-11-1998", "Fuerte", ResulEntrenamiento::Primero, 45));
     Personas_isla.push_back(new cJinete("Sol", "Segura", "Solci", "01-02-1234", "Alta", ResulEntrenamiento:: Ultimo, 29));
 
