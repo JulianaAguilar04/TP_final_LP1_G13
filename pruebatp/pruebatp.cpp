@@ -28,6 +28,9 @@ int main()
     cAtaque* Ataque5 = new cAtaque("Fuerza", "15", "14");
     cAtaque* Ataque6 = new cAtaque("Lava", "8", "14");
     cAtaque* Ataque7 = new cAtaque("Hielo", "50", "45");
+    cAtaque* Ataque8 = new cAtaque("Gel de fuego", "15", "15");
+    cAtaque* Ataque9 = new cAtaque("Plasma explosiva", "15", "14");
+    cAtaque* Ataque10 = new cAtaque("Onda sonica", "16", "12");
 
     //Habilidades
     vector<string> Habilidades1 = { "Lanzar fuego", "Piel resistente a la lava" };
@@ -37,6 +40,9 @@ int main()
     vector<string> Habilidades5 = { "Dientes retractiles", "Camuflaje de noche", "Velocidad supersonica", "Gran audicion" };
     vector<string> Habilidades6 = { "Piel resistente", "Mandibula fuerte", "Fuego de rocas de su estomago" };
     vector<string> Habilidades7 = { "Aliento de hielo", "Control sobre otros dragones" };
+    vector<string> Habilidades8 = { "Prende fuego su cuerpo", "Crea rafagas de viento" };
+    vector<string> Habilidades9 = { "Camuflaje entre las nubes", "Velocidad supersonica", "Sigilosa" };
+    vector<string> Habilidades10 = { "Extingue llamas", "Deja sordos a sus oponentes" };
 
     //Dragones de la isla
     vector<cDragon*> Dragones_isla;
@@ -46,6 +52,9 @@ int main()
     Dragones_isla.push_back(new cEmbestida("Skrill", "Agresivo", "Grande", "Violeta", false, 19, 10,20, 20, Habilidades2, Ataque3));
     Dragones_isla.push_back(new cMarejada("Salvajibestia", "Robusto", "Gigante", "Blanco", true, 20, 10, Habilidades7, Ataque7));
     Dragones_isla.push_back(new cMarejada("Scaldaron", "Redondo", "Grande", "Verde", true, 20, 15, Habilidades3, Ataque2));
+    Dragones_isla.push_back(new cFogonera("Pesadilla Monstruosa", "Irritable", "Mediano", "Purpura", false, 15, 20, 17, Habilidades8, Ataque8));
+    Dragones_isla.push_back(new cEmbestida("Furia Luminosa", "Salvaje", "Mediano", "Blanco", true, 18, 20, 28, 14, Habilidades9, Ataque9));
+    Dragones_isla.push_back(new cMarejada("Trueno Tambor", "Solitario", "Pequenio", "Azul", false, 10, 7, Habilidades10, Ataque10));
 
 
     //Personas de la isla
@@ -56,6 +65,9 @@ int main()
     Personas_isla.push_back(new cVikingo("Milagros", "Menendez Tuja", "Mili", "26-03-2002", "Agricultora", 41));
     Personas_isla.push_back(new cJinete("Santiago", "Menendez Tuja", "Santi", "28-11-1998", "Fuerte", ResulEntrenamiento::Primero, 45));
     Personas_isla.push_back(new cJinete("Sol", "Segura", "Solci", "01-02-1234", "Alta", ResulEntrenamiento:: Ultimo, 29));
+    Personas_isla.push_back(new cJinete ("Maribel","Papa", "Maru", "28-11-2003", "Inteligente", ResulEntrenamiento::Desaprobado, 20));
+    Personas_isla.push_back(new cJinete("Maria Sol", "Maidana Cendra", "Solchu","01-08-2003", "Peleadora", ResulEntrenamiento::Aprobado, 25));
+    Personas_isla.push_back(new cVikingo("Federico", "Grano", "Fede", "30-11-2003", "Pescador", 30));
 
 
 
@@ -81,10 +93,6 @@ int main()
     vector<cDragon*> vectorDragones(Dragones_isla);
 
     AsignarDragonesJinetes(Jinetes_isla, vectorDragones);
-   
-    for (cJinete* jinete : Jinetes_isla) {
-        cout << (*jinete) << endl;
-    }
 
     cIslaBerk ISLA(Jinetes_isla, Dragones_isla, Vikingos_isla);
     ISLA.mainBerk();
@@ -119,11 +127,65 @@ int main()
 
 //funcion asignar dragones
 void AsignarDragonesJinetes(vector<cJinete*>& Jinetes_isla, vector<cDragon*>& Dragones_isla) {
+/*
+    // Iterar sobre todos los dragones disponibles
+    for (auto& dragon : Dragones_isla) {
+        // Buscar un jinete disponible para este dragón
+        for (auto& jinete : Jinetes_isla) {
+            // Verificar si el jinete puede tener el dragón y aún no tiene uno asignado
+            if (jinete->getResultado() > 0 && !jinete->tieneDragon(dragon)) {
+                jinete->IncorporarDragon(dragon);
+                break;  // Asignar el dragón y salir del bucle de jinetes
+            }
+        }
+    }
+    */
 
-
-    
     /*
-    
+    // Indice para iterar sobre los dragones
+    size_t indexDragon = 0;
+
+    for (auto& jinete : Jinetes_isla) {
+        // Reiniciar el indice si alcanza el final del vector de dragones
+        if (indexDragon >= Dragones_isla.size()) {
+            break;
+        }
+
+        // Comprobar si el jinete puede tener un dragón
+        if (jinete->getResultado() > 0) {
+            bool asignado = false;
+
+            // Buscar un dragón disponible para el jinete actual
+            while (indexDragon < Dragones_isla.size() && !asignado) {
+                cDragon* dragon = Dragones_isla[indexDragon];
+
+                // Verificar que el dragón esté disponible
+                if (dragon->getEstado() == true) {
+                    bool yaTieneJinete = false;
+
+                    // Verificar que el dragón no esté ya asignado a otro jinete
+                    for (cJinete* otroJinete : Jinetes_isla) {
+                        if (otroJinete->tieneDragon(dragon)) {
+                            yaTieneJinete = true;
+                            break;
+                        }
+                    }
+
+                    // Asignar el dragón al jinete si no tiene jinete
+                    if (!yaTieneJinete) {
+                        jinete->IncorporarDragon(dragon);
+                        asignado = true;
+                    }
+                }
+
+                // Avanzar al siguiente dragón
+                indexDragon++;
+            }
+        }
+    }
+    */
+   
+    /*
     for (auto& jinete : Jinetes_isla) {
 
         vector<cDragon*>::iterator it_d = Dragones_isla.begin();
@@ -150,8 +212,36 @@ void AsignarDragonesJinetes(vector<cJinete*>& Jinetes_isla, vector<cDragon*>& Dr
                 ++it_d;
             }
         }
+    }*/
+    
+    // Recorremos todos los jinetes
+    for (auto& jinete : Jinetes_isla) {
+        // Si el jinete ya tiene un dragón asignado, pasamos al siguiente jinete
+        if (!jinete->getMisDragones().empty()) {
+            continue;
+        }
+
+        // Iteramos sobre los dragones disponibles para asignar
+        for (auto it_d = Dragones_isla.begin(); it_d != Dragones_isla.end(); ++it_d) {
+            // Verificamos si el dragón no está asignado a otro jinete
+            bool estaAsignado = false;
+            for (auto otroJinete : Jinetes_isla) {
+                if (otroJinete != jinete && otroJinete->tieneDragon(*it_d)) {
+                    estaAsignado = true;
+                    break;
+                }
+            }
+
+            // Si el dragón no está asignado a otro jinete, lo asignamos a este jinete
+            if (!estaAsignado) {
+                jinete->IncorporarDragon(*it_d);
+                Dragones_isla.erase(it_d);  // Eliminamos el dragón de la lista de disponibles
+                break;  // Salimos del bucle de dragones disponibles
+            }
+        }
     }
-*/
+    
+
 }
 
 

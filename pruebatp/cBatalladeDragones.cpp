@@ -46,46 +46,6 @@ int cBatalladeDragones::mainB() {
 }
 
 void cBatalladeDragones::BatalladeDragones(vector<cVikingo*>& Vikingos_isla, vector<cDragon*>& Dragones_isla) {
-   /*
-    cout << "La aldea esta en peligro! Preparense para la batalla contra los dragones malos!" << endl;
-    cout << endl;
-    cVikingo::AtacarDragones();
-
-    for (cVikingo* vik : Vikingos_isla) {
-        vik->Trabajar();
-    }
-
-    vector<cDragon*> dragonesMalos;
-    for (auto dragon : Dragones_isla) {
-        if (!dragon->getEstado()) {
-            dragonesMalos.push_back(dragon);
-        }
-    }
-
-    if (dragonesMalos.empty()) {
-        cout << "No hay dragones malos para combatir." << endl;
-        return;
-    }
-
-    cVikingo* vikingo = Vikingos_isla[rand() % Vikingos_isla.size()];
-    cDragon* dragonMalo = dragonesMalos[rand() % dragonesMalos.size()];
-
-    cout << "El vikingo " << vikingo->getNombre() << " se enfrenta al dragon " << dragonMalo->getNombre() << "." << endl;
-
-    if (vikingo->getFuerza() >= dragonMalo->getResistencia()) {
-        cout << "El vikingo " << vikingo->getNombre() << " ha derrotado al dragon " << dragonMalo->getNombre() << "!" << endl;
-        *vikingo += dragonMalo;
-
-        auto it = find(Dragones_isla.begin(), Dragones_isla.end(), dragonMalo);
-        if (it != Dragones_isla.end()) {
-            delete* it;
-            Dragones_isla.erase(it);
-        }
-    }
-    else {
-        cout << "El dragon " << dragonMalo->getNombre() << " ha vencido al vikingo " << vikingo->getNombre() << "." << endl;
-    }
-    */ 
 
     try {
         cout << "La aldea esta en peligro! Preparense para la batalla contra los dragones malos!" << endl;
@@ -95,36 +55,48 @@ void cBatalladeDragones::BatalladeDragones(vector<cVikingo*>& Vikingos_isla, vec
         for (cVikingo* vik : Vikingos_isla) {
             vik->Trabajar();
         }
-
+        //me creo vector de dragones malos para pelear contra ellos
         vector<cDragon*> dragonesMalos;
         for (auto dragon : Dragones_isla) {
+            //si el dragon no esta domado, es malo
             if (!dragon->getEstado()) {
                 dragonesMalos.push_back(dragon);
             }
         }
-
+        //chequeo que el vector no este vacio
         if (dragonesMalos.empty()) {
             cout << "No hay dragones malos para combatir." << endl;
             return;
         }
 
+        //agarro un vikingo cualquiera para combatir
         cVikingo* vikingo = Vikingos_isla[rand() % Vikingos_isla.size()];
+
+        //agarro un dragon cualquiera de la lista de dragones malos para combatir contra el vikingo
         cDragon* dragonMalo = dragonesMalos[rand() % dragonesMalos.size()];
 
         cout << "El vikingo " << vikingo->getNombre() << " se enfrenta al dragon " << dragonMalo->getNombre() << "." << endl;
 
         if (vikingo->getFuerza() >= dragonMalo->getResistencia()) {
             cout << "El vikingo " << vikingo->getNombre() << " ha derrotado al dragon " << dragonMalo->getNombre() << "!" << endl;
+            //se le agrega el dragon a la lista de dragones matados por el vikingo
             *vikingo += dragonMalo;
 
+            //utilizo find para encontrar el dragon en el vector de dragones malos
             auto it = find(Dragones_isla.begin(), Dragones_isla.end(), dragonMalo);
             if (it != Dragones_isla.end()) {
-                delete* it;
+                //lo elimino de la lista de dragones de la isla
                 Dragones_isla.erase(it);
             }
         }
         else {
             cout << "El dragon " << dragonMalo->getNombre() << " ha vencido al vikingo " << vikingo->getNombre() << "." << endl;
+            auto it = find(Vikingos_isla.begin(), Vikingos_isla.end(), vikingo);
+            if (it != Vikingos_isla.end()) {
+                delete* it;
+                //elimino el vikingo de la isla
+                Vikingos_isla.erase(it);
+            }
         }
     }
     catch (const bad_alloc& e) {
@@ -140,7 +112,7 @@ void cBatalladeDragones::BatalladeDragones(vector<cVikingo*>& Vikingos_isla, vec
 }
 
 void cBatalladeDragones::mostrarLogrosVikingos() {
-   /*
+  
     int index;
     cout << "Lista de Vikingos:" << endl;
     for (int i = 0; i < Vikingos_isla.size(); i++) {
@@ -171,55 +143,6 @@ void cBatalladeDragones::mostrarLogrosVikingos() {
     }
     else {
         cout << "Indice de vikingo invalido." << endl;
-    }
-    */
-
-    try {
-        cout << "Lista de Vikingos:" << endl;
-        for (size_t i = 0; i < Vikingos_isla.size(); ++i) {
-            cout << i + 1 << ". " << Vikingos_isla[i]->getNombre() << endl;
-        }
-
-        int index;
-        cout << "Seleccione el vikingo para ver sus logros (0 para volver): ";
-        cin >> index;
-
-        if (index <= 0 || index > static_cast<int>(Vikingos_isla.size())) {
-            cout << "Indice de vikingo invalido." << endl;
-            return;
-        }
-
-        cVikingo* vikingoSeleccionado = Vikingos_isla[index - 1];
-        vikingoSeleccionado->mostrarDragonesMatados();
-
-        const vector<cDragon*>& dragonesMatados = vikingoSeleccionado->getDragonesMatados();
-        if (dragonesMatados.empty()) {
-            cout << "Este vikingo no ha matado ningun dragon." << endl;
-            return;
-        }
-
-        int dragonIndex;
-        cout << "Seleccione un dragon para ver sus detalles (0 para volver): ";
-        cin >> dragonIndex;
-
-        if (dragonIndex <= 0 || dragonIndex > static_cast<int>(dragonesMatados.size())) {
-            cout << "Indice de dragon invalido." << endl;
-            return;
-        }
-
-        cDragon* dragonSeleccionado = dragonesMatados[dragonIndex - 1];
-        cout << "Detalles del dragon " << dragonSeleccionado->getNombre() << ":" << endl;
-        cout << *dragonSeleccionado << endl;
-
-    }
-    catch (const bad_alloc& e) {
-        cerr << "Error de asignacion de memoria: " << e.what() << endl;
-    }
-    catch (const exception& e) {
-        cerr << "Error al mostrar los logros de los vikingos: " << e.what() << endl;
-    }
-    catch (...) {
-        cerr << "Error desconocido al mostrar los logros de los vikingos." << endl;
     }
 }
 

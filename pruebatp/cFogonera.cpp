@@ -26,8 +26,7 @@ cFogonera* cFogonera::AltaDragon()
 {
     string nombre, caracteristica, tamano, color;
     int resistencia = 0, hab = 0, clase = 0, presicion = 0, rescalor=0;
-    bool estado;
-    char domado;
+    bool estado = false;
     vector<string> v_habilidades;
     cAtaque* ataque = nullptr;
 
@@ -40,11 +39,6 @@ cFogonera* cFogonera::AltaDragon()
         cin >> tamano;
         cout << "Ingrese el color del dragon: ";
         cin >> color;
-        cout << "El dragon esta domado? (s/n): ";
-        cin >> domado;
-        if (domado != 's' && domado != 'S' && domado != 'n' && domado != 'N')
-            throw invalid_argument("Respuesta invalida para domado");
-        estado = (domado == 's' || domado == 'S');
         cout << "Ingrese la resistencia del dragon:" << endl;
         cin >> resistencia;
         if (resistencia <= -1)
