@@ -76,29 +76,6 @@ int cIslaBerk::mainBerk()
     catch (const exception& e) {
         cout << "Error en la ejercucion del programa: " << e.what() << endl;
     }
-    // Eliminar dragones de Dragones_isla solo si no se han movido a otra parte
-    for (cDragon* dragon : Dragones_isla) {
-        if (dragon != nullptr) {
-            delete dragon;
-        }
-    }
-    Dragones_isla.clear();
-
-    // Eliminar jinetes de Jinetes_isla
-    for (cJinete* jinete : Jinetes_isla) {
-        if (jinete != nullptr) {
-            delete jinete;
-        }
-    }
-    Jinetes_isla.clear();
-
-    // Eliminar vikingos de Vikingos_isla
-    for (cVikingo* vikingo : Vikingos_isla) {
-        if (vikingo != nullptr) {
-            delete vikingo;
-        }
-    }
-    Vikingos_isla.clear();
 
     return 0;
 }

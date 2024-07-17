@@ -104,7 +104,55 @@ void cMarejada::Entrenar(const string tipoEntrenamiento, const cJinete& jinete) 
 
 void cMarejada::DesarrollarEstrategia(const string& tipo)
 {
-    if (tipo == "Ataque") { //hago random que estrategia desarrolla
+    try {
+        if (tipo != "Ataque" && tipo != "Defensa") {
+            throw invalid_argument("El tipo de estrategia no es valida!");
+        }
+        if (tipo == "Ataque") { //hago random que estrategia desarrolla
+            string nuevaEstrategia;
+            bool existe = false;
+
+            do {
+                int randomNum = rand() % 3 + 1;
+                nuevaEstrategia = EstrategiaAtaque(randomNum);
+
+                existe = false;
+                for (string& estrategia : EstrategiasAtaque) {
+                    if (estrategia == nuevaEstrategia) {
+                        existe = true;
+                        break;
+                    }
+                }
+            } while (existe);
+
+            EstrategiasAtaque.push_back(nuevaEstrategia);
+            cout << Nombre << " ha desarrollado una nueva estrategia de ataque:" << nuevaEstrategia << endl;
+        }
+        else if (tipo == "Defensa") {
+            string nuevaEstrategia;
+            bool existe = false;
+
+            do {
+                int randomNum = rand() % 3 + 1;
+                nuevaEstrategia = EstrategiaDefensa(randomNum);
+
+                existe = false;
+                for (string& estrategia : EstrategiasDefensa) {
+                    if (estrategia == nuevaEstrategia) {
+                        existe = true;
+                        break;
+                    }
+                }
+            } while (existe);
+
+            EstrategiasDefensa.push_back(nuevaEstrategia);
+            cout << Nombre << " ha desarrollado una nueva estrategia de defensa:" << nuevaEstrategia << endl;
+        }
+    }
+    catch (const invalid_argument& e) {
+        cout << "Error:" << e.what() << endl;
+    }
+    /*if (tipo == "Ataque") { //hago random que estrategia desarrolla
         int randomNum = rand() % 3 + 1;
         string nuevaEstrategia = EstrategiaAtaque(randomNum);
         EstrategiasAtaque.push_back(nuevaEstrategia);
@@ -115,7 +163,7 @@ void cMarejada::DesarrollarEstrategia(const string& tipo)
         string nuevaEstrategia = EstrategiaDefensa(randomNum);
         EstrategiasDefensa.push_back(nuevaEstrategia);
         cout << Nombre << " ha desarrollado una nueva estrategia de defensa:" << nuevaEstrategia << endl;
-    }
+    }*/
 }
 
 void cMarejada::print(ostream& os)
