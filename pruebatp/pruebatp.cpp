@@ -88,7 +88,7 @@ int main()
         }
     }
 
-    //me copio los dragones en otro vector para la asignación de dragones
+    //me copio los dragones en otro vector para la asignacion de dragones
     vector<cDragon*> vectorDragones(Dragones_isla);
 
     AsignarDragonesJinetes(Jinetes_isla, vectorDragones);
