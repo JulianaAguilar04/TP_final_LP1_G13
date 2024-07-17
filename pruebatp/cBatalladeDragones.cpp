@@ -4,7 +4,42 @@ cBatalladeDragones::cBatalladeDragones(vector<cVikingo*> Vikingos_isla, vector<c
     : Vikingos_isla(Vikingos_isla), Dragones_isla(Dragones_isla) {}
 
 int cBatalladeDragones::mainB() {
-    BatalladeDragones(Vikingos_isla, Dragones_isla);
+    int opcion;
+    try {
+        do {
+            cout << "------ PREPARADOS PARA LA BATALLA ? ------" << endl;
+            cout << "1) Empezar batalla" << endl;
+            cout << "2) Logro de cada vikingo" << endl;
+            cout << "3) Salir" << endl;
+            cin >> opcion;
+            limpiarPantallaB();
+
+            switch (opcion)
+            {
+            case 1: BatalladeDragones(Vikingos_isla, Dragones_isla);
+                break;
+            case 2: //aca hace la lista de logros
+                break;
+            case 3:
+                cout << "Saliendo de la Escuela de Dragones..." << endl;
+                break;
+            default:
+                cout << "Opcion invalida: Vuelva a intentarlo" << endl;
+                break;
+            }
+            if (opcion != 3) {
+                cout << "Presione Enter para continuar..." << endl;
+                cin.ignore();
+                cin.get();
+                limpiarPantallaB();
+            }
+
+        } while (opcion != 3);
+    }
+    catch (const exception&e) {
+        cout << "Error en la ejercucion del programa: " << e.what() << endl;
+    }
+    
     return 0;
 }
 
@@ -36,7 +71,7 @@ void cBatalladeDragones::BatalladeDragones(vector<cVikingo*>& Vikingos_isla, vec
 
     if (vikingo->getFuerza() >= dragonMalo->getResistencia()) {
         cout << "El vikingo " << vikingo->getNombre() << " ha derrotado al dragon " << dragonMalo->getNombre() << "!" << endl;
-        vikingo->registrarDragonMatado(dragonMalo);
+        *vikingo += dragonMalo;
 
         auto it = find(Dragones_isla.begin(), Dragones_isla.end(), dragonMalo);
         if (it != Dragones_isla.end()) {

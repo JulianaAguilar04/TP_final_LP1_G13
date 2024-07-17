@@ -78,10 +78,6 @@ void cVikingo::AtacarDragones() {
 	cout << "Todos los vikingos, dejen sus puestos de trabajo y preparense para la batalla contra los dragones!" << endl;
 }
 
-void cVikingo::registrarDragonMatado(cDragon* dragon) {
-	dragonesMatados.push_back(dragon);
-}
-
 void cVikingo::mostrarDragonesMatados() {
 	cout << "Dragones matados por " << Nombre << ":" << endl;
 	for (const auto& dragon : dragonesMatados) {
@@ -98,6 +94,13 @@ string cVikingo::to_string() {
 		ss << miDragon->to_string();
 	}
 	return ss.str();
+}
+
+cVikingo& cVikingo::operator +=(cDragon* d) {
+	if (d) {
+		dragonesMatados.push_back(d);
+	}
+	return *this;
 }
 
 cVikingo::~cVikingo() {}

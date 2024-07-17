@@ -8,6 +8,13 @@
 
 using namespace std;
 
+inline void limpiarPantallaB()
+{
+#ifdef _WIN32
+	system("cls");
+#endif
+};
+
 class cJinete;
 
 class cBatalladeDragones {

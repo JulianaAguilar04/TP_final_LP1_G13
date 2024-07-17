@@ -28,9 +28,10 @@ public:
 	void setNombre(string Nombre);
 	void setApellido(string Apellido);
 	void setPosicion(string Posicion);
+	cVikingo& operator += (cDragon *d);
+	cVikingo operator += (int);
 	void Trabajar();
 	static void AtacarDragones();
-	void registrarDragonMatado(cDragon* dragon);
 	void mostrarDragonesMatados();
 
 	~cVikingo();

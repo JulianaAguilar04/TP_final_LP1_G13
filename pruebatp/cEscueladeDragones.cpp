@@ -10,44 +10,49 @@ cEscueladeDragones::cEscueladeDragones(vector<cJinete*> Jinetes_isla, vector<cDr
 int cEscueladeDragones::mainE()
 {
     int opcion;
-    do {
-        cout << "------ USTED ESTA EN LA ESCUELA DE LA ISLA ------" << endl;
-        cout << "1) Estudio de dragones" << endl;
-        cout << "2) Lista de dragones conocidos " << endl;
-        cout << "3) Entrenar " << endl;
-        cout << "4) Salir" << endl;
-        cin >> opcion;
-        limpiarPantallaE();
-
-        switch (opcion)
-        {
-        case 1:
-            EstudioDeDragones(Dragones_isla);
-            break;
-        case 2:
-            ListaDeDragones(Dragones_isla);
-            break;
-        case 3:
-            EntrenarDragones(Jinetes_isla);
-            break;
-
-        case 4:
-            cout << "Saliendo de la Escuela de Dragones..." << endl;
-            break;
-
-        default:
-            cout << "Opcion invalida: Vuelva a intentarlo" << endl;
-            break;
-        }
-        if (opcion != 4) {
-            cout << "Presione Enter para continuar..." << endl;
-            cin.ignore();
-            cin.get();
+    try {
+        do {
+            cout << "------ USTED ESTA EN LA ESCUELA DE LA ISLA ------" << endl;
+            cout << "1) Estudio de dragones" << endl;
+            cout << "2) Lista de dragones conocidos " << endl;
+            cout << "3) Entrenar " << endl;
+            cout << "4) Salir" << endl;
+            cin >> opcion;
             limpiarPantallaE();
-        }
 
-    } while (opcion != 4);
-   
+            switch (opcion)
+            {
+            case 1:
+                EstudioDeDragones(Dragones_isla);
+                break;
+            case 2:
+                ListaDeDragones(Dragones_isla);
+                break;
+            case 3:
+                EntrenarDragones(Jinetes_isla);
+                break;
+
+            case 4:
+                cout << "Saliendo de la Escuela de Dragones..." << endl;
+                break;
+
+            default:
+                cout << "Opcion invalida: Vuelva a intentarlo" << endl;
+                break;
+            }
+            if (opcion != 4) {
+                cout << "Presione Enter para continuar..." << endl;
+                cin.ignore();
+                cin.get();
+                limpiarPantallaE();
+            }
+
+        } while (opcion != 4);
+    }
+    catch (const exception& e) {
+        cout << "Error en la ejercucion del programa: " << e.what() << endl;
+    }
+
     return 0;
 }
 
