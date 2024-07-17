@@ -92,9 +92,7 @@ int main()
     vector<cDragon*> vectorDragones(Dragones_isla);
 
     AsignarDragonesJinetes(Jinetes_isla, vectorDragones);
-    for (cJinete* jinete: Jinetes_isla) {
-        cout << (*jinete) << endl;
-    }
+ 
 
     cIslaBerk ISLA(Jinetes_isla, Dragones_isla, Vikingos_isla);
     ISLA.mainBerk();
