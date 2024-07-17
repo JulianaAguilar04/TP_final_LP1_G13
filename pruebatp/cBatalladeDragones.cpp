@@ -7,9 +7,9 @@ int cBatalladeDragones::mainB() {
     int opcion;
     try {
         do {
-            cout << "------ PREPARADOS PARA LA BATALLA ? ------" << endl;
-            cout << "1) Empezar batalla" << endl;
-            cout << "2) Logro de cada vikingo" << endl;
+            cout << "------CAMPO DE BATALLA------" << endl;
+            cout << "1) Luchar" << endl;
+            cout << "2) Logros" << endl;
             cout << "3) Salir" << endl;
             cin >> opcion;
             limpiarPantallaB();
@@ -108,7 +108,7 @@ void cBatalladeDragones::mostrarLogrosVikingos() {
             if (dragonIndex > 0 && dragonIndex <= dragonesMatados.size()) {
                 cDragon* dragonSeleccionado = dragonesMatados[dragonIndex - 1];
                 cout << "Detalles del dragon " << dragonSeleccionado->getNombre() << ":" << endl;
-                cout << *dragonSeleccionado << endl;  // Asume que cDragon tiene sobrecargado el operador <<
+                cout << *dragonSeleccionado << endl; 
             }
         }
         else {
