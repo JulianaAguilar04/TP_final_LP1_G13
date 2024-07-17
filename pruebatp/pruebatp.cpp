@@ -19,7 +19,6 @@ void AsignarDragonesJinetes(vector<cJinete*>&Jinetes_isla, vector<cDragon*>&Drag
 
 int main()
 {
-    //menu
    //Ataques
     cAtaque* Ataque1 = new cAtaque("Fuego", "15", "14");
     cAtaque* Ataque2 = new cAtaque("Veneno", "14", "10");
@@ -93,6 +92,9 @@ int main()
     vector<cDragon*> vectorDragones(Dragones_isla);
 
     AsignarDragonesJinetes(Jinetes_isla, vectorDragones);
+    for (cJinete* jinete: Jinetes_isla) {
+        cout << (*jinete) << endl;
+    }
 
     cIslaBerk ISLA(Jinetes_isla, Dragones_isla, Vikingos_isla);
     ISLA.mainBerk();
@@ -120,32 +122,20 @@ int main()
     delete Ataque5;
     delete Ataque6;
     delete Ataque7;
+    delete Ataque8;
+    delete Ataque9;
+    delete Ataque10;
 
     return 0;
 }
-//fin del main
+
 
 //funcion asignar dragones
 void AsignarDragonesJinetes(vector<cJinete*>& Jinetes_isla, vector<cDragon*>& Dragones_isla) {
-/*
-    // Iterar sobre todos los dragones disponibles
-    for (auto& dragon : Dragones_isla) {
-        // Buscar un jinete disponible para este dragón
-        for (auto& jinete : Jinetes_isla) {
-            // Verificar si el jinete puede tener el dragón y aún no tiene uno asignado
-            if (jinete->getResultado() > 0 && !jinete->tieneDragon(dragon)) {
-                jinete->IncorporarDragon(dragon);
-                break;  // Asignar el dragón y salir del bucle de jinetes
-            }
-        }
-    }
-    */
+    
+    int indexDragon = 0;
 
-    /*
-    // Indice para iterar sobre los dragones
-    size_t indexDragon = 0;
-
-    for (auto& jinete : Jinetes_isla) {
+    for (cJinete* jinete : Jinetes_isla) {
         // Reiniciar el indice si alcanza el final del vector de dragones
         if (indexDragon >= Dragones_isla.size()) {
             break;
@@ -183,79 +173,5 @@ void AsignarDragonesJinetes(vector<cJinete*>& Jinetes_isla, vector<cDragon*>& Dr
             }
         }
     }
-    */
-   
-    /*
-    for (auto& jinete : Jinetes_isla) {
-
-        vector<cDragon*>::iterator it_d = Dragones_isla.begin();
-
-        while (it_d != Dragones_isla.end()) {
-
-            if ((*it_d)->getEstado() == true && jinete->getResultado() > 0) {
-                bool yaTieneJinete = false;
-                for (cJinete* otroJinete : Jinetes_isla) {
-                    if (otroJinete != jinete && otroJinete->tieneDragon(*it_d)) {
-                        yaTieneJinete = true;
-                        break;
-                    }
-                }
-                if (!yaTieneJinete) {
-                    jinete->IncorporarDragon(*it_d);
-                    it_d = Dragones_isla.erase(it_d);
-                }
-                else {
-                    ++it_d;
-                }
-            }
-            else {
-                ++it_d;
-            }
-        }
-    }*/
-    
-    // Recorremos todos los jinetes
-    for (auto& jinete : Jinetes_isla) {
-        // Si el jinete ya tiene un dragón asignado, pasamos al siguiente jinete
-        if (!jinete->getMisDragones().empty()) {
-            continue;
-        }
-
-        // Iteramos sobre los dragones disponibles para asignar
-        for (auto it_d = Dragones_isla.begin(); it_d != Dragones_isla.end(); ++it_d) {
-            // Verificamos si el dragón no está asignado a otro jinete
-            bool estaAsignado = false;
-            for (auto otroJinete : Jinetes_isla) {
-                if (otroJinete != jinete && otroJinete->tieneDragon(*it_d)) {
-                    estaAsignado = true;
-                    break;
-                }
-            }
-
-            // Si el dragón no está asignado a otro jinete, lo asignamos a este jinete
-            if (!estaAsignado) {
-                jinete->IncorporarDragon(*it_d);
-                Dragones_isla.erase(it_d);  // Eliminamos el dragón de la lista de disponibles
-                break;  // Salimos del bucle de dragones disponibles
-            }
-        }
-    }
-    
 
 }
-
-
-
-
-/*
-}
-    // Implementación de la función MostrarDragonesMatados
-    void MostrarDragonesMatados(const vector<cVikingo*>& Vikingos_isla) {
-
-        cout << "Lista de dragones matados por vikingos:" << endl;
-        for (auto vikingo : Vikingos_isla) {
-            cout << "Vikingo " << vikingo->getNombre() << ":" << endl;
-            vikingo->mostrarDragonesMatados();
-        }
-    }
-*/
