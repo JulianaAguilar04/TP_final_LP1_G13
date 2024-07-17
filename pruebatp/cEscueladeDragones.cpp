@@ -3,8 +3,8 @@ using namespace std;
 
 cEscueladeDragones::cEscueladeDragones(vector<cJinete*> Jinetes_isla, vector<cDragon*> Dragones_isla)
 {
-	this->Jinetes_isla = Jinetes_isla;
-	this->Dragones_isla = Dragones_isla;
+    this->Jinetes_isla = Jinetes_isla;
+    this->Dragones_isla = Dragones_isla;
 }
 
 int cEscueladeDragones::mainE()
@@ -56,7 +56,7 @@ int cEscueladeDragones::mainE()
     return 0;
 }
 
-void cEscueladeDragones::EstudioDeDragones(vector<cDragon*> &Dragones_isla)
+void cEscueladeDragones::EstudioDeDragones(vector<cDragon*>& Dragones_isla)
 {
     int clase = 0;
     cDragon* nuevoDragon = nullptr;
@@ -91,12 +91,11 @@ void cEscueladeDragones::EstudioDeDragones(vector<cDragon*> &Dragones_isla)
 
 void cEscueladeDragones::ListaDeDragones(const vector<cDragon*>& Dragones_isla)
 {
-    cout << "\nLista de Dragones Conocidos:" << endl;
-    for (cDragon *dragon : Dragones_isla) {
-        cout << (*dragon);
+    cout << "\nLISTA DE DRAGONES CONOCIDOS:\n" << endl;
+    for (cDragon* dragon : Dragones_isla) {
+        cout << (*dragon).to_string();
     }
 }
-
 void cEscueladeDragones::EntrenarDragones(vector<cJinete*>& Jinetes_isla)
 {
     for (cJinete* jinete : Jinetes_isla) {
