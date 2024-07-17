@@ -26,6 +26,7 @@ public:
 	cBatalladeDragones(vector<cVikingo*> Vikingos_isla, vector<cDragon*> Dragones_isla);
 	int mainB();
 	void BatalladeDragones(vector<cVikingo*>& Vikingos_isla, vector<cDragon*>& Dragones_isla);
+	void mostrarLogrosVikingos();
 	~cBatalladeDragones();
 };
 

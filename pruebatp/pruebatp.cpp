@@ -39,8 +39,8 @@ int main()
     vector<string> Habilidades7 = { "Aliento de hielo", "Control sobre otros dragones" };
 
     Dragones_isla.push_back(new cFogonera("Cola Quemante", "Poca paciencia", "Grande", "Naranja", false, 10, 21, 30,  Habilidades4, Ataque4));
-    Dragones_isla.push_back(new cFogonera("Muerte Roja", "Poca Paciencia", "Mediano", "Azul", true, 20, 25, 20, Habilidades1, Ataque1));
-    Dragones_isla.push_back(new cEmbestida("Chimuelo", "Inteligente", "Mediano", "Negro", true, 20, 18, 30, 12, Habilidades5, Ataque5));
+    Dragones_isla.push_back(new cFogonera("Muerte Roja", "Poca Paciencia", "Mediano", "Azul", false, 20, 25, 20, Habilidades1, Ataque1));
+    Dragones_isla.push_back(new cEmbestida("Chimuelo", "Inteligente", "Mediano", "Negro", false, 20, 18, 30, 12, Habilidades5, Ataque5));
     Dragones_isla.push_back(new cEmbestida("Skrill", "Agresivo", "Grande", "Violeta", false, 19, 10,20, 20, Habilidades2, Ataque3));
     Dragones_isla.push_back(new cMarejada("Salvajibestia", "Robusto", "Gigante", "Blanco", true, 20, 10, Habilidades7, Ataque7));
     Dragones_isla.push_back(new cMarejada("Scaldaron", "Redondo", "Grande", "Verde", true, 20, 15, Habilidades3, Ataque2));

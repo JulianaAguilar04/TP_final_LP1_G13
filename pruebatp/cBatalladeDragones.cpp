@@ -16,9 +16,11 @@ int cBatalladeDragones::mainB() {
 
             switch (opcion)
             {
-            case 1: BatalladeDragones(Vikingos_isla, Dragones_isla);
+            case 1:
+                BatalladeDragones(Vikingos_isla, Dragones_isla);
                 break;
-            case 2: //aca hace la lista de logros
+            case 2:
+                mostrarLogrosVikingos();
                 break;
             case 3:
                 cout << "Saliendo de la Escuela de Dragones..." << endl;
@@ -36,10 +38,10 @@ int cBatalladeDragones::mainB() {
 
         } while (opcion != 3);
     }
-    catch (const exception&e) {
-        cout << "Error en la ejercucion del programa: " << e.what() << endl;
+    catch (const exception& e) {
+        cout << "Error en la ejecucion del programa: " << e.what() << endl;
     }
-    
+
     return 0;
 }
 
@@ -84,4 +86,40 @@ void cBatalladeDragones::BatalladeDragones(vector<cVikingo*>& Vikingos_isla, vec
     }
 }
 
+void cBatalladeDragones::mostrarLogrosVikingos() {
+    int index;
+    cout << "Lista de Vikingos:" << endl;
+    for (int i = 0; i < Vikingos_isla.size(); i++) {
+        cout << i + 1 << ". " << Vikingos_isla[i]->getNombre() << endl;
+    }
+    cout << "Seleccione el vikingo para ver sus logros: ";
+    cin >> index;
+
+    if (index > 0 && index <= Vikingos_isla.size()) {
+        cVikingo* vikingoSeleccionado = Vikingos_isla[index - 1];
+        vikingoSeleccionado->mostrarDragonesMatados();
+
+        vector<cDragon*> dragonesMatados = vikingoSeleccionado->getDragonesMatados();
+        if (!dragonesMatados.empty()) {
+            cout << "Seleccione un dragon para ver sus detalles (0 para volver): ";
+            int dragonIndex;
+            cin >> dragonIndex;
+
+            if (dragonIndex > 0 && dragonIndex <= dragonesMatados.size()) {
+                cDragon* dragonSeleccionado = dragonesMatados[dragonIndex - 1];
+                cout << "Detalles del dragon " << dragonSeleccionado->getNombre() << ":" << endl;
+                cout << *dragonSeleccionado << endl;  // Asume que cDragon tiene sobrecargado el operador <<
+            }
+        }
+        else {
+            cout << "Este vikingo no ha matado ningun dragon." << endl;
+        }
+    }
+    else {
+        cout << "Indice de vikingo invalido." << endl;
+    }
+}
+
 cBatalladeDragones::~cBatalladeDragones() {}
+
+
